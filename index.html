@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>万豪旅享家 China App — 功能说明</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bonvoy-black: #1A1A1A;
+      --bonvoy-coral: #D4956A;
+      --action-red: #C8102E;
+      --surface-white: #FFFFFF;
+      --surface-gray: #F5F5F5;
+      --border-gray: #E5E5E5;
+      --text-primary: #1A1A1A;
+      --text-body: #666666;
+      --text-helper: #999999;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 999px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-base: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--surface-white);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-base) var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-logo span {
+      color: var(--bonvoy-coral);
+      position: relative;
+    }
+
+    .brand-logo span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--bonvoy-coral);
+      border-radius: 2px;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-helper);
+      font-weight: 400;
+      border-left: 1px solid var(--border-gray);
+      padding-left: var(--space-md);
+    }
+
+    .header-stats {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Main Layout ===== */
+    .main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px var(--space-xl) var(--space-2xl);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-xl);
+    }
+
+    /* ===== Sidebar Navigation ===== */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-sm);
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-bottom: 2px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px var(--space-sm);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      background: var(--surface-gray);
+      color: var(--text-primary);
+    }
+
+    .nav-link.active {
+      background: var(--bonvoy-black);
+      color: var(--surface-white);
+    }
+
+    .nav-count {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-gray);
+      color: var(--text-helper);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link.active .nav-count {
+      background: rgba(255,255,255,0.2);
+      color: var(--surface-white);
+    }
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: var(--space-sm);
+      opacity: 0.6;
+    }
+
+    .nav-link.active .nav-icon {
+      opacity: 1;
+    }
+
+    /* Status filter in sidebar */
+    .filter-section {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-gray);
+    }
+
+    .filter-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-sm);
+    }
+
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-chip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 8px var(--space-sm);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .filter-chip:hover {
+      background: var(--surface-gray);
+    }
+
+    .filter-chip.active {
+      background: var(--surface-gray);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .filter-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-live { background: #22C55E; }
+    .dot-new { background: #3B82F6; }
+    .dot-iterate { background: #F59E0B; }
+    .dot-design { background: #8B5CF6; }
+    .dot-pending { background: var(--text-helper); }
+
+    /* ===== Content Area ===== */
+    .content {
+      min-height: calc(100vh - 120px);
+    }
+
+    /* Module Header */
+    .module-header {
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .module-title-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+
+    .module-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      background: var(--bonvoy-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--surface-white);
+    }
+
+    .module-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      letter-spacing: -0.5px;
+    }
+
+    .module-desc {
+      font-size: 15px;
+      color: var(--text-body);
+      margin-left: 56px;
+      max-width: 600px;
+    }
+
+    .module-stats-bar {
+      display: flex;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      margin-left: 56px;
+    }
+
+    .module-stat {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .module-stat strong {
+      color: var(--bonvoy-black);
+      font-weight: 700;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-base);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .section-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-base) var(--space-lg);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .section-header:hover {
+      background: var(--surface-gray);
+    }
+
+    .section-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .section-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      color: var(--text-helper);
+    }
+
+    .section-toggle.expanded {
+      transform: rotate(90deg);
+    }
+
+    .section-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 400;
+    }
+
+    .section-badges {
+      display: flex;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.3px;
+    }
+
+    .badge-live { background: #DCFCE7; color: #166534; }
+    .badge-new { background: #DBEAFE; color: #1E40AF; }
+    .badge-iterate { background: #FEF3C7; color: #92400E; }
+    .badge-design { background: #EDE9FE; color: #5B21B6; }
+    .badge-pending { background: #F3F4F6; color: #4B5563; }
+
+    /* Feature Table */
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .feature-table thead {
+      background: var(--surface-gray);
+    }
+
+    .feature-table th {
+      padding: 10px var(--space-lg);
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-table td {
+      padding: 12px var(--space-lg);
+      border-top: 1px solid var(--border-gray);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .feature-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .feature-table tbody tr:hover {
+      background: var(--surface-gray);
+    }
+
+    .feature-row {
+      cursor: pointer;
+    }
+
+    .feature-row.has-screenshot:hover {
+      background: #FAFAFA;
+    }
+
+    .feature-screenshot-cell {
+      width: 90px;
+      padding: 8px var(--space-lg) !important;
+      text-align: center;
+    }
+
+    .screenshot-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: var(--surface-gray);
+      color: var(--text-body);
+    }
+
+    .screenshot-count-badge:hover {
+      background: var(--bonvoy-black);
+      color: var(--surface-white);
+    }
+
+    .screenshot-count-badge.has-screenshot {
+      background: #E8F5E9;
+      color: #2E7D32;
+    }
+
+    .screenshot-count-badge.has-screenshot:hover {
+      background: #2E7D32;
+      color: var(--surface-white);
+    }
+
+    .screenshot-count-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .screenshot-placeholder-text {
+      font-size: 12px;
+      color: var(--text-helper);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 14px;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .feature-id {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .feature-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .feature-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .status-live { background: #DCFCE7; color: #166534; }
+    .status-new { background: #DBEAFE; color: #1E40AF; }
+    .status-iterate { background: #FEF3C7; color: #92400E; }
+    .status-design { background: #EDE9FE; color: #5B21B6; }
+    .status-pending { background: #F3F4F6; color: #4B5563; }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .feature-note {
+      font-size: 13px;
+      color: var(--text-body);
+      max-width: 300px;
+    }
+
+    .feature-evidence {
+      font-size: 12px;
+      color: var(--text-helper);
+      white-space: nowrap;
+    }
+
+    /* Collapsible content */
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section-content.expanded {
+      max-height: 5000px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      position: relative;
+      margin-bottom: var(--space-xl);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px var(--space-lg) 12px 44px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: var(--surface-white);
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--bonvoy-black);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-helper);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-helper);
+    }
+
+    /* Overview Dashboard */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-base);
+      margin-bottom: var(--space-xl);
+    }
+
+    .overview-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .overview-card:hover {
+      border-color: var(--bonvoy-black);
+      transform: translateY(-2px);
+    }
+
+    .overview-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      line-height: 1.2;
+      margin-bottom: var(--space-xs);
+    }
+
+    .overview-label {
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .overview-card.highlight {
+      background: var(--bonvoy-black);
+      border-color: var(--bonvoy-black);
+    }
+
+    .overview-card.highlight .overview-number,
+    .overview-card.highlight .overview-label {
+      color: var(--surface-white);
+    }
+
+    /* Status legend bar */
+    .status-legend {
+      display: flex;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      padding: var(--space-md) var(--space-lg);
+      background: var(--surface-gray);
+      border-radius: var(--radius-lg);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: var(--space-base);
+      }
+      .header-stats {
+        display: none;
+      }
+      .main {
+        padding: 90px var(--space-base) var(--space-xl);
+      }
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+      .module-title {
+        font-size: 22px;
+      }
+      .feature-table {
+        font-size: 12px;
+      }
+      .feature-table th,
+      .feature-table td {
+        padding: 8px var(--space-base);
+      }
+      .feature-note,
+      .feature-evidence {
+        display: none;
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animation for page load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .section-card:nth-child(1) { animation-delay: 0.05s; }
+    .section-card:nth-child(2) { animation-delay: 0.1s; }
+    .section-card:nth-child(3) { animation-delay: 0.15s; }
+    .section-card:nth-child(4) { animation-delay: 0.2s; }
+    .section-card:nth-child(5) { animation-delay: 0.25s; }
+    .section-card:nth-child(6) { animation-delay: 0.3s; }
+    .section-card:nth-child(7) { animation-delay: 0.35s; }
+    .section-card:nth-child(8) { animation-delay: 0.4s; }
+
+    /* ===== Feature Detail Panel ===== */
+    .feature-detail-panel {
+      background: #FAFAFA;
+      border-top: 1px solid var(--border-gray);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .feature-detail-panel.expanded {
+      max-height: 900px;
+    }
+
+    .detail-panel-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+      padding: var(--space-lg);
+    }
+
+    .detail-screenshot-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .detail-screenshot {
+      width: 200px;
+      height: 360px;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-gray);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: var(--surface-gray);
+    }
+
+    .detail-screenshot:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .detail-screenshot-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      text-align: center;
+    }
+
+    .screenshot-viewer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .screenshot-main {
+      width: 200px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-gray);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .screenshot-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .screenshot-main-img:hover {
+      transform: scale(1.02);
+    }
+    .screenshot-thumbs {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .screenshot-thumbs::-webkit-scrollbar {
+      display: none;
+    }
+    .screenshot-thumb {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 6px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      background: var(--surface-white);
+      flex-shrink: 0;
+    }
+    .screenshot-thumb:hover {
+      background: var(--surface-gray);
+    }
+    .screenshot-thumb.active {
+      border-color: var(--bonvoy-black);
+      background: var(--surface-gray);
+    }
+    .screenshot-thumb img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-gray);
+    }
+    .screenshot-thumb span {
+      font-size: 10px;
+      color: var(--text-helper);
+    }
+
+    .detail-screenshot-placeholder {
+      width: 100%;
+      max-width: 200px;
+      height: 360px;
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--border-gray);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      color: var(--text-helper);
+      background: var(--surface-white);
+    }
+
+    .detail-screenshot-placeholder svg {
+      opacity: 0.3;
+    }
+
+    .detail-info-area {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-base);
+      padding-top: var(--space-sm);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+
+    .detail-id {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 500;
+      background: var(--surface-gray);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .detail-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+    }
+
+    .detail-status-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+
+    .detail-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .detail-description {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .detail-note-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+      border: 1px solid var(--border-gray);
+    }
+    .detail-note-table th {
+      background: #f8f8f8;
+      color: var(--text-primary);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid var(--border-gray);
+    }
+    .detail-note-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border-gray);
+      vertical-align: top;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+    .detail-note-table tr:nth-child(even) {
+      background: #fafafa;
+    }
+    .detail-note-table tr:hover {
+      background: #f0f0f0;
+    }
+    .detail-note-table td ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+    .detail-note-table td ul li {
+      margin-bottom: 4px;
+    }
+    .detail-note-table td ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-base);
+      margin-top: var(--space-sm);
+    }
+
+    .detail-meta-item {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .detail-meta-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      margin-bottom: 4px;
+    }
+
+    .detail-meta-value {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .detail-evidence {
+      font-size: 12px;
+      color: var(--text-helper);
+    }
+
+    .feature-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .feature-row:hover {
+      background: var(--surface-gray);
+    }
+
+    .feature-row.active {
+      background: #F5F5F5;
+    }
+
+    .feature-row.active .feature-name {
+      color: var(--action-red);
+    }
+
+    /* Responsive for detail panel */
+    @media (max-width: 768px) {
+      .detail-panel-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-base);
+      }
+      .detail-screenshot,
+      .detail-screenshot-placeholder {
+        max-width: 160px;
+        margin: 0 auto;
+      }
+      .detail-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">Marriott B<span>o</span>nvoy</div>
+        <div class="brand-subtitle">China App 功能说明</div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-value" id="statTotal">207</div>
+          <div class="stat-label">功能总数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statModules">10</div>
+          <div class="stat-label">功能模块</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statLive">—</div>
+          <div class="stat-label">已上线</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statNew">—</div>
+          <div class="stat-label">新增/迭代</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-title">功能模块</div>
+      <ul class="nav-list" id="navList">
+        <!-- Nav items injected by JS -->
+      </ul>
+
+      <div class="filter-section">
+        <div class="filter-title">状态筛选</div>
+        <div class="filter-options">
+          <button class="filter-chip active" data-filter="all">
+            <span class="filter-dot" style="background: var(--bonvoy-black);"></span>
+            全部状态
+          </button>
+          <button class="filter-chip" data-filter="live">
+            <span class="filter-dot dot-live"></span>
+            已上线
+          </button>
+          <button class="filter-chip" data-filter="new">
+            <span class="filter-dot dot-new"></span>
+            新增
+          </button>
+          <button class="filter-chip" data-filter="iterate">
+            <span class="filter-dot dot-iterate"></span>
+            迭代中
+          </button>
+          <button class="filter-chip" data-filter="design">
+            <span class="filter-dot dot-design"></span>
+            设计中
+          </button>
+          <button class="filter-chip" data-filter="pending">
+            <span class="filter-dot dot-pending"></span>
+            待确认
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="content" id="content">
+      <!-- Content injected by JS -->
+    </main>
+  </div>
+
+  <script>
+    // ===== DATA =====
+let modules = [];
+
+    // 从外部 JSON 加载数据
+    fetch('data.json?t=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        modules = data;
+        initApp();
+      })
+      .catch(err => {
+        console.error('Failed to load data.json:', err);
+        document.querySelector('.content-area').innerHTML = '<div style="padding:40px;text-align:center;"><h3>数据加载失败</h3><p>请检查 data.json 文件是否存在</p></div>';
+      });
+
+    function initApp() {
+      renderNav();
+      renderContent();
+      renderFilters();
+    }
+
+    // ===== STATE =====
+    let currentModule = 'overview';
+    let currentFilter = 'all';
+    let expandedSections = new Set();
+
+    // ===== HELPERS =====
+    const statusMap = {
+      live:    { label: '已上线', class: 'status-live', badge: 'badge-live' },
+      new:     { label: '新增', class: 'status-new', badge: 'badge-new' },
+      iterate: { label: '迭代中', class: 'status-iterate', badge: 'badge-iterate' },
+      design:  { label: '设计中', class: 'status-design', badge: 'badge-design' },
+      pending: { label: '待确认', class: 'status-pending', badge: 'badge-pending' }
+    };
+
+    function countByStatus(features) {
+      const counts = { live: 0, new: 0, iterate: 0, design: 0, pending: 0 };
+      features.forEach(f => { if (counts[f.status] !== undefined) counts[f.status]++; });
+      return counts;
+    }
+
+    function getAllFeatures(module) {
+      if (!module.sections) return [];
+      return module.sections.flatMap(s => s.features);
+    }
+
+    function filterFeatures(features, filter) {
+      if (filter === 'all') return features;
+      return features.filter(f => f.status === filter);
+    }
+
+    // ===== RENDER =====
+    function renderNav() {
+      const navList = document.getElementById('navList');
+      navList.innerHTML = modules.map(m => {
+        const isActive = m.id === currentModule;
+        return `
+          <li class="nav-item">
+            <a class="nav-link ${isActive ? 'active' : ''}" data-module="${m.id}">
+              <span style="display:flex;align-items:center;">
+                <span class="nav-icon">${m.icon}</span>
+                ${m.name}
+              </span>
+              ${m.count ? `<span class="nav-count">${m.count}</span>` : ''}
+            </a>
+          </li>
+        `;
+      }).join('');
+
+      navList.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          currentModule = link.dataset.module;
+          renderNav();
+          renderContent();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    }
+
+    function renderOverview() {
+      const totalFeatures = modules.filter(m => m.count).reduce((sum, m) => sum + m.count, 0);
+      const allFeatures = modules.filter(m => m.sections).flatMap(m => getAllFeatures(m));
+      const statusCounts = countByStatus(allFeatures);
+
+      const moduleCards = modules.filter(m => m.count).map(m => {
+        const features = getAllFeatures(m);
+        const counts = countByStatus(features);
+        return `
+          <div class="overview-card" style="cursor:pointer;" data-module="${m.id}">
+            <div class="overview-number">${m.count}</div>
+            <div class="overview-label">${m.name}</div>
+            <div style="margin-top:8px;display:flex;gap:4px;justify-content:center;flex-wrap:wrap;">
+              ${counts.live > 0 ? `<span class="badge badge-live" style="font-size:10px;padding:2px 6px;">${counts.live} 已上线</span>` : ''}
+              ${counts.new > 0 ? `<span class="badge badge-new" style="font-size:10px;padding:2px 6px;">${counts.new} 新增</span>` : ''}
+              ${counts.iterate > 0 ? `<span class="badge badge-iterate" style="font-size:10px;padding:2px 6px;">${counts.iterate} 迭代</span>` : ''}
+              ${counts.design > 0 ? `<span class="badge badge-design" style="font-size:10px;padding:2px 6px;">${counts.design} 设计中</span>` : ''}
+              ${counts.pending > 0 ? `<span class="badge badge-pending" style="font-size:10px;padding:2px 6px;">${counts.pending} 待确认</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="module-header">
+          <div class="module-title-row">
+            <div class="module-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h1 class="module-title">功能总览</h1>
+          </div>
+          <p class="module-desc">万豪旅享家 China App 功能说明，基于信息架构图组织</p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="overview-card highlight">
+            <div class="overview-number">${totalFeatures}</div>
+            <div class="overview-label">功能总数</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.live}</div>
+            <div class="overview-label">已上线</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.new}</div>
+            <div class="overview-label">新增</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.design}</div>
+            <div class="overview-label">设计中</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.pending}</div>
+            <div class="overview-label">待确认</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${modules.filter(m => m.count).length}</div>
+            <div class="overview-label">功能模块</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">5</div>
+            <div class="overview-label">底部 Tab</div>
+          </div>
+        </div>
+
+        <div class="status-legend">
+          <div class="legend-item"><span class="filter-dot dot-live"></span> 已上线</div>
+          <div class="legend-item"><span class="filter-dot dot-new"></span> 新增</div>
+          <div class="legend-item"><span class="filter-dot dot-iterate"></span> 迭代中</div>
+          <div class="legend-item"><span class="filter-dot dot-design"></span> 设计中</div>
+          <div class="legend-item"><span class="filter-dot dot-pending"></span> 待确认</div>
+        </div>
+
+        <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;color:var(--bonvoy-black);">按模块分布</h2>
+        <div class="overview-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+          ${moduleCards}
+        </div>
+      `;
+    }
+
+    function renderModule(module) {
+      const allFeatures = getAllFeatures(module);
+      const filteredFeatures = filterFeatures(allFeatures, currentFilter);
+      const counts = countByStatus(allFeatures);
+
+      let sectionsHtml = '';
+      module.sections.forEach((section, idx) => {
+        const sectionFeatures = filterFeatures(section.features, currentFilter);
+        if (sectionFeatures.length === 0 && currentFilter !== 'all') return;
+
+        const sectionId = `${module.id}-section-${idx}`;
+        const isExpanded = expandedSections.has(sectionId);
+        const sectionCounts = countByStatus(section.features);
+
+        const badgesHtml = Object.entries(sectionCounts)
+          .filter(([_, count]) => count > 0)
+          .map(([status, count]) => `<span class="badge ${statusMap[status].badge}">${count}</span>`)
+          .join('');
+
+        const featuresHtml = sectionFeatures.map(f => {
+          const s = statusMap[f.status];
+          const detailId = `${sectionId}-detail-${f.id}`;
+          const screenshotCount = (() => {
+            let count = 0;
+            if (f.screenshot) count++;
+            if (f.screenshot2) count++;
+            if (f.screenshots && Array.isArray(f.screenshots)) count += f.screenshots.length;
+            return count;
+          })();
+          const hasScreenshot = screenshotCount > 0;
+          const screenshotCell = hasScreenshot
+            ? `<button class="screenshot-count-badge has-screenshot" onclick="event.stopPropagation(); toggleFeatureDetail('${detailId}', this.closest('tr'))">${screenshotCount} 张</button>`
+            : `<span class="screenshot-placeholder-text">—</span>`;
+
+          const detailPanel = `
+            <tr class="feature-detail-row" id="${detailId}" style="display:none;">
+              <td colspan="6" style="padding:0;border:none;">
+                <div class="feature-detail-panel" id="${detailId}-panel">
+                  <div class="detail-panel-inner">
+                    <div class="detail-screenshot-area">
+                      ${(() => {
+                        const shots = [];
+                        if (f.screenshot) shots.push({ src: f.screenshot, label: '主图' });
+                        if (f.screenshot2) shots.push({ src: f.screenshot2, label: '图2' });
+                        if (f.screenshots && Array.isArray(f.screenshots)) {
+                          f.screenshots.forEach((s, i) => shots.push({ src: s, label: '图' + (i + 1) }));
+                        }
+                        if (shots.length === 0) {
+                          return `<div class="detail-screenshot-placeholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            <span style="font-size:12px;">暂无截图</span>
+                           </div>`;
+                        }
+                        if (shots.length === 1) {
+                          return `<img class="detail-screenshot" src="${shots[0].src}" alt="${f.name}" onclick="openLightbox('${shots[0].src}', '${f.name}')">
+                                  <div class="detail-screenshot-label">点击放大查看</div>`;
+                        }
+                        const galleryId = 'gallery-' + f.id;
+                        return `<div class="screenshot-viewer" id="${galleryId}">
+                          <div class="screenshot-main">
+                            <img class="screenshot-main-img" src="${shots[0].src}" alt="${f.name}" onclick="openLightbox('${shots[0].src}', '${f.name}')">
+                          </div>
+                          <div class="screenshot-thumbs">
+                            ${shots.map((s, i) => `
+                              <div class="screenshot-thumb ${i === 0 ? 'active' : ''}" data-index="${i}" data-src="${s.src}" onclick="switchScreenshot('${galleryId}', ${i}, '${s.src}')">
+                                <img src="${s.src}" alt="${s.label}">
+                                <span>${s.label}</span>
+                              </div>
+                            `).join('')}
+                          </div>
+                        </div>`;
+                      })()}
+                    </div>
+                    <div class="detail-info-area">
+                      <div class="detail-header">
+                        <span class="detail-id">${f.id}</span>
+                        <span class="detail-name">${f.name}</span>
+                      </div>
+                      <div class="detail-status-row">
+                        <span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span>
+                      </div>
+                      <div class="detail-meta-item" style="grid-column: 1 / -1;">
+                        <div class="detail-section-title">功能说明</div>
+                        ${(() => {
+                          const detail = f.detail || f.desc || '';
+                          if (!detail) {
+                            return `<div class="detail-description">暂无详细说明</div>`;
+                          }
+                          const items = detail.match(/\d+\.\s*[^\d]+/g);
+                          if (!items || items.length === 0) {
+                            return `<div class="detail-description">${detail}</div>`;
+                          }
+                          const parsed = [];
+                          for (let i = 0; i < items.length; i++) {
+                            const item = items[i];
+                            const nextItem = items[i + 1];
+                            let content = item;
+                            if (nextItem) {
+                              const endIdx = detail.indexOf(nextItem, detail.indexOf(item) + item.length);
+                              content = detail.substring(detail.indexOf(item), endIdx);
+                            } else {
+                              content = detail.substring(detail.indexOf(item));
+                            }
+                            const m = content.trim().match(/^(\d+)\.\s*([^：:]+)[：:]([\s\S]*)$/);
+                            if (m) {
+                              const num = m[1];
+                              const field = m[2].trim();
+                              let desc = m[3].trim();
+                              const bullets = desc.match(/[•\-]\s*[^•\-]+/g);
+                              if (bullets && bullets.length > 1) {
+                                const lis = bullets.map(b => `<li>${b.replace(/^[•\-]\s*/, '').trim()}</li>`).join('');
+                                desc = `<ul style="margin:0;padding-left:18px;">${lis}</ul>`;
+                              }
+                              parsed.push({ num, field, desc });
+                            }
+                          }
+                          if (parsed.length === 0) {
+                            return `<div class="detail-description">${detail}</div>`;
+                          }
+                          return `
+                            <table class="detail-note-table">
+                              <thead><tr><th style="width:50px;">序号</th><th style="width:120px;">字段</th><th>说明</th></tr></thead>
+                              <tbody>
+                                ${parsed.map(p => `<tr><td>${p.num}</td><td>${p.field}</td><td>${p.desc}</td></tr>`).join('')}
+                              </tbody>
+                            </table>
+                          `;
+                        })()}                      ${f.screenshot ? `
+                        <div class="detail-meta-item" style="grid-column: 1 / -1;">
+                          <div class="detail-section-title">截图文件</div>
+                          <div class="detail-description" style="font-size:12px;color:var(--text-helper);font-family:monospace;word-break:break-all;">${f.screenshot}</div>
+                        </div>
+                      ` : ''}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          `;
+
+          return `
+            <tr class="feature-row" data-detail="${detailId}" onclick="toggleFeatureDetail('${detailId}', this)">
+              <td><span class="feature-id">${f.id}</span></td>
+              <td><span class="feature-name">${f.name}</span></td>
+              <td><span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span></td>
+              <td class="feature-note">${f.desc || f.note || ''}</td>
+              <td class="feature-screenshot-cell" onclick="event.stopPropagation();">${screenshotCell}</td>
+            </tr>
+            ${detailPanel}
+          `;
+        }).join('');
+
+        const allExpanded = sectionFeatures.every(f => {
+          const did = `${sectionId}-detail-${f.id}`;
+          const dp = document.getElementById(did + '-panel');
+          return dp && dp.classList.contains('expanded');
+        });
+
+        sectionsHtml += `
+          <div class="section-card">
+            <div class="section-header" data-section="${sectionId}">
+              <div class="section-header-left">
+                <span class="section-toggle ${isExpanded ? 'expanded' : ''}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+                <span class="section-name">${section.name}</span>
+                <span class="section-count">(${sectionFeatures.length}${currentFilter !== 'all' ? '' : '/' + section.features.length})</span>
+              </div>
+              <div class="section-badges">${badgesHtml}</div>
+            </div>
+            <div class="section-content ${isExpanded ? 'expanded' : ''}">
+              <table class="feature-table">
+                <thead>
+                  <tr>
+                    <th style="width:80px;">编号</th>
+                    <th>功能名称</th>
+                    <th style="width:100px;">状态</th>
+                    <th>说明</th>
+                    <th style="width:100px;">截图</th>
+                  </tr>
+                </thead>
+                <tbody>${featuresHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      });
+
+      return `
+        <div class="module-header">
+          <div class="module-title-row">
+            <div class="module-icon">${module.icon}</div>
+            <h1 class="module-title">${module.name}</h1>
+          </div>
+          <p class="module-desc">${module.desc}</p>
+          <div class="module-stats-bar">
+            <div class="module-stat"><strong>${allFeatures.length}</strong> 项功能</div>
+            ${counts.live > 0 ? `<div class="module-stat"><strong>${counts.live}</strong> 已上线</div>` : ''}
+            ${counts.new > 0 ? `<div class="module-stat"><strong>${counts.new}</strong> 新增</div>` : ''}
+            ${counts.iterate > 0 ? `<div class="module-stat"><strong>${counts.iterate}</strong> 迭代中</div>` : ''}
+            ${counts.design > 0 ? `<div class="module-stat"><strong>${counts.design}</strong> 设计中</div>` : ''}
+            ${counts.pending > 0 ? `<div class="module-stat"><strong>${counts.pending}</strong> 待确认</div>` : ''}
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="searchInput" placeholder="搜索功能名称、编号或说明...">
+        </div>
+
+        ${sectionsHtml}
+      `;
+    }
+
+    function renderContent() {
+      const content = document.getElementById('content');
+      const module = modules.find(m => m.id === currentModule);
+
+      if (module.isOverview) {
+        content.innerHTML = renderOverview();
+        // Add click handlers for module cards
+        content.querySelectorAll('.overview-card[data-module]').forEach(card => {
+          card.addEventListener('click', () => {
+            currentModule = card.dataset.module;
+            renderNav();
+            renderContent();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+      } else {
+        content.innerHTML = renderModule(module);
+
+        // Section toggle handlers
+        content.querySelectorAll('.section-header').forEach(header => {
+          header.addEventListener('click', () => {
+            const sectionId = header.dataset.section;
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.section-toggle');
+
+            if (expandedSections.has(sectionId)) {
+              expandedSections.delete(sectionId);
+              content.classList.remove('expanded');
+              toggle.classList.remove('expanded');
+            } else {
+              expandedSections.add(sectionId);
+              content.classList.add('expanded');
+              toggle.classList.add('expanded');
+            }
+          });
+        });
+
+        // Search handler
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            content.querySelectorAll('.feature-table tbody tr').forEach(row => {
+              // 跳过详情面板行
+              if (row.classList.contains('feature-detail-row')) return;
+              const text = row.textContent.toLowerCase();
+              const shouldShow = text.includes(query);
+              row.style.display = shouldShow ? '' : 'none';
+              // 同时隐藏对应的详情面板
+              const detailId = row.dataset.detail;
+              if (detailId) {
+                const detailRow = document.getElementById(detailId);
+                if (detailRow) detailRow.style.display = 'none';
+              }
+            });
+            // 搜索时重置展开状态
+            if (activeDetailId) {
+              const prevDetailPanel = document.getElementById(activeDetailId + '-panel');
+              const prevRow = document.querySelector(`[data-detail="${activeDetailId}"]`);
+              if (prevDetailPanel) prevDetailPanel.classList.remove('expanded');
+              if (prevRow) prevRow.classList.remove('active');
+              activeDetailId = null;
+            }
+          });
+        }
+      }
+    }
+
+    function renderFilters() {
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          currentFilter = chip.dataset.filter;
+          if (!modules.find(m => m.id === currentModule).isOverview) {
+            renderContent();
+          }
+        });
+      });
+    }
+
+    // ===== Lightbox =====
+    function openLightbox(src, caption) {
+      let lightbox = document.getElementById('lightbox');
+      if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+          <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+          <img class="lightbox-img" id="lightboxImg" src="" alt="">
+          <div class="lightbox-caption" id="lightboxCaption"></div>
+        `;
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        document.body.appendChild(lightbox);
+      }
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').textContent = caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function switchScreenshot(galleryId, index, src) {
+      const gallery = document.getElementById(galleryId);
+      if (!gallery) return;
+      const mainImg = gallery.querySelector('.screenshot-main-img');
+      const thumbs = gallery.querySelectorAll('.screenshot-thumb');
+      if (mainImg) {
+        mainImg.src = src;
+        mainImg.onclick = () => openLightbox(src, mainImg.alt);
+      }
+      thumbs.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+    }
+
+    // ===== Feature Detail Toggle =====
+    let activeDetailId = null;
+
+    function toggleFeatureDetail(detailId, rowEl) {
+      const detailRow = document.getElementById(detailId);
+      const detailPanel = document.getElementById(detailId + '-panel');
+      // 如果点击的是当前已展开的功能，则收起
+      if (activeDetailId === detailId) {
+        detailPanel.classList.remove('expanded');
+        setTimeout(() => {
+          detailRow.style.display = 'none';
+        }, 400);
+        rowEl.classList.remove('active');
+        activeDetailId = null;
+        return;
+      }
+
+      // 收起之前展开的面板
+      if (activeDetailId) {
+        const prevDetailRow = document.getElementById(activeDetailId);
+        const prevDetailPanel = document.getElementById(activeDetailId + '-panel');
+        const prevRow = document.querySelector(`[data-detail="${activeDetailId}"]`);
+        if (prevDetailPanel) prevDetailPanel.classList.remove('expanded');
+        if (prevDetailRow) {
+          setTimeout(() => { prevDetailRow.style.display = 'none'; }, 400);
+        }
+        if (prevRow) prevRow.classList.remove('active');
+      }
+
+      // 展开新面板
+      detailRow.style.display = 'table-row';
+      // 强制重排以确保 transition 生效
+      detailRow.offsetHeight;
+      requestAnimationFrame(() => {
+        detailPanel.classList.add('expanded');
+      });
+      rowEl.classList.add('active');
+      activeDetailId = detailId;
+
+      // 滚动到视图
+      setTimeout(() => {
+        detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ===== INIT =====
+    // 数据通过 fetch(data.json) 加载完成后调用 initApp() 初始化
+  </script>
+</body>
+</html>
