@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>万豪旅享家 China App — 功能说明</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bonvoy-black: #1A1A1A;
+      --bonvoy-coral: #D4956A;
+      --action-red: #C8102E;
+      --surface-white: #FFFFFF;
+      --surface-gray: #F5F5F5;
+      --border-gray: #E5E5E5;
+      --text-primary: #1A1A1A;
+      --text-body: #666666;
+      --text-helper: #999999;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 999px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-base: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--surface-white);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-base) var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-logo span {
+      color: var(--bonvoy-coral);
+      position: relative;
+    }
+
+    .brand-logo span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--bonvoy-coral);
+      border-radius: 2px;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: var(--text-helper);
+      font-weight: 400;
+      border-left: 1px solid var(--border-gray);
+      padding-left: var(--space-md);
+    }
+
+    .header-stats {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Main Layout ===== */
+    .main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px var(--space-xl) var(--space-2xl);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-xl);
+    }
+
+    /* ===== Sidebar Navigation ===== */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-sm);
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-bottom: 2px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px var(--space-sm);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      background: var(--surface-gray);
+      color: var(--text-primary);
+    }
+
+    .nav-link.active {
+      background: var(--bonvoy-black);
+      color: var(--surface-white);
+    }
+
+    .nav-count {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-gray);
+      color: var(--text-helper);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link.active .nav-count {
+      background: rgba(255,255,255,0.2);
+      color: var(--surface-white);
+    }
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: var(--space-sm);
+      opacity: 0.6;
+    }
+
+    .nav-link.active .nav-icon {
+      opacity: 1;
+    }
+
+    /* Status filter in sidebar */
+    .filter-section {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-gray);
+    }
+
+    .filter-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-sm);
+    }
+
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-chip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 8px var(--space-sm);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .filter-chip:hover {
+      background: var(--surface-gray);
+    }
+
+    .filter-chip.active {
+      background: var(--surface-gray);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .filter-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-live { background: #22C55E; }
+    .dot-new { background: #3B82F6; }
+    .dot-iterate { background: #F59E0B; }
+    .dot-design { background: #8B5CF6; }
+    .dot-pending { background: var(--text-helper); }
+
+    /* ===== Content Area ===== */
+    .content {
+      min-height: calc(100vh - 120px);
+    }
+
+    /* Module Header */
+    .module-header {
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .module-title-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+
+    .module-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      background: var(--bonvoy-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--surface-white);
+    }
+
+    .module-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      letter-spacing: -0.5px;
+    }
+
+    .module-desc {
+      font-size: 15px;
+      color: var(--text-body);
+      margin-left: 56px;
+      max-width: 600px;
+    }
+
+    .module-stats-bar {
+      display: flex;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      margin-left: 56px;
+    }
+
+    .module-stat {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .module-stat strong {
+      color: var(--bonvoy-black);
+      font-weight: 700;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-base);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .section-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-base) var(--space-lg);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .section-header:hover {
+      background: var(--surface-gray);
+    }
+
+    .section-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .section-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      color: var(--text-helper);
+    }
+
+    .section-toggle.expanded {
+      transform: rotate(90deg);
+    }
+
+    .section-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 400;
+    }
+
+    .section-badges {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.3px;
+    }
+
+    .badge-live { background: #DCFCE7; color: #166534; }
+    .badge-new { background: #DBEAFE; color: #1E40AF; }
+    .badge-iterate { background: #FEF3C7; color: #92400E; }
+    .badge-design { background: #EDE9FE; color: #5B21B6; }
+    .badge-pending { background: #F3F4F6; color: #4B5563; }
+
+    /* Feature Table */
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .feature-table thead {
+      background: var(--surface-gray);
+    }
+
+    .feature-table th {
+      padding: 10px var(--space-lg);
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-table td {
+      padding: 12px var(--space-lg);
+      border-top: 1px solid var(--border-gray);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .feature-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .feature-table tbody tr:hover {
+      background: var(--surface-gray);
+    }
+
+    .feature-row {
+      cursor: pointer;
+    }
+
+    .feature-row.has-screenshot:hover {
+      background: #FAFAFA;
+    }
+
+    .feature-screenshot-cell {
+      width: 80px;
+      padding: 8px var(--space-lg) !important;
+    }
+
+    .screenshot-thumb {
+      width: 60px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-gray);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .screenshot-thumb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .screenshot-placeholder {
+      width: 60px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--text-helper);
+      background: var(--surface-gray);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 14px;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .feature-id {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .feature-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .feature-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .status-live { background: #DCFCE7; color: #166534; }
+    .status-new { background: #DBEAFE; color: #1E40AF; }
+    .status-iterate { background: #FEF3C7; color: #92400E; }
+    .status-design { background: #EDE9FE; color: #5B21B6; }
+    .status-pending { background: #F3F4F6; color: #4B5563; }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .feature-note {
+      font-size: 13px;
+      color: var(--text-body);
+      max-width: 300px;
+    }
+
+    .feature-evidence {
+      font-size: 12px;
+      color: var(--text-helper);
+      white-space: nowrap;
+    }
+
+    /* Collapsible content */
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section-content.expanded {
+      max-height: 5000px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      position: relative;
+      margin-bottom: var(--space-xl);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px var(--space-lg) 12px 44px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: var(--surface-white);
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--bonvoy-black);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-helper);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-helper);
+    }
+
+    /* Overview Dashboard */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-base);
+      margin-bottom: var(--space-xl);
+    }
+
+    .overview-card {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .overview-card:hover {
+      border-color: var(--bonvoy-black);
+      transform: translateY(-2px);
+    }
+
+    .overview-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+      line-height: 1.2;
+      margin-bottom: var(--space-xs);
+    }
+
+    .overview-label {
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    .overview-card.highlight {
+      background: var(--bonvoy-black);
+      border-color: var(--bonvoy-black);
+    }
+
+    .overview-card.highlight .overview-number,
+    .overview-card.highlight .overview-label {
+      color: var(--surface-white);
+    }
+
+    /* Status legend bar */
+    .status-legend {
+      display: flex;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      padding: var(--space-md) var(--space-lg);
+      background: var(--surface-gray);
+      border-radius: var(--radius-lg);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 13px;
+      color: var(--text-body);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: var(--space-base);
+      }
+      .header-stats {
+        display: none;
+      }
+      .main {
+        padding: 90px var(--space-base) var(--space-xl);
+      }
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+      .module-title {
+        font-size: 22px;
+      }
+      .feature-table {
+        font-size: 12px;
+      }
+      .feature-table th,
+      .feature-table td {
+        padding: 8px var(--space-base);
+      }
+      .feature-note,
+      .feature-evidence {
+        display: none;
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animation for page load */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .section-card:nth-child(1) { animation-delay: 0.05s; }
+    .section-card:nth-child(2) { animation-delay: 0.1s; }
+    .section-card:nth-child(3) { animation-delay: 0.15s; }
+    .section-card:nth-child(4) { animation-delay: 0.2s; }
+    .section-card:nth-child(5) { animation-delay: 0.25s; }
+    .section-card:nth-child(6) { animation-delay: 0.3s; }
+    .section-card:nth-child(7) { animation-delay: 0.35s; }
+    .section-card:nth-child(8) { animation-delay: 0.4s; }
+
+    /* ===== Feature Detail Panel ===== */
+    .feature-detail-panel {
+      background: #FAFAFA;
+      border-top: 1px solid var(--border-gray);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .feature-detail-panel.expanded {
+      max-height: 900px;
+    }
+
+    .detail-panel-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+      padding: var(--space-lg);
+    }
+
+    .detail-screenshot-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .detail-screenshot {
+      width: 100%;
+      max-width: 200px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-gray);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .detail-screenshot:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .detail-screenshot-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      text-align: center;
+    }
+
+    .detail-screenshot-placeholder {
+      width: 100%;
+      max-width: 200px;
+      height: 360px;
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--border-gray);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      color: var(--text-helper);
+      background: var(--surface-white);
+    }
+
+    .detail-screenshot-placeholder svg {
+      opacity: 0.3;
+    }
+
+    .detail-info-area {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-base);
+      padding-top: var(--space-sm);
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+
+    .detail-id {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: var(--text-helper);
+      font-weight: 500;
+      background: var(--surface-gray);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .detail-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bonvoy-black);
+    }
+
+    .detail-status-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+
+    .detail-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-helper);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .detail-description {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .detail-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-base);
+      margin-top: var(--space-sm);
+    }
+
+    .detail-meta-item {
+      background: var(--surface-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .detail-meta-label {
+      font-size: 11px;
+      color: var(--text-helper);
+      margin-bottom: 4px;
+    }
+
+    .detail-meta-value {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .detail-evidence {
+      font-size: 12px;
+      color: var(--text-helper);
+    }
+
+    .feature-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .feature-row:hover {
+      background: var(--surface-gray);
+    }
+
+    .feature-row.active {
+      background: #F5F5F5;
+    }
+
+    .feature-row.active .feature-name {
+      color: var(--action-red);
+    }
+
+    /* Responsive for detail panel */
+    @media (max-width: 768px) {
+      .detail-panel-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-base);
+      }
+      .detail-screenshot,
+      .detail-screenshot-placeholder {
+        max-width: 160px;
+        margin: 0 auto;
+      }
+      .detail-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">Marriott B<span>o</span>nvoy</div>
+        <div class="brand-subtitle">China App 功能说明</div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-value" id="statTotal">207</div>
+          <div class="stat-label">功能总数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statModules">10</div>
+          <div class="stat-label">功能模块</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statLive">—</div>
+          <div class="stat-label">已上线</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="statNew">—</div>
+          <div class="stat-label">新增/迭代</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-title">功能模块</div>
+      <ul class="nav-list" id="navList">
+        <!-- Nav items injected by JS -->
+      </ul>
+
+      <div class="filter-section">
+        <div class="filter-title">状态筛选</div>
+        <div class="filter-options">
+          <button class="filter-chip active" data-filter="all">
+            <span class="filter-dot" style="background: var(--bonvoy-black);"></span>
+            全部状态
+          </button>
+          <button class="filter-chip" data-filter="live">
+            <span class="filter-dot dot-live"></span>
+            已上线
+          </button>
+          <button class="filter-chip" data-filter="new">
+            <span class="filter-dot dot-new"></span>
+            新增
+          </button>
+          <button class="filter-chip" data-filter="iterate">
+            <span class="filter-dot dot-iterate"></span>
+            迭代中
+          </button>
+          <button class="filter-chip" data-filter="design">
+            <span class="filter-dot dot-design"></span>
+            设计中
+          </button>
+          <button class="filter-chip" data-filter="pending">
+            <span class="filter-dot dot-pending"></span>
+            待确认
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="content" id="content">
+      <!-- Content injected by JS -->
+    </main>
+  </div>
+
+  <script>
+    // ===== DATA =====
+    const modules = [
+      {
+        id: 'overview',
+        name: '总览',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+        desc: '万豪旅享家 China App 全量功能统计与分布',
+        isOverview: true
+      },
+      {
+        id: 'launch',
+        name: '启动',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>',
+        desc: '开屏广告、启动页——用户首次触达',
+        count: 2,
+        sections: [
+          { name: '启动', features: [
+            { id: 'LH01', name: '开屏广告', status: 'new', note: '全屏广告展示', evidence: 'E10' },
+            { id: 'LH02', name: 'Splash 品牌页', status: 'live', note: 'Logo 居中', evidence: 'E1', screenshot: 'images/现有功能截图__APP__登录__1-开屏.jpg' }
+          ]}
+        ]
+      },
+      {
+        id: 'homepage',
+        name: '首页',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+        desc: '搜索中心、酒店详情、预订流程、会员信息——核心转化链路',
+        count: 45,
+        sections: [
+          { name: 'Home Hero', features: [
+            { id: 'HP01', name: '轮播 Banner', status: 'live', note: '促销/活动/品牌', evidence: 'E1', screenshot: 'images/现有功能截图__APP__探索__1-首页.jpg' }
+          ]},
+          { name: 'Search Hub', features: [
+            { id: 'HP02', name: '搜索栏（酒店/目的地）', status: 'live', note: '关键词搜索', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__首页__1-首页.jpg' },
+            { id: 'HP03', name: '搜索自动建议', status: 'live', note: '输入时联想', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png' },
+            { id: 'HP04', name: '最近搜索', status: 'live', note: '历史记录', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png' },
+            { id: 'HP05', name: '热门搜索', status: 'live', note: '推荐目的地', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png' },
+            { id: 'HP06', name: '城市选择列表', status: 'live', note: '国内/国际', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png' },
+            { id: 'HP07', name: '附近搜索', status: 'live', note: '基于定位', evidence: 'E1', screenshot: 'images/现有功能截图__APP__首页__3-点击定位.jpg' },
+            { id: 'HP08', name: '日历选择', status: 'live', note: '入住/退房日期', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__首页__6-选择日期.jpg' },
+            { id: 'HP09', name: '灵活日期', status: 'new', note: 'Flex Dates', evidence: 'E4', screenshot: 'images/现有功能截图__APP__首页__7-灵活日期.jpg' },
+            { id: 'HP10', name: '房客配置', status: 'live', note: '成人/儿童/客房', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__首页__8-选择人员.jpg' },
+            { id: 'HP11', name: '儿童年龄选择', status: 'new', note: '1.2 细化', evidence: 'E4', screenshot: 'images/现有功能截图__APP__首页__10-携带儿童.jpg' },
+            { id: 'HP12', name: '宠物携带', status: 'new', note: '部分酒店限制', evidence: 'E4', screenshot: 'images/现有功能截图__APP__首页__11-携带宠物说明.jpg' },
+            { id: 'HP13', name: '特殊房价', status: 'live', note: '会员价/协议价', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__首页__13-特别房价点击.jpg' },
+            { id: 'HP14', name: '使用积分', status: 'live', note: '积分兑换房晚', evidence: 'E1', screenshot: 'images/现有功能截图__APP__首页__14-使用积分点击.jpg' }
+          ]},
+          { name: '搜索结果', features: [
+            { id: 'HP15', name: '地图视图/列表视图/网格视图', status: 'live', note: '三种展示方式', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__27-列表视图.jpg' },
+            { id: 'HP16', name: '筛选与排序', status: 'live', note: '价格/距离/评分', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__21-筛选条件.jpg' },
+            { id: 'HP17', name: '按区域筛选', status: 'new', note: '商圈/地标', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__✅ Filters.png' },
+            { id: 'HP18', name: '酒店卡片', status: 'live', note: '图片/名称/价格/评分', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__15-搜索135家酒店.jpg' },
+            { id: 'HP19', name: '酒店信息与房价', status: 'live', note: '基础信息展示', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search result__Base Screens.png' },
+            { id: 'HP20', name: '酒店亮点', status: 'new', note: '特色标签', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search result__Base Screens.png' }
+          ]},
+          { name: '酒店详情', features: [
+            { id: 'HP21', name: '酒店信息（现有）', status: 'live', note: '基础信息保留', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__4-查看酒店.jpg' },
+            { id: 'HP22', name: '探索内容', status: 'new', note: '目的地指南', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'HP23', name: '券入口', status: 'new', note: '优惠券/套餐', evidence: 'E4' },
+            { id: 'HP24', name: '大图轮播', status: 'live', note: '酒店图片', evidence: 'E1', screenshot: 'images/现有功能截图__APP__探索__4-查看酒店.jpg' },
+            { id: 'HP25', name: '收藏', status: 'live', note: '添加到愿望清单', evidence: 'E1', screenshot: 'images/现有功能截图__APP__探索__3-点击收藏.jpg' },
+            { id: 'HP26', name: '分享', status: 'live', note: '微信/链接', evidence: 'E1' },
+            { id: 'HP27', name: '电话直拨', status: 'live', note: '联系酒店', evidence: 'E1', screenshot: 'images/现有功能截图__APP__探索__6-点击地址后面的icon.jpg' },
+            { id: 'HP28', name: '酒店地图', status: 'live', note: '位置展示', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__7-点击地图.jpg' },
+            { id: 'HP29', name: '设施列表', status: 'live', note: 'WiFi/泳池等', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__探索__5-页面下拉.jpg' },
+            { id: 'HP30', name: '餐饮信息', status: 'new', note: '餐厅/菜系', evidence: 'E4', screenshot: 'images/现有功能截图__APP__探索__16-点击餐饮优惠.jpg' }
+          ]},
+          { name: '房价列表 (RLM)', features: [
+            { id: 'HP31', name: 'One Page RLM', status: 'new', note: '一页式房价列表', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__RLM__Base Screen.png' },
+            { id: 'HP32', name: '房型详情', status: 'live', note: '面积/床型/景观', evidence: 'E1/E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__RLM__Base Screen.png' },
+            { id: 'HP33', name: '房价详情弹窗', status: 'new', note: '政策说明', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__RLM__secondary - room&rate details.png' },
+            { id: 'HP34', name: '税费切换', status: 'new', note: '含/不含税费', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__RLM__Taxes & Fees - ON.png' },
+            { id: 'HP35', name: 'Upsell 推荐', status: 'new', note: '升级推荐', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__RLM__Base Screen.png' }
+          ]},
+          { name: '预订流程', features: [
+            { id: 'HP36', name: '查看预订', status: 'live', note: '信息确认页', evidence: 'E1/E4', screenshot: 'images/现有功能截图__APP__首页__15-查找酒店.jpg' },
+            { id: 'HP37', name: '价格明细', status: 'live', note: ' breakdown', evidence: 'E1', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__BASE.png' },
+            { id: 'HP38', name: '会员流程', status: 'new', note: '会员专属', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__Member Review Res.png' },
+            { id: 'HP39', name: '非会员流程', status: 'new', note: '访客预订', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__Non-member Review Res.png' },
+            { id: 'HP40', name: '支付', status: 'new', note: '微信支付/支付宝', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__secondary - payment method.png' },
+            { id: 'HP41', name: '支付失败处理', status: 'new', note: '4种失败场景', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__Prepaid.png' },
+            { id: 'HP42', name: '银联支付', status: 'new', note: 'China Union Pay', evidence: 'E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__review res__secondary - payment method.png' },
+            { id: 'HP43', name: '预订确认', status: 'live', note: '成功页', evidence: 'E1/E4', screenshot: 'images/UI__Shop&Book_CN APP_1.2__reservation conf__BASE.png' },
+            { id: 'HP44', name: '商品推荐位', status: 'new', note: '交叉销售', evidence: 'E4' }
+          ]},
+          { name: '首页其他', features: [
+            { id: 'HP45', name: '会员信息', status: 'live', note: '等级/积分快捷展示', evidence: 'E1', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' },
+            { id: 'HP46', name: '联名卡', status: 'new', note: '信用卡推广', evidence: 'E4' },
+            { id: 'HP47', name: '商品推荐位', status: 'new', note: '目的地/R&B/推荐', evidence: 'E4' }
+          ]}
+        ]
+      },
+      {
+        id: 'discover',
+        name: '探索',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+        desc: '内容发现、品牌体验、主题浏览——灵感与探索',
+        count: 18,
+        sections: [
+          { name: '探索搜索', features: [
+            { id: 'DC01', name: '探索搜索栏', status: 'new', note: '内容关键词/酒店/目的地', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__Overview.png' },
+            { id: 'DC02', name: '搜索自动建议', status: 'new', note: '实时联想', evidence: 'E2', screenshot: 'images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png' }
+          ]},
+          { name: '品牌专区', features: [
+            { id: 'DC03', name: '品牌专区', status: 'new', note: '品牌信息/内容', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__brand sub-tab.png' },
+            { id: 'DC04', name: '品牌详情页', status: 'new', note: 'Landing page', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__brand sub-tab.png' }
+          ]},
+          { name: '主题内容', features: [
+            { id: 'DC05', name: '目的地', status: 'new', note: '城市/景点指南', evidence: 'E2', screenshot: 'images/现有功能截图__APP__探索__18-探索目的地.jpg' },
+            { id: 'DC06', name: '新开业酒店', status: 'new', note: '最新开业', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'DC07', name: '餐饮', status: 'new', note: '餐厅推荐', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'DC08', name: '商务', status: 'new', note: '商务出行', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'DC09', name: '休闲', status: 'new', note: '度假/休闲', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'DC10', name: '内容 Landing Page', status: 'new', note: '图文/视频+预订CTA', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__native campaign page.png' }
+          ]},
+          { name: '用户内容', features: [
+            { id: 'DC11', name: 'UCC 内容', status: 'new', note: '用户生成内容', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' }
+          ]},
+          { name: '每日海报', features: [
+            { id: 'DC12', name: '全屏海报卡片', status: 'new', note: '每日推荐', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__daily poster.png' },
+            { id: 'DC13', name: '海报分享', status: 'new', note: '微信好友/朋友圈', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__daily poster.png' },
+            { id: 'DC14', name: '海报收藏', status: 'new', note: '添加到愿望清单', evidence: 'E2', screenshot: 'images/现有功能截图__APP__探索__3-点击收藏.jpg' }
+          ]},
+          { name: '引导入口', features: [
+            { id: 'DC15', name: '搜索结果页入口', status: 'new', note: 'Discover CTA', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__CTA to Discover.png' },
+            { id: 'DC16', name: '预订确认页入口', status: 'new', note: 'Discover CTA', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__CTA to Discover.png' },
+            { id: 'DC17', name: '行程空状态入口', status: 'new', note: 'Discover CTA', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__CTA to Discover.png' },
+            { id: 'DC18', name: '愿望清单空状态入口', status: 'new', note: 'Discover CTA', evidence: 'E2', screenshot: 'images/UI__Discover CN App 1.2__CTA to Discover.png' }
+          ]}
+        ]
+      },
+      {
+        id: 'shop',
+        name: '商城',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+        desc: '商城首页、购物车、订单、券购买——零售与权益',
+        count: 28,
+        sections: [
+          { name: '商城首页', features: [
+            { id: 'SP01', name: '商城搜索栏', status: 'new', note: '关键词/酒店/目的地', evidence: 'E4' },
+            { id: 'SP02', name: '商品推荐位', status: 'new', note: '直播/促销', evidence: 'E4' },
+            { id: 'SP03', name: '直播', status: 'new', note: 'Live Stream', evidence: 'E4' }
+          ]},
+          { name: '购物车', features: [
+            { id: 'SP04', name: '购物车', status: 'new', note: '券/商品', evidence: 'E4' },
+            { id: 'SP05', name: '券商品', status: 'new', note: '房券/餐饮券', evidence: 'E4' },
+            { id: 'SP06', name: '精品商品', status: 'new', note: 'Boutique', evidence: 'E4' }
+          ]},
+          { name: '我的订单', features: [
+            { id: 'SP07', name: '券订单', status: 'new', note: '购买记录', evidence: 'E4' },
+            { id: 'SP08', name: '券订单 redemption', status: 'new', note: '核销', evidence: 'E4' },
+            { id: 'SP09', name: '券订单退款', status: 'new', note: 'Refund', evidence: 'E4' },
+            { id: 'SP10', name: '精品订单', status: 'new', note: '商品购买记录', evidence: 'E4' },
+            { id: 'SP11', name: '忠诚度订单', status: 'new', note: '积分兑换订单', evidence: 'E4' }
+          ]},
+          { name: '店铺入口', features: [
+            { id: 'SP12', name: '券店铺', status: 'new', note: '房券/餐饮券', evidence: 'E4' },
+            { id: 'SP13', name: '房券', status: 'new', note: 'Room Voucher', evidence: 'E4' },
+            { id: 'SP14', name: '房券详情页', status: 'new', note: 'Voucher Detail', evidence: 'E4' },
+            { id: 'SP15', name: '房券支付', status: 'new', note: '微信支付', evidence: 'E4' },
+            { id: 'SP16', name: '餐饮券', status: 'new', note: 'F&B Voucher', evidence: 'E4' },
+            { id: 'SP17', name: '餐饮券详情页', status: 'new', note: 'Voucher Detail', evidence: 'E4' },
+            { id: 'SP18', name: '餐饮券支付', status: 'new', note: '微信支付', evidence: 'E4' },
+            { id: 'SP19', name: '精品店铺', status: 'new', note: 'Boutique Storefront', evidence: 'E4' },
+            { id: 'SP20', name: '精品详情页', status: 'new', note: 'Boutique Detail', evidence: 'E4' },
+            { id: 'SP21', name: '精品支付', status: 'new', note: '微信支付', evidence: 'E4' },
+            { id: 'SP22', name: '忠诚度店铺', status: 'new', note: '积分商城', evidence: 'E4' },
+            { id: 'SP23', name: '购买积分', status: 'new', note: 'Buy Points', evidence: 'E4', screenshot: 'images/UI__Loyalty CN App__rewards.png' },
+            { id: 'SP24', name: '积分兑换', status: 'new', note: 'Points Redemption', evidence: 'E4' },
+            { id: 'SP25', name: '积分兑换-客房', status: 'new', note: 'Room', evidence: 'E4' },
+            { id: 'SP26', name: '积分兑换-非客房', status: 'new', note: 'Non-Room', evidence: 'E4' },
+            { id: 'SP27', name: '时刻竞拍', status: 'new', note: 'Moments Bidding', evidence: 'E4' }
+          ]}
+        ]
+      },
+      {
+        id: 'trips',
+        name: '行程',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+        desc: '行程管理、入住服务、历史记录——入住体验全链路',
+        count: 32,
+        sections: [
+          { name: '即将开始的行程', features: [
+            { id: 'TP01', name: '行程卡片', status: 'live', note: '酒店/日期/状态', evidence: 'E1/E7', screenshot: 'images/现有功能截图__APP__行程__1-首页.jpg' },
+            { id: 'TP02', name: '快速 CTA-预入住', status: 'new', note: '房间升级', evidence: 'E7', screenshot: 'images/UI__Trips CN App__✅ Trips Landing UX Design.png' },
+            { id: 'TP03', name: '快速 CTA-修改预订', status: 'new', note: 'Modify Reservation', evidence: 'E7', screenshot: 'images/UI__Trips CN App__✅ Trips Landing UX Design.png' },
+            { id: 'TP04', name: '快速 CTA-手机入住', status: 'new', note: 'Mobile Check-in', evidence: 'E7', screenshot: 'images/UI__Trips CN App__checkin in&out.png' },
+            { id: 'TP05', name: '快速 CTA-手机房卡', status: 'new', note: 'Mobile Key', evidence: 'E7', screenshot: 'images/UI__Trips CN App__mobile key.png' },
+            { id: 'TP06', name: '快速 CTA-手机退房', status: 'new', note: 'Mobile Check-out', evidence: 'E7', screenshot: 'images/UI__Trips CN App__checkin in&out.png' }
+          ]},
+          { name: '行程详情', features: [
+            { id: 'TP07', name: '行程详情页', status: 'live', note: '完整预订信息', evidence: 'E1/E7', screenshot: 'images/UI__Trips CN App__Trips Detail UX Design.png' },
+            { id: 'TP08', name: '预订头信息', status: 'new', note: '日期/天气等', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Trips Detail UX Design.png' },
+            { id: 'TP09', name: '入住中心', status: 'new', note: '电话/聊天/发票/服务请求', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Trips Detail UX Design.png' },
+            { id: 'TP10', name: '手机入住/退房', status: 'new', note: '自助服务', evidence: 'E7', screenshot: 'images/UI__Trips CN App__checkin in&out.png' },
+            { id: 'TP11', name: '手机房卡', status: 'new', note: 'Digital Key', evidence: 'E7', screenshot: 'images/UI__Trips CN App__mobile key.png' },
+            { id: 'TP12', name: '房间升级', status: 'new', note: '付费/NUA', evidence: 'E7', screenshot: 'images/UI__Trips CN App__room upgrade(paid&nua).png' },
+            { id: 'TP13', name: '餐饮', status: 'new', note: 'R&B Outlets', evidence: 'E7', screenshot: 'images/UI__Discover CN App 1.2__inspiration sub-tab.png' },
+            { id: 'TP14', name: '酒店设施', status: 'new', note: 'Facilities', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Trips Detail UX Design.png' },
+            { id: 'TP15', name: '券轮播与入口', status: 'new', note: 'Voucher Carousel', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Trips Detail UX Design.png' },
+            { id: 'TP16', name: '商品推荐位', status: 'new', note: 'Merchandising', evidence: 'E7' }
+          ]},
+          { name: '其他行程', features: [
+            { id: 'TP17', name: '缺失住宿申请', status: 'new', note: 'Missing Stay Request', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Find existing reservation.png' },
+            { id: 'TP18', name: '旅行足迹', status: 'new', note: 'Travel Footprint Summary', evidence: 'E7', screenshot: 'images/UI__Trips CN App__✅ Trips Landing UX Design.png' },
+            { id: 'TP19', name: '历史与取消行程', status: 'new', note: 'Past and Cancelled', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Base Screens.png' },
+            { id: 'TP20', name: '筛选历史行程', status: 'new', note: 'Filter past', evidence: 'E7', screenshot: 'images/UI__Trips CN App__Base Screens.png' },
+            { id: 'TP21', name: '查找现有预订', status: 'live', note: '非登录查询', evidence: 'E7', screenshot: 'images/现有功能截图__APP__行程__2-查找现有预定.jpg' }
+          ]}
+        ]
+      },
+      {
+        id: 'account',
+        name: '账户',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+        desc: '会员状态、积分、权益、个人资料——忠诚度运营核心',
+        count: 52,
+        sections: [
+          { name: '账户状态', features: [
+            { id: 'AC01', name: '会员等级展示', status: 'live', note: '银/金/白金/钛金/大使', evidence: 'E1/E3', screenshot: 'images/现有功能截图__APP__账户__已登录__1-首页.jpg' },
+            { id: 'AC02', name: '保级进度条', status: 'live', note: '年度房晚进度', evidence: 'E1/E3', screenshot: 'images/现有功能截图__APP__账户__已登录__1-首页.jpg' },
+            { id: 'AC03', name: '积分余额', status: 'live', note: '当前可用积分', evidence: 'E1/E3', screenshot: 'images/现有功能截图__APP__账户__已登录__1-首页.jpg' },
+            { id: 'AC04', name: '联名卡', status: 'new', note: 'Co-brand Card', evidence: 'E3' },
+            { id: 'AC05', name: '账户活动', status: 'live', note: '积分/房晚记录', evidence: 'E3', screenshot: 'images/现有功能截图__APP__账户__已登录__3-奖励积分.jpg' }
+          ]},
+          { name: '会员快捷入口', features: [
+            { id: 'AC06', name: '酒店订单', status: 'new', note: 'Navigate to Trips', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' },
+            { id: 'AC07', name: '商城订单', status: 'new', note: 'Navigate to Shop', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' },
+            { id: 'AC08', name: '愿望清单', status: 'live', note: '收藏酒店', evidence: 'E1/E3', screenshot: 'images/UI__Loyalty CN App__wishlists landing.png' },
+            { id: 'AC09', name: '浏览历史', status: 'new', note: 'View History', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' }
+          ]},
+          { name: '积分专区', features: [
+            { id: 'AC10', name: '积分余额详情', status: 'new', note: 'Points Balance', evidence: 'E3', screenshot: 'images/现有功能截图__APP__账户__已登录__3-奖励积分.jpg' },
+            { id: 'AC11', name: '赚取积分', status: 'new', note: 'Earn Points', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' },
+            { id: 'AC12', name: '兑换积分', status: 'new', note: 'Redeem Points', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__rewards.png' },
+            { id: 'AC13', name: '购买积分', status: 'new', note: 'Buy & Gift Points', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__rewards.png' },
+            { id: 'AC14', name: '积分商城', status: 'new', note: 'Loyalty Storefront', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__rewards.png' }
+          ]},
+          { name: '奖励', features: [
+            { id: 'AC15', name: '免费房晚(FNA)', status: 'pending', note: '—', evidence: '待确认', screenshot: 'images/UI__Loyalty CN App__rewards.png' },
+            { id: 'AC16', name: '房晚升级(NUA)', status: 'live', note: '—', evidence: 'E3', screenshot: 'images/现有功能截图__APP__账户__已登录__优先延迟退房.jpg' },
+            { id: 'AC17', name: 'Gated Offers', status: 'live', note: '专属优惠', evidence: 'E5/E3', screenshot: 'images/UI__Loyalty CN App__promotions&offers.png' }
+          ]},
+          { name: '大使服务', features: [
+            { id: 'AC18', name: '大使专线', status: 'new', note: 'Ambassador Service', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' }
+          ]},
+          { name: '促销与优惠', features: [
+            { id: 'AC19', name: '促销活动列表', status: 'pending', note: '—', evidence: '待确认', screenshot: 'images/UI__Loyalty CN App__promotions&offers.png' },
+            { id: 'AC20', name: '优惠详情', status: 'pending', note: '—', evidence: '待确认', screenshot: 'images/UI__Loyalty CN App__promotions&offers.png' }
+          ]},
+          { name: '会员权益', features: [
+            { id: 'AC21', name: '按等级权益展示', status: 'new', note: '8项专项礼遇', evidence: 'E3', screenshot: 'images/现有功能截图__APP__账户__已登录__2-您可享受8项专项礼遇.jpg' },
+            { id: 'AC22', name: '权益详情', status: 'new', note: '详细说明', evidence: 'E3', screenshot: 'images/现有功能截图__APP__账户__已登录__2-您可享受8项专项礼遇.jpg' }
+          ]},
+          { name: '个人资料', features: [
+            { id: 'AC23', name: '个人信息', status: 'pending', note: '—', evidence: '待确认', screenshot: 'images/UI__Loyalty CN App__my profile（1.2）.png' },
+            { id: 'AC24', name: '会员卡', status: 'new', note: 'Add to Digital Wallets', evidence: 'E3/E6', screenshot: 'images/UI__Loyalty CN App__member card（1.2）.png' },
+            { id: 'AC25', name: '偏好设置', status: 'new', note: '客房/沟通/语言/旅行/饮食', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__preferences.png' },
+            { id: 'AC26', name: '发票信息管理', status: 'new', note: 'Fapiao', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__my profile（1.2）.png' },
+            { id: 'AC27', name: '地址管理', status: 'new', note: 'Address', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__my profile（1.2）.png' },
+            { id: 'AC28', name: '设置', status: 'new', note: 'Settings', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__setting.png' }
+          ]},
+          { name: '客户服务', features: [
+            { id: 'AC29', name: '客户支持', status: 'new', note: 'Customer Support', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' }
+          ]},
+          { name: 'QRV', features: [
+            { id: 'AC30', name: '员工身份验证', status: 'new', note: 'BAU vs QRV', evidence: 'E9', screenshot: 'images/UI__QRV CN APP__Corporate Flow.png' },
+            { id: 'AC31', name: '企业客户验证', status: 'new', note: 'MMP Corporate', evidence: 'E9', screenshot: 'images/UI__QRV CN APP__Corporate Flow.png' },
+            { id: 'AC32', name: '万豪商务平台', status: 'new', note: 'Marriott Business', evidence: 'E9', screenshot: 'images/UI__QRV CN APP__Marriott Business.png' },
+            { id: 'AC33', name: '亲友价验证', status: 'new', note: 'Friends & Family', evidence: 'E9', screenshot: 'images/UI__QRV CN APP__Associate Flow.png' },
+            { id: 'AC34', name: '经验证的特别房价', status: 'new', note: 'Explore Rate/QCC', evidence: 'E9', screenshot: 'images/UI__QRV CN APP__account__Verified Special Rates.png' }
+          ]},
+          { name: '情感化运营', features: [
+            { id: 'AC35', name: '欢迎入会庆祝', status: 'new', note: '—', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_celebratory_1.png' },
+            { id: 'AC36', name: '保级成功庆祝', status: 'new', note: '—', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_celebratory_1.png' },
+            { id: 'AC37', name: '生日祝福', status: 'new', note: '—', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_celebratory_1.png' },
+            { id: 'AC38', name: '入会周年庆祝', status: 'new', note: '—', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__pdf_celebratory_1.png' },
+            { id: 'AC39', name: '年终状态回顾', status: 'new', note: 'Your 2025 Status', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__Year end processing.png' }
+          ]}
+        ]
+      },
+      {
+        id: 'wallet',
+        name: '钱包',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>',
+        desc: '积分余额、礼品卡、支付方式——资产管理中心（设计中）',
+        count: 24,
+        sections: [
+          { name: '钱包首页', features: [
+            { id: 'WL01', name: '积分余额', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL02', name: '礼品卡余额', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Overview.png' },
+            { id: 'WL03', name: '会员卡快捷入口', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__QR CODE.png' },
+            { id: 'WL04', name: '礼品卡入口', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Overview.png' },
+            { id: 'WL05', name: '支付方式入口', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL06', name: '交易记录入口', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL07', name: '积分明细入口', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL08', name: '推广与优惠', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL09', name: '我的收藏', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL10', name: '客户支持', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Loyalty CN App__pdf_account_landing_1.png' },
+            { id: 'WL11', name: '8种状态变体', status: 'design', note: '默认/奖励/礼品卡/暗黑等', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' }
+          ]},
+          { name: '礼品卡', features: [
+            { id: 'WL12', name: '礼品卡列表', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Overview.png' },
+            { id: 'WL13', name: '礼品卡详情', status: 'design', note: '卡号/余额/有效期', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Details.png' },
+            { id: 'WL14', name: '手动添加礼品卡', status: 'design', note: '输入卡号/CVV', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Add Gift Card.png' },
+            { id: 'WL15', name: '领取赠送礼品卡', status: 'design', note: '保存到钱包', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__New Gift Card.png' },
+            { id: 'WL16', name: '礼品卡兑换', status: 'design', note: 'MFA验证', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Redeem Gift Card.png' },
+            { id: 'WL17', name: '锁定卡片', status: 'design', note: '安全机制', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Lock-reportLost-remove gift card.png' },
+            { id: 'WL18', name: '挂失卡片', status: 'design', note: '安全机制', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Lock-reportLost-remove gift card.png' },
+            { id: 'WL19', name: '移除卡片', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Lock-reportLost-remove gift card.png' },
+            { id: 'WL20', name: '交易明细', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Details.png' },
+            { id: 'WL21', name: '底部弹窗', status: 'design', note: '使用/添加/领取', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Gift Card Bottom Sheet.png' }
+          ]},
+          { name: '资产导航', features: [
+            { id: 'WL22', name: '支付方式管理', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Wallet Overview.png' },
+            { id: 'WL23', name: '账户活动', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__account hub.png' },
+            { id: 'WL24', name: '资产总览', status: 'design', note: '—', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Access Assets.png' }
+          ]}
+        ]
+      },
+      {
+        id: 'auth',
+        name: '安全认证',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        desc: '登录、注册、MFA、Push——安全与合规',
+        count: 18,
+        sections: [
+          { name: '未登录', features: [
+            { id: 'SO01', name: '隐私政策弹窗', status: 'live', note: '同意/不同意', evidence: 'E1', screenshot: 'images/现有功能截图__APP__登录__9-勾选隐私政策.jpg' },
+            { id: 'SO02', name: 'Onboarding 引导', status: 'new', note: '4步引导', evidence: 'E3', screenshot: 'images/UI__signed out state__onboarding flow.png' },
+            { id: 'SO03', name: '注册', status: 'live', note: '加入万豪旅享家', evidence: 'E1/E10', screenshot: 'images/现有功能截图__APP__登录__4-点击加入万豪旅享家.jpg' },
+            { id: 'SO04', name: '登录', status: 'live', note: '账号密码', evidence: 'E1/E10', screenshot: 'images/现有功能截图__APP__登录__11-点击登录.jpg' },
+            { id: 'SO05', name: '忘记密码', status: 'live', note: '—', evidence: 'E3', screenshot: 'images/现有功能截图__APP__登录__12-找回密码.jpg' },
+            { id: 'SO06', name: '查找会员编号', status: 'live', note: '—', evidence: 'E3', screenshot: 'images/现有功能截图__APP__登录__13-查找会员编号.jpg' },
+            { id: 'SO07', name: '生物识别登录', status: 'new', note: 'Face ID', evidence: 'E3', screenshot: 'images/UI__signed out state__Sign in.png' },
+            { id: 'SO08', name: '免密登录', status: 'new', note: 'Backlog Q3/Q4', evidence: 'E5', screenshot: 'images/UI__signed out state__Sign in.png' },
+            { id: 'SO09', name: '未登录首页', status: 'new', note: '功能限制+引导', evidence: 'E10', screenshot: 'images/现有功能截图__APP__账户__未登录__1-首页.jpg' }
+          ]},
+          { name: '安全', features: [
+            { id: 'SEC01', name: '多因素认证(MFA)', status: 'new', note: '手机/邮箱', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__MFA.png' },
+            { id: 'SEC02', name: '礼品卡兑换MFA', status: 'design', note: '短信/邮箱', evidence: 'E6', screenshot: 'images/UI__Wallet CN App__Redeem Gift Card.png' },
+            { id: 'SEC03', name: 'Push 权限申请', status: 'new', note: '7个场景', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__push+opt in.png' },
+            { id: 'SEC04', name: 'Push 功能引导', status: 'new', note: '价值说明', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__push+opt in.png' },
+            { id: 'SEC05', name: 'Push 分类管理', status: 'new', note: '通知开关', evidence: 'E3', screenshot: 'images/UI__Loyalty CN App__push+opt in.png' }
+          ]}
+        ]
+      },
+      {
+        id: 'mbop',
+        name: 'MBOP',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>',
+        desc: '万豪优惠平台——活动套餐浏览与预订',
+        count: 11,
+        sections: [
+          { name: 'MBOP', features: [
+            { id: 'M01', name: '活动套餐列表', status: 'new', note: '图片/标题/价格', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Base screen.png' },
+            { id: 'M02', name: '活动套餐详情', status: 'new', note: '描述/价格/日期', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Base screen.png' },
+            { id: 'M03', name: '日历选择', status: 'new', note: '灵活日期', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Calendar Flow.png' },
+            { id: 'M04', name: '地图视图', status: 'new', note: '位置+价格气泡', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Map view.png' },
+            { id: 'M05', name: '排序', status: 'new', note: '推荐/价格/距离', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Sort & Filter & Terms.png' },
+            { id: 'M06', name: '城市筛选', status: 'new', note: '—', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Sort & Filter & Terms.png' },
+            { id: 'M07', name: '条款说明', status: 'new', note: '—', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Sort & Filter & Terms.png' },
+            { id: 'M08', name: '活动标签组件', status: 'new', note: '适用日期等', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__New Components.png' },
+            { id: 'M09', name: '活动卡片组件', status: 'new', note: '大图+名称+价格', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Base screen.png' },
+            { id: 'M10', name: '原型交互流程', status: 'new', note: '列表→详情→日历', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Prototype.png' },
+            { id: 'M11', name: '现有MBOP页面', status: 'live', note: '暗黑模式', evidence: 'E8', screenshot: 'images/UI__MBOP CN APP__Current MBOP screens.png' }
+          ]}
+        ]
+      },
+      {
+        id: 'group',
+        name: '团体预订',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+        desc: '单酒店/多酒店团体预订与管理',
+        count: 7,
+        sections: [
+          { name: '团体预订', features: [
+            { id: 'GB01', name: '单酒店团体预订', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB02', name: '多酒店团体预订', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB03', name: '团体预订首页', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB04', name: '团体行程管理', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB05', name: '团体预订编辑', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB06', name: '团体预订确认', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__UI.png' },
+            { id: 'GB07', name: '暗黑模式', status: 'new', note: '—', evidence: 'E10', screenshot: 'images/UI__Group booking__Dark mode.png' }
+          ]}
+        ]
+      }
+    ];
+
+    // ===== STATE =====
+    let currentModule = 'overview';
+    let currentFilter = 'all';
+    let expandedSections = new Set();
+
+    // ===== HELPERS =====
+    const statusMap = {
+      live:    { label: '已上线', class: 'status-live', badge: 'badge-live' },
+      new:     { label: '新增', class: 'status-new', badge: 'badge-new' },
+      iterate: { label: '迭代中', class: 'status-iterate', badge: 'badge-iterate' },
+      design:  { label: '设计中', class: 'status-design', badge: 'badge-design' },
+      pending: { label: '待确认', class: 'status-pending', badge: 'badge-pending' }
+    };
+
+    function countByStatus(features) {
+      const counts = { live: 0, new: 0, iterate: 0, design: 0, pending: 0 };
+      features.forEach(f => { if (counts[f.status] !== undefined) counts[f.status]++; });
+      return counts;
+    }
+
+    function getAllFeatures(module) {
+      if (!module.sections) return [];
+      return module.sections.flatMap(s => s.features);
+    }
+
+    function filterFeatures(features, filter) {
+      if (filter === 'all') return features;
+      return features.filter(f => f.status === filter);
+    }
+
+    // ===== RENDER =====
+    function renderNav() {
+      const navList = document.getElementById('navList');
+      navList.innerHTML = modules.map(m => {
+        const isActive = m.id === currentModule;
+        return `
+          <li class="nav-item">
+            <a class="nav-link ${isActive ? 'active' : ''}" data-module="${m.id}">
+              <span style="display:flex;align-items:center;">
+                <span class="nav-icon">${m.icon}</span>
+                ${m.name}
+              </span>
+              ${m.count ? `<span class="nav-count">${m.count}</span>` : ''}
+            </a>
+          </li>
+        `;
+      }).join('');
+
+      navList.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          currentModule = link.dataset.module;
+          renderNav();
+          renderContent();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    }
+
+    function renderOverview() {
+      const totalFeatures = modules.filter(m => m.count).reduce((sum, m) => sum + m.count, 0);
+      const allFeatures = modules.filter(m => m.sections).flatMap(m => getAllFeatures(m));
+      const statusCounts = countByStatus(allFeatures);
+
+      const moduleCards = modules.filter(m => m.count).map(m => {
+        const features = getAllFeatures(m);
+        const counts = countByStatus(features);
+        return `
+          <div class="overview-card" style="cursor:pointer;" data-module="${m.id}">
+            <div class="overview-number">${m.count}</div>
+            <div class="overview-label">${m.name}</div>
+            <div style="margin-top:8px;display:flex;gap:4px;justify-content:center;flex-wrap:wrap;">
+              ${counts.live > 0 ? `<span class="badge badge-live" style="font-size:10px;padding:2px 6px;">${counts.live} 已上线</span>` : ''}
+              ${counts.new > 0 ? `<span class="badge badge-new" style="font-size:10px;padding:2px 6px;">${counts.new} 新增</span>` : ''}
+              ${counts.iterate > 0 ? `<span class="badge badge-iterate" style="font-size:10px;padding:2px 6px;">${counts.iterate} 迭代</span>` : ''}
+              ${counts.design > 0 ? `<span class="badge badge-design" style="font-size:10px;padding:2px 6px;">${counts.design} 设计中</span>` : ''}
+              ${counts.pending > 0 ? `<span class="badge badge-pending" style="font-size:10px;padding:2px 6px;">${counts.pending} 待确认</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="module-header">
+          <div class="module-title-row">
+            <div class="module-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h1 class="module-title">功能总览</h1>
+          </div>
+          <p class="module-desc">万豪旅享家 China App 功能说明，基于信息架构图组织</p>
+        </div>
+
+        <div class="overview-grid">
+          <div class="overview-card highlight">
+            <div class="overview-number">${totalFeatures}</div>
+            <div class="overview-label">功能总数</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.live}</div>
+            <div class="overview-label">已上线</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.new}</div>
+            <div class="overview-label">新增</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.design}</div>
+            <div class="overview-label">设计中</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${statusCounts.pending}</div>
+            <div class="overview-label">待确认</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">${modules.filter(m => m.count).length}</div>
+            <div class="overview-label">功能模块</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-number">5</div>
+            <div class="overview-label">底部 Tab</div>
+          </div>
+        </div>
+
+        <div class="status-legend">
+          <div class="legend-item"><span class="filter-dot dot-live"></span> 已上线</div>
+          <div class="legend-item"><span class="filter-dot dot-new"></span> 新增</div>
+          <div class="legend-item"><span class="filter-dot dot-iterate"></span> 迭代中</div>
+          <div class="legend-item"><span class="filter-dot dot-design"></span> 设计中</div>
+          <div class="legend-item"><span class="filter-dot dot-pending"></span> 待确认</div>
+        </div>
+
+        <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;color:var(--bonvoy-black);">按模块分布</h2>
+        <div class="overview-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+          ${moduleCards}
+        </div>
+      `;
+    }
+
+    function renderModule(module) {
+      const allFeatures = getAllFeatures(module);
+      const filteredFeatures = filterFeatures(allFeatures, currentFilter);
+      const counts = countByStatus(allFeatures);
+
+      let sectionsHtml = '';
+      module.sections.forEach((section, idx) => {
+        const sectionFeatures = filterFeatures(section.features, currentFilter);
+        if (sectionFeatures.length === 0 && currentFilter !== 'all') return;
+
+        const sectionId = `${module.id}-section-${idx}`;
+        const isExpanded = expandedSections.has(sectionId);
+        const sectionCounts = countByStatus(section.features);
+
+        const badgesHtml = Object.entries(sectionCounts)
+          .filter(([_, count]) => count > 0)
+          .map(([status, count]) => `<span class="badge ${statusMap[status].badge}">${count}</span>`)
+          .join('');
+
+        const featuresHtml = sectionFeatures.map(f => {
+          const s = statusMap[f.status];
+          const detailId = `${sectionId}-detail-${f.id}`;
+          const hasScreenshot = !!f.screenshot;
+          const screenshotCell = hasScreenshot
+            ? `<img class="screenshot-thumb" src="${f.screenshot}" alt="${f.name}">`
+            : `<div class="screenshot-placeholder">无截图</div>`;
+
+          const detailPanel = `
+            <tr class="feature-detail-row" id="${detailId}" style="display:none;">
+              <td colspan="6" style="padding:0;border:none;">
+                <div class="feature-detail-panel" id="${detailId}-panel">
+                  <div class="detail-panel-inner">
+                    <div class="detail-screenshot-area">
+                      ${hasScreenshot
+                        ? `<img class="detail-screenshot" src="${f.screenshot}" alt="${f.name}" onclick="openLightbox('${f.screenshot}', '${f.name}')">`
+                        : `<div class="detail-screenshot-placeholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            <span style="font-size:12px;">暂无截图</span>
+                           </div>`
+                      }
+                      ${hasScreenshot ? `<div class="detail-screenshot-label">点击放大查看</div>` : ''}
+                    </div>
+                    <div class="detail-info-area">
+                      <div class="detail-header">
+                        <span class="detail-id">${f.id}</span>
+                        <span class="detail-name">${f.name}</span>
+                      </div>
+                      <div class="detail-status-row">
+                        <span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span>
+                      </div>
+                      <div class="detail-meta-grid">
+                        <div class="detail-meta-item">
+                          <div class="detail-section-title">功能说明</div>
+                          <div class="detail-description">${f.note}</div>
+                        </div>
+                        <div class="detail-meta-item">
+                          <div class="detail-section-title">证据来源</div>
+                          <div class="detail-meta-value">${f.evidence}</div>
+                        </div>
+                      </div>
+                      ${f.screenshot ? `
+                        <div class="detail-meta-item" style="grid-column: 1 / -1;">
+                          <div class="detail-section-title">截图文件</div>
+                          <div class="detail-description" style="font-size:12px;color:var(--text-helper);font-family:monospace;word-break:break-all;">${f.screenshot}</div>
+                        </div>
+                      ` : ''}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          `;
+
+          return `
+            <tr class="feature-row ${hasScreenshot ? 'has-screenshot' : ''}" data-detail="${detailId}" onclick="toggleFeatureDetail('${detailId}', this)">
+              <td><span class="feature-id">${f.id}</span></td>
+              <td><span class="feature-name">${f.name}</span></td>
+              <td><span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span></td>
+              <td class="feature-note">${f.note}</td>
+              <td class="feature-evidence">${f.evidence}</td>
+              <td class="feature-screenshot-cell">${screenshotCell}</td>
+            </tr>
+            ${detailPanel}
+          `;
+        }).join('');
+
+        sectionsHtml += `
+          <div class="section-card">
+            <div class="section-header" data-section="${sectionId}">
+              <div class="section-header-left">
+                <span class="section-toggle ${isExpanded ? 'expanded' : ''}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+                <span class="section-name">${section.name}</span>
+                <span class="section-count">(${sectionFeatures.length}${currentFilter !== 'all' ? '' : '/' + section.features.length})</span>
+              </div>
+              <div class="section-badges">${badgesHtml}</div>
+            </div>
+            <div class="section-content ${isExpanded ? 'expanded' : ''}">
+              <table class="feature-table">
+                <thead>
+                  <tr>
+                    <th style="width:80px;">编号</th>
+                    <th>功能名称</th>
+                    <th style="width:100px;">状态</th>
+                    <th>说明</th>
+                    <th style="width:80px;">证据</th>
+                    <th style="width:90px;">截图</th>
+                  </tr>
+                </thead>
+                <tbody>${featuresHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      });
+
+      return `
+        <div class="module-header">
+          <div class="module-title-row">
+            <div class="module-icon">${module.icon}</div>
+            <h1 class="module-title">${module.name}</h1>
+          </div>
+          <p class="module-desc">${module.desc}</p>
+          <div class="module-stats-bar">
+            <div class="module-stat"><strong>${allFeatures.length}</strong> 项功能</div>
+            ${counts.live > 0 ? `<div class="module-stat"><strong>${counts.live}</strong> 已上线</div>` : ''}
+            ${counts.new > 0 ? `<div class="module-stat"><strong>${counts.new}</strong> 新增</div>` : ''}
+            ${counts.iterate > 0 ? `<div class="module-stat"><strong>${counts.iterate}</strong> 迭代中</div>` : ''}
+            ${counts.design > 0 ? `<div class="module-stat"><strong>${counts.design}</strong> 设计中</div>` : ''}
+            ${counts.pending > 0 ? `<div class="module-stat"><strong>${counts.pending}</strong> 待确认</div>` : ''}
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="searchInput" placeholder="搜索功能名称、编号或说明...">
+        </div>
+
+        ${sectionsHtml}
+      `;
+    }
+
+    function renderContent() {
+      const content = document.getElementById('content');
+      const module = modules.find(m => m.id === currentModule);
+
+      if (module.isOverview) {
+        content.innerHTML = renderOverview();
+        // Add click handlers for module cards
+        content.querySelectorAll('.overview-card[data-module]').forEach(card => {
+          card.addEventListener('click', () => {
+            currentModule = card.dataset.module;
+            renderNav();
+            renderContent();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+      } else {
+        content.innerHTML = renderModule(module);
+
+        // Section toggle handlers
+        content.querySelectorAll('.section-header').forEach(header => {
+          header.addEventListener('click', () => {
+            const sectionId = header.dataset.section;
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.section-toggle');
+
+            if (expandedSections.has(sectionId)) {
+              expandedSections.delete(sectionId);
+              content.classList.remove('expanded');
+              toggle.classList.remove('expanded');
+            } else {
+              expandedSections.add(sectionId);
+              content.classList.add('expanded');
+              toggle.classList.add('expanded');
+            }
+          });
+        });
+
+        // Search handler
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            content.querySelectorAll('.feature-table tbody tr').forEach(row => {
+              // 跳过详情面板行
+              if (row.classList.contains('feature-detail-row')) return;
+              const text = row.textContent.toLowerCase();
+              const shouldShow = text.includes(query);
+              row.style.display = shouldShow ? '' : 'none';
+              // 同时隐藏对应的详情面板
+              const detailId = row.dataset.detail;
+              if (detailId) {
+                const detailRow = document.getElementById(detailId);
+                if (detailRow) detailRow.style.display = 'none';
+              }
+            });
+            // 搜索时重置展开状态
+            if (activeDetailId) {
+              const prevDetailPanel = document.getElementById(activeDetailId + '-panel');
+              const prevRow = document.querySelector(`[data-detail="${activeDetailId}"]`);
+              if (prevDetailPanel) prevDetailPanel.classList.remove('expanded');
+              if (prevRow) prevRow.classList.remove('active');
+              activeDetailId = null;
+            }
+          });
+        }
+      }
+    }
+
+    function renderFilters() {
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          currentFilter = chip.dataset.filter;
+          if (!modules.find(m => m.id === currentModule).isOverview) {
+            renderContent();
+          }
+        });
+      });
+    }
+
+    // ===== Lightbox =====
+    function openLightbox(src, caption) {
+      let lightbox = document.getElementById('lightbox');
+      if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+          <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+          <img class="lightbox-img" id="lightboxImg" src="" alt="">
+          <div class="lightbox-caption" id="lightboxCaption"></div>
+        `;
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        document.body.appendChild(lightbox);
+      }
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').textContent = caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // ===== Feature Detail Toggle =====
+    let activeDetailId = null;
+
+    function toggleFeatureDetail(detailId, rowEl) {
+      const detailRow = document.getElementById(detailId);
+      const detailPanel = document.getElementById(detailId + '-panel');
+
+      // 如果点击的是当前已展开的功能，则收起
+      if (activeDetailId === detailId) {
+        detailPanel.classList.remove('expanded');
+        setTimeout(() => {
+          detailRow.style.display = 'none';
+        }, 400);
+        rowEl.classList.remove('active');
+        activeDetailId = null;
+        return;
+      }
+
+      // 收起之前展开的面板
+      if (activeDetailId) {
+        const prevDetailRow = document.getElementById(activeDetailId);
+        const prevDetailPanel = document.getElementById(activeDetailId + '-panel');
+        const prevRow = document.querySelector(`[data-detail="${activeDetailId}"]`);
+        if (prevDetailPanel) prevDetailPanel.classList.remove('expanded');
+        if (prevDetailRow) {
+          setTimeout(() => { prevDetailRow.style.display = 'none'; }, 400);
+        }
+        if (prevRow) prevRow.classList.remove('active');
+      }
+
+      // 展开新面板
+      detailRow.style.display = 'table-row';
+      // 强制重排以确保 transition 生效
+      detailRow.offsetHeight;
+      requestAnimationFrame(() => {
+        detailPanel.classList.add('expanded');
+      });
+      rowEl.classList.add('active');
+      activeDetailId = detailId;
+
+      // 滚动到视图
+      setTimeout(() => {
+        detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ===== INIT =====
+    renderNav();
+    renderContent();
+    renderFilters();
+  </script>
+</body>
+</html>
