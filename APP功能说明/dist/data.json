@@ -1,0 +1,1925 @@
+[
+  {
+    "id": "overview",
+    "name": "总览",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/></svg>",
+    "desc": "万豪旅享家 China App 全量功能统计与分布",
+    "isOverview": true
+  },
+  {
+    "id": "launch",
+    "name": "启动",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4\"/><polyline points=\"10 17 15 12 10 7\"/><line x1=\"15\" y1=\"12\" x2=\"3\" y2=\"12\"/></svg>",
+    "desc": "开屏广告、启动页——用户首次触达",
+    "count": 2,
+    "sections": [
+      {
+        "name": "启动",
+        "features": [
+          {
+            "id": "LH02",
+            "name": "启动页",
+            "status": "live",
+            "desc": "APP启动页",
+            "detail": "1.交互说明：动态图片，启动APP时展示，播放完成后自动进入下一页面（广告页/首页）",
+            "screenshot": "images/UI__图片库__启动__Splash Screen.png"
+          },
+          {
+            "id": "LH03",
+            "name": "隐私协议弹窗",
+            "status": "live",
+            "desc": "首次启动时展示的隐私政策与用户协议确认",
+            "detail": "1.功能说明：首次启动APP时，展示隐私政策与用户协议；可点击同意或者不同意。2.交互说明：点击同意，进入APP【启动页】；点击不同意，弹窗提示，可选择进入【浏览模式】或者同意万豪政策。",
+            "screenshot": "images/UI__图片库__启动__隐私协议.png",
+            "screenshot2": "images/UI__图片库__启动__不同意隐私政策.jpg"
+          },
+          {
+            "id": "LH01a",
+            "name": "未登录-开屏广告",
+            "status": "live",
+            "desc": "未登录用户看到的全屏广告展示",
+            "detail": "1.功能说明：未登录用户，显示全屏轮播广告，支持登录/免费注册/以访客模式继续。2.登录：点击进入【登录】页面。3.免费注册：点击进入【注册】页面。4.以访客模式继续：点击以未登录状态进入APP。",
+            "screenshot": "images/UI__图片库__启动__未登录-登录&注册引导.png"
+          },
+          {
+            "id": "LH01b",
+            "name": "已登录-开屏广告",
+            "status": "live",
+            "desc": "已登录用户看到的全屏广告展示",
+            "detail": "1.功能说明：已登录用户，显示开屏广告，支持跳过。2.开屏广告样式：分为3种样式的开屏广告，全屏、带按钮、带标题文案和CTA按钮。",
+            "screenshot": "images/UI__图片库__启动__已登录.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "homepage",
+    "name": "首页",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/></svg>",
+    "desc": "搜索中心、酒店详情、预订流程、会员信息——核心转化链路",
+    "count": 41,
+    "sections": [
+      {
+        "name": "页面概览",
+        "features": [
+          {
+            "id": "HP00",
+            "name": "首页全页面概览",
+            "status": "live",
+            "desc": "首页完整页面截图，展示整体布局与信息架构",
+            "detail": "1.页面结构说明：从上至下，分别显示轮播banner、会员信息卡片、搜索栏、你的行程、限时促销、近期查看、积分活动 Banner、为你推荐、探索更多精彩。2.轮播banner：节日营销活动入口。3.会员信息卡片：会员等级、积分、保级进度。4.搜索栏：核心预订入口。5.你的行程：仅当前有行程显示--待确认。6.限时促销：营销活动卡片。7.近期查看：浏览历史快捷入口。8.积分活动banner：显示积分激励活动--待确认。9.为你推荐：个性化推荐内容。10.探索更多精彩：探索页面内容引导。",
+            "screenshot": "images/UI__图片库__首页__首页-全部.png"
+          }
+        ]
+      },
+      {
+        "name": "Home Hero",
+        "features": [
+          {
+            "id": "HP01",
+            "name": "轮播 Banner",
+            "status": "live",
+            "desc": "节日营销活动入口",
+            "detail": "1.轮播banner：节日营销活动入口，支持轮播，点击可进行跳转至对应CTA功能页面。",
+            "screenshot": "images/UI__图片库__首页__首页-已登录.png"
+          }
+        ]
+      },
+      {
+        "name": "Search Hub",
+        "features": [
+          {
+            "id": "HP02",
+            "name": "搜索栏",
+            "status": "live",
+            "desc": "会员信息区域、搜索输入框、快速筛选标签",
+            "detail": "1.会员信息区域：已登录用户显示名字、积分、会员卡等级及保级进度，点击进入【账户】页面；未登录用户显示登录/注册，点击进入注册页面。 2.位置/目的地：已授权显示定位城市，未授权显示「附近位置」，点击进入选择目的地；定位按钮点击授权定位，成功后显示「当前位置」。 3.展开/收起：点击展开/收起搜索栏。 4.日期选择：点击唤起日期选择组件。 5.房间/人数选择：点击唤起房间、宾客和宠物设置组件。 6.特别房价：点击唤起设置特别房价组件。 7.使用积分：勾选后【查找酒店】按钮切换为【使用积分查找酒店】。",
+            "screenshot": "images/UI__图片库__首页__search hub.png"
+          },
+          {
+            "id": "HP02a",
+            "name": "目的地",
+            "status": "live",
+            "desc": "选择目的地城市",
+            "detail": "1.目的地搜索框：顶部输入框，placeholder \"下次想去哪儿？\"，支持语音输入和清除按钮。2.继续预订卡片：展示当前进行中的预订（酒店名称、日期、房型），支持继续操作或删除。3.最近搜索：历史搜索记录列表，支持单条删除和全部清除，最多5条历史记录。4.热门目的地推荐：图文卡片展示热门城市（北京、上海、东京等），横向滑动浏览。5.城市快捷标签（City Chips）：热门城市快捷入口，支持 3/4/0 个 top cities + 12/8 个城市标签多种配置。6.定位权限引导：未开启定位时展示提示条，引导用户开启位置权限。7.搜索联想列表：输入时实时联想匹配城市/酒店/地标，含分类标签（城市、酒店、机场等）。8.全国城市查找：按字母索引排列的完整城市列表，支持快速字母导航。9.键盘交互状态：支持键盘显示/隐藏、输入中、滚动时自动隐藏键盘。10.暗黑模式：全页面暗黑模式适配，包括搜索框、卡片、列表、键盘-待确认。11.骨架屏加载态：搜索结果加载时的骨架屏占位效果。12.清除全部搜索确认：删除全部搜索记录时的二次确认弹窗。13.无最近搜索/无继续预订空态：当没有历史记录或进行中的预订时的页面变体。",
+            "screenshots": [
+              "images/UI__图片库__首页__目的地.png",
+              "images/UI__图片库__首页__目的地输入.png",
+              "images/UI__图片库__首页__删除搜索记录.jpg"
+            ]
+          },
+          {
+            "id": "HP02b",
+            "name": "日期选择",
+            "status": "live",
+            "desc": "入住/退房日期选择",
+            "detail": "1.日期选择器：顶部展示已选入住/退房日期，格式\"1月10日 周一 → 1月14日 周五\"。2.月份日历视图：双月展示（2025年1月+2月），支持上下滑动查看更多月份。3.日期选中态：入住日为实心黑底白字，退房日为空心黑圈，中间日期为灰色高亮区间。4.单晚预订：仅选入住日，退房日显示\"退房\"placeholder，CTA为\"预订今晚住宿\"。5.多晚区间选择：选择入住+退房日期，CTA动态显示\"预订X晚，继续\"。6.节假日标注：春节等特殊日期标注\"除夕\"\"春节\"等节日标签。7.查看价格日历：底部开关，开启后日历上显示每日房价。8.提示消息（Toast）：选择超出限制时的提示消息（如\"这是一条提示消息\"）。9.暗黑模式：全组件暗黑模式适配，包括日历网格、选中态、CTA按钮--待确认。10.灵活日期搜索：底部主CTA\"使用灵活日期搜索\"，支持非固定日期的灵活搜索--待确认。",
+            "screenshots": [
+              "images/UI__图片库__首页__日期.png",
+              "images/UI__图片库__首页__灵活日期选择.jpg"
+            ]
+          },
+          {
+            "id": "HP02c",
+            "name": "房间&宾客&宠物设置",
+            "status": "live",
+            "desc": "配置房间、宾客和宠物",
+            "detail": "1.房间数量调整：步进器控制房间数（+/-），默认1间。2.成人数量调整：每间房成人数量步进器控制，默认2人。3.儿童数量调整：每间房儿童数量步进器控制，默认0人。4.儿童年龄选择：添加儿童后展示年龄下拉选择（0-12个月/1岁/2岁等），支持多儿童多年龄。5.携带宠物出行开关：宠物携带Toggle开关，开启后可配置宠物信息。6.宠物信息说明：宠物政策提示文案（\"请注意，这家酒店不允许携带宠物\"或\"预订额外客房，需创建新的订单\"）。7.预订额外客房引导：当人数超出限制时，提示\"再预订一间客房\"跳转入口。8.偏好保存：底部\"保存以用于将来搜索\"复选框，记住本次配置。9.确定按钮：底部主CTA，确认当前配置并关闭弹窗。10.酒店宠物政策适配：根据酒店是否允许宠物展示不同状态（No Pets Allowed / w/pets / no pets）。11.暗黑模式：全弹窗暗黑模式适配，包括步进器、下拉框、开关、按钮--待确认。",
+            "screenshots": [
+              "images/UI__图片库__首页__房间&宾客&宠物.png",
+              "images/UI__图片库__首页__Rate_bodyContent.png"
+            ]
+          },
+          {
+            "id": "HP02d",
+            "name": "特别房价",
+            "status": "live",
+            "desc": "会员价/协议价等特别房价",
+            "detail": "1.常规优惠房价：标准优惠房价选项，复选框选择。2.万豪旅享家积分：积分兑换房价选项，复选框选择。3.长者折扣：针对年长会员的专属折扣选项。4.促销代码输入：手动输入促销代码（如 #SUMMER20），支持键盘输入和添加。5.企业协议价（AT Kearney等）：企业客户专属协议价选项，带企业标识。6.亲友价（Explore Friends & Family）：员工亲友专属折扣选项。7.多选限制：最多可选3项特别房价，超出时展示错误提示\"您已选择最大数量的特别房价\"。8.错误提示：促销代码格式错误时展示红色提示文案。9.编辑模式：已选项可进入编辑状态，取消或重新选择。10.偏好保存：底部\"保存以用于将来搜索\"复选框。11.确定按钮：确认当前选择并关闭面板。12.暗黑模式：全面板暗黑模式适配，包括复选框、输入框、错误提示。",
+            "screenshot": "images/UI__图片库__首页__特别房价.png"
+          },
+          {
+            "id": "HP07",
+            "name": "获取定位权限",
+            "status": "live",
+            "desc": "点击搜索栏的定位按钮，获取用户手机原生的定位权限",
+            "detail": "1.定位权限：点击搜索栏的定位按钮，获取用户手机原生的定位权限，安卓与ios的定位授权弹窗不同。",
+            "screenshot": "images/现有功能截图__APP__首页__3-点击定位.jpg"
+          },
+          {
+            "id": "HP14",
+            "name": "使用积分",
+            "status": "live",
+            "desc": "勾选后切换为积分预订模式",
+            "detail": "1.使用积分：勾选后【查找酒店】按钮切换为【使用积分查找酒店】。",
+            "screenshot": "images/UI__图片库__首页__使用积分.jpg"
+          }
+        ]
+      },
+      {
+        "name": "搜索结果",
+        "features": [
+          {
+            "id": "HP15",
+            "name": "地图视图/列表视图/网格视图",
+            "status": "live",
+            "desc": "地图/列表/网格三种视图切换，支持地图气泡标记、Swipe展开收起列表",
+            "detail": "1.地图视图：全屏地图展示搜索结果酒店位置，带价格标签的气泡标记。2.价格气泡标记：地图上展示酒店房价（如 ¥980 CNY、¥1,450 CNY），点击可查看详情。3.列表视图：酒店卡片纵向列表，展示酒店图片、名称、评分、距离、价格。4.视图切换：地图视图与列表视图之间的切换交互。5.Swipe Up 展开列表：在地图视图下向上滑动，展开底部酒店列表。6.Swipe Down 收起列表：向下滑动收起列表，回到全屏地图视图。7.快速筛选标签：顶部横向筛选标签（积分、排序、超值预付、泳池、新酒店）。8.搜索条件摘要：顶部展示当前搜索条件（目的地、日期、房客数）。9.酒店卡片信息：酒店名称、评分、距离、价格、标签（如\"新开业\"）。10.条件摘要栏：顶部固定展示搜索条件，支持快速修改--未上线，UI中有。11.结果数量：底部显示\"显示71条结果\"。12.品牌标识：酒店卡片展示品牌Logo（如 Marriott、Courtyard）。",
+            "screenshots": [
+              "images/UI__图片库__首页__搜索结果__默认结果.jpg",
+              "images/UI__图片库__首页__搜索结果__地图.jpg",
+              "images/UI__图片库__首页__搜索结果__地图搜索.jpg",
+              "images/UI__图片库__首页__搜索结果__列表.jpg"
+            ]
+          },
+          {
+            "id": "HP14a",
+            "name": "查找酒店",
+            "status": "live",
+            "desc": "确认搜索条件并执行酒店搜索",
+            "detail": "1.目的地搜索框：展示当前选择的目的地「上海」，带定位图标，点击打开选择目的地组件。2.日期选择：展示已选入住/退房日期「6月11日 → 6月12日」，带日历图标，点击打开日期选择组件。3.房客配置：展示已选房间和宾客数「1间客房，1位宾客」，带人员图标，点击打开房间&宾客&宠物设置组件。4.添加特别房价：促销代码/特别房价入口，带标签图标，点击打开特别房价组件。5.使用积分/奖励开关：积分兑换房价的Toggle开关。6.确定按钮：确认搜索条件并执行搜索的主CTA。",
+            "screenshot": "images/UI__图片库__首页__搜索结果__查找酒店.jpg"
+          },
+          {
+            "id": "HP16a",
+            "name": "筛选",
+            "status": "live",
+            "desc": "多维度筛选：税费/满房/货币/价格/距离/设施/品牌/类型",
+            "detail": "1.包含税费开关：Toggle控制搜索结果是否显示含税价格。2.仅显示可提供客房的酒店开关：过滤掉满房/不可预订的酒店。3.货币选择：下拉选择显示货币（酒店当地货币）。4.价格区间滑块：双滑块控制每晚房价范围（284 - 6,297）。5.距离滑块：控制搜索半径距离（0 - 160公里）。6.设施/服务筛选：多选复选框，包括：允许携带宠物、泳池、厨房、免费早餐、机场班车、适合家庭、手机房卡、电动汽车充电、全包。7.查看全部：展开更多设施选项。8.品牌筛选：可展开选择特定酒店品牌。9.酒店类型筛选：可展开选择酒店类型（如度假村、商务酒店等）。10.清除全部：右上角清除所有筛选条件。11.结果数量CTA：底部按钮动态显示筛选后结果数「显示123个结果」。",
+            "screenshot": "images/UI__图片库__首页__搜索结果__筛选.jpg"
+          },
+          {
+            "id": "HP16b",
+            "name": "排序",
+            "status": "live",
+            "desc": "底部弹窗单选排序：距离/最低价/最高价/城市/宾客评分",
+            "detail": "1.排序选项：底部弹窗展示排序方式，单选：距离（默认选中）、最低价、最高价、城市、宾客评分。",
+            "screenshot": "images/UI__图片库__首页__搜索结果__排序.jpg"
+          },
+          {
+            "id": "HP18",
+            "name": "酒店卡片",
+            "status": "live",
+            "desc": "酒店卡片展示：头图轮播、收藏、评分、距离、双价格、标签",
+            "detail": "1.酒店头图轮播：顶部大图展示，支持左右滑动切换，带轮播指示点。2.收藏到愿望清单：右上角心形按钮，点击收藏/取消收藏酒店。3.近期查看内容标签：左上角标签标识用户近期浏览过的酒店。4.品牌标识展示：酒店品牌Logo（COURTYARD BY MARRIOTT）。5.酒店名称：展示酒店名称。6.酒店标签：新酒店、免费早餐、电动汽车充电站等标签--待确认。7.评分信息：4.5分评分，带信息图标可点击查看评分说明。8.评分说明弹窗：点击评分信息图标，展示「评分是基于宾客完成住宿后在满意度调查中提供的客户评分汇总得出的」。9.距离信息：0.1公里，展示酒店与搜索位置的距离。10.品牌等级：「奢华」等级标签。11.价格展示：双价格展示——积分价格（99,000积分/住宿）+ 现金价格（¥2,800 CNY/晚）。12.含税标识：「包含税费」说明。13.套餐信息：「华灯初上｜长沙天心阁套票套餐」等套餐标签--待确认。14.低价优选：「AAA/CAA: 2条低价优选」提示--待确认。15.酒店详情入口：点击卡片跳转酒店详情页。16.RLM入口：点击价格区域跳转房价列表页。",
+            "screenshot": "images/UI__图片库__首页__搜索结果__酒店卡片.png",
+            "note": "待确认项：6.酒店标签（新酒店、免费早餐、电动汽车充电站等）、13.套餐信息（华灯初上｜长沙天心阁套票套餐等）、14.低价优选（AAA/CAA: 2条低价优选）"
+          }
+        ]
+      },
+      {
+        "name": "酒店详情",
+        "features": [
+          {
+            "id": "HP21",
+            "name": "酒店信息（现有）",
+            "status": "live",
+            "desc": "酒店详情页：头图轮播、地址地图、画廊、优惠、餐饮、信息导航、底部价格栏",
+            "detail": "1.酒店头图轮播：顶部大图展示，支持左右滑动，带图片计数（1/64）。2.返回按钮：左上角返回上一页。3.分享酒店：顶部分享按钮。4.收藏到愿望清单：顶部心形收藏按钮。5.品牌标识：显示酒店品牌Logo。6.酒店名称：显示酒店名称。7.评分信息：评分 + 酒店标签 + 开业时间。8.酒店地址：详细地址 + 邮编 + 电话，支持点击获取路线。9.地图位置：嵌入式地图展示酒店位置，带品牌标记。10.酒店简介：欢迎文案 + 「了解更多」展开。11.画廊模块：横向滑动图片展示（餐厅、酒吧、海滩、会议室等），「查看全部」入口。12.酒店通知：重要通知公告（如禁烟政策）。13.优惠模块：酒店专属优惠活动卡片（如「丽斯下午茶之旅」）。14.餐饮模块：酒店内餐厅列表，「查看全部」入口。15.提前计划您的住宿：引导用户了解更多服务。16.酒店信息导航列表：酒店概览、设施、餐饮、健身、水疗、客房清洁服务、风景名胜、停车与交通、无障碍、活动。17.底部价格栏：¥500 CNY/晚起 + 「选择房型」CTA按钮。18.含税标识：「包含税费」说明。19.Lux vs Non-Lux 区别：Lux 版头图为大屏展示；Non-Lux 版（Moxy）头图为半屏展示，且酒店说明位置不同。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__酒店详情-Lux.png",
+              "images/UI__图片库__首页__酒店详情__酒店详情- Non Lux.png"
+            ]
+          },
+          {
+            "id": "HP24",
+            "name": "头图轮播",
+            "status": "live",
+            "desc": "顶部大图轮播，支持滑动切换，Lux/Non-Lux尺寸不同",
+            "detail": "1.头图：顶部大图展示，支持左右滑动，带图片计数（1/64）。LUX和Non-Lux头图尺寸不同。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__头图-Lux.png",
+              "images/UI__图片库__首页__酒店详情__头图- Non Lux.png"
+            ]
+          },
+          {
+            "id": "HP25",
+            "name": "收藏",
+            "status": "live",
+            "desc": "底部弹窗选择愿望清单收藏酒店，支持创建新清单",
+            "detail": "1.收藏：底部弹出心愿单面板，展示愿望清单列表。2.创建愿望清单：「+」按钮，支持创建新的愿望清单。3.现有愿望清单：展示已创建的愿望清单（如「感官」），显示清单封面和已保存酒店数量。4.收藏/取消收藏：清单右侧心形按钮，点击将酒店收藏到该清单或取消收藏。5.完成按钮：右上角「完成」，点击后成功将当前酒店加入心愿单同时关闭弹窗。",
+            "screenshot": "images/UI__图片库__首页__酒店详情__收藏.jpg"
+          },
+          {
+            "id": "HP26",
+            "name": "分享",
+            "status": "live",
+            "note": "微信/链接",
+            "screenshot": "images/UI__图片库__首页__酒店详情__酒店详情- Non Lux.png",
+            "detail": "1.点击分享：唤起分享弹层，可复制酒店地址以及分享酒店至系统应用。2.分享内容：酒店位置+名称+APP地址（可在浏览器中打开，未下载引导下载APP，已下载直接打开APP对应的酒店详情页）。",
+            "desc": "安卓支持分享酒店至系统应用（需授权）"
+          },
+          {
+            "id": "HP27",
+            "name": "电话直拨",
+            "status": "live",
+            "desc": "点击酒店电话直接拨打",
+            "detail": "1.致电酒店：点击酒店详情页面的酒店电话，可直接拨打酒店电话。",
+            "screenshot": "images/UI__图片库__首页__酒店详情__致电酒店.jpg"
+          },
+          {
+            "id": "HP28",
+            "name": "酒店地图",
+            "status": "live",
+            "desc": "全屏地图展示酒店位置，支持复制地址或跳转地图软件",
+            "detail": "1.点击地图：进入全屏地图页，页面展示酒店位置，点击酒店，可复制地址或在手机地图软件中打开。",
+            "screenshot": "images/UI__图片库__首页__酒店详情__酒店地图.jpg"
+          },
+          {
+            "id": "HP28a",
+            "name": "画廊",
+            "status": "live",
+            "desc": "横向滑动展示酒店各区域图片，支持查看全部",
+            "detail": "1.画廊标题：「画廊」+「查看全部」入口。2.横向滑动展示：餐厅、酒吧、海滩、会议室等分类图片。3.分类标签：每张图片下方标注分类名称。4.查看全部：点击进入完整画廊页面，展示所有分类图片。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__画廊.png",
+              "images/UI__图片库__首页__酒店详情__画廊详情.jpg"
+            ]
+          },
+          {
+            "id": "HP28b",
+            "name": "优惠",
+            "status": "new",
+            "desc": "酒店专属优惠活动卡片，支持查看详情和预订",
+            "detail": "1.优惠模块标题：「优惠」标题展示。2.优惠活动卡片：展示酒店专属优惠活动（如「丽斯下午茶之旅」），含活动图片、标题、简介。3.查看详情：点击卡片进入优惠详情页，展示完整活动信息、适用日期、预订规则。4.搜索：详情页底部「搜索」按钮，点击搜索该优惠的可预订日期。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__优惠.png",
+              "images/UI__图片库__首页__酒店详情__优惠详情.jpg"
+            ]
+          },
+          {
+            "id": "HP28c",
+            "name": "餐饮",
+            "status": "new",
+            "desc": "酒店内餐厅列表，支持查看详情和致电餐厅",
+            "detail": "1.餐饮模块标题：「餐饮」+「查看全部」入口。2.餐厅卡片：展示酒店内餐厅（如「都会尚膳 Shanghai City Bistro」），含餐厅图片、名称、风味标签（国际风味·休闲）。3.查看全部：点击进入全部餐厅列表页。4.餐厅详情：头图轮播、餐厅名称（中英文）、风味标签（中餐·休闲·在酒店内）、餐厅简介、营业时间。5.致电餐厅：底部「致电餐厅」按钮，点击拨打餐厅电话。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__餐饮入口.png",
+              "images/UI__图片库__首页__酒店详情__全部餐饮.jpg",
+              "images/UI__图片库__首页__酒店详情__餐饮详情.jpg"
+            ]
+          },
+          {
+            "id": "HP28d",
+            "name": "设施信息",
+            "status": "live",
+            "desc": "酒店设施分类导航列表，支持展开查看各类设施详情",
+            "detail": "1.设施导航列表：酒店信息导航列表，包含酒店概览、设施、餐饮、健身、水疗、客房清洁服务、风景名胜、停车与交通、无障碍、活动。2.分类展开：点击分类右侧「+」展开查看该分类下的具体设施详情。3.设施详情页：展示各类设施详细信息，如一般客房设施、上网服务、停车服务、免费服务、厨房设施、商务/团体特色、商务设施、客户服务、客房娱乐设施、客房特色、客房设施、宾客设施等。",
+            "screenshots": [
+              "images/UI__图片库__首页__酒店详情__设施列表.png",
+              "images/UI__图片库__首页__酒店详情__设施详情.jpg"
+            ]
+          },
+          {
+            "id": "HP28e",
+            "name": "底部价格栏",
+            "status": "live",
+            "desc": "底部固定价格栏，展示起价+选择房型入口",
+            "detail": "1.价格展示：展示起始价格（如 ¥500 CNY/晚起）。2.含税标识：「包含税费」说明。3.选择房型CTA：右侧「选择房型」按钮，点击跳转房价列表页（RLM）。",
+            "screenshot": "images/UI__图片库__首页__酒店详情__价格.png"
+          }
+        ]
+      },
+      {
+        "name": "房价列表 (RLM)",
+        "features": [
+          {
+            "id": "HP31",
+            "name": "房价列表",
+            "status": "new",
+            "desc": "一页式房价列表：房型卡片、筛选标签、价格展示、查看价格入口",
+            "detail": "1.酒店头图：顶部展示酒店外观图，带返回按钮和品牌Logo。2.酒店名称：展示酒店名称（如「上海绿发JW万豪侯爵酒店」）。3.酒店详情入口：「酒店详情」按钮，点击返回酒店详情页。4.搜索条件栏：日期（6月11日—6月12日）+ 房客信息（1间客房, 1位宾客）。5.筛选标签：客房类型、使用积分、特别房价等筛选入口。6.房型卡片：大图展示客房图片（支持轮播），含房型名称（如「2张双人床, 城市景观, 客房」）。7.客房详情入口：「客房详情」按钮，点击展开房型详细信息。8.价格展示：房价（如 ¥1,606 CNY/晚）+ 「包含税费」说明。9.查看价格按钮：「查看价格」CTA，点击进入该房型的价格详情。10.Lux vs Non-Lux 区别：Lux 版展示「客房类型」筛选标签；Non-Lux 版（万枫）展示无障碍提示文案。",
+            "screenshots": [
+              "images/UI__图片库__首页__RLM__客房列表-LUX.jpg",
+              "images/UI__图片库__首页__RLM__客房列表-非LUX.jpg"
+            ]
+          },
+          {
+            "id": "HP31a",
+            "name": "筛选",
+            "status": "live",
+            "desc": "客房类型/景观/床型/酒廊多维度筛选",
+            "detail": "1.关闭按钮：顶部「×」关闭筛选弹窗。2.标题：「筛选」+「清除全部」按钮。3.住宿类型：客房、副总统套房等复选框筛选。4.景观类型：城市景观、江河景观等复选框筛选。5.睡床类型：2张双人床、1张特大床等复选框筛选。6.酒廊：行政酒廊礼遇复选框筛选。7.显示结果：底部「显示结果」按钮，应用筛选条件。",
+            "screenshot": "images/UI__图片库__首页__RLM__筛选.jpg"
+          },
+          {
+            "id": "HP32",
+            "name": "房型详情",
+            "status": "live",
+            "desc": "底部弹窗展示客房详细信息，支持分类展开查看",
+            "detail": "1.关闭按钮：顶部「×」关闭客房详情弹窗。2.标题：「客房详情」+ 酒店名称。3.特别礼遇：可展开查看客房特别礼遇内容。4.睡床和床品：可展开查看床型、床品信息。5.客房特色：可展开查看客房设施特色。6.浴室特色：可展开查看浴室设施详情。7.家具和陈设：可展开查看客房家具配置。8.餐饮：可展开查看客房内餐饮服务。9.厨房特色：可展开查看厨房设施（如适用）。10.网络和电话：可展开查看网络、电话服务信息。11.酒店服务：可展开查看客房服务项目。12.娱乐：可展开查看客房娱乐设施。13.无障碍客房特色：可展开查看无障碍设施详情。",
+            "screenshot": "images/UI__图片库__首页__RLM__客房详情.jpg"
+          },
+          {
+            "id": "HP33",
+            "name": "房价详情弹窗",
+            "status": "new",
+            "desc": "底部弹窗展示房价详情：包含内容、担保/修改/取消政策、价格摘要",
+            "detail": "1.关闭按钮：顶部「×」关闭房价详情弹窗。2.标题：「房价详情」+ 酒店名称。3.房价名称：「住宿连早餐」精选。4.包含内容：每日早餐。5.其他房价信息：英文描述（Stay for Breakfast rate - Includes daily 1 or 2 breakfast in hotel restaurant）。6.担保政策：需要提供信用卡号码来预订客房。7.修改您的预订：如变更预订住宿日期或住宿时长，将可能导致房价发生变化。8.取消政策：免费取消截止时间（酒店当地时间夜间11:59之前），逾期取消费用说明。9.价格摘要：日期（6月11日至12日，1晚）+ 房价（¥1,807 CNY/晚）+ 「价格中已包含税费」。10.选择按钮：底部「选择」CTA，点击选择该房价进入预订流程。",
+            "screenshot": "images/UI__图片库__首页__RLM__房价详情.jpg"
+          }
+        ]
+      },
+      {
+        "name": "预订流程",
+        "features": [
+          {
+            "id": "HP36",
+            "name": "查看预订",
+            "status": "live",
+            "desc": "信息确认页",
+            "detail": "1.功能概述：信息确认页。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__首页__15-查找酒店.jpg"
+          },
+          {
+            "id": "HP37",
+            "name": "价格明细",
+            "status": "live",
+            "desc": " breakdown",
+            "detail": "1.功能概述： breakdown。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__BASE.png"
+          },
+          {
+            "id": "HP38",
+            "name": "会员流程",
+            "status": "new",
+            "desc": "会员专属",
+            "detail": "1.功能概述：会员专属。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__Member Review Res.png"
+          },
+          {
+            "id": "HP39",
+            "name": "非会员流程",
+            "status": "new",
+            "desc": "访客预订",
+            "detail": "1.功能概述：访客预订。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__Non-member Review Res.png"
+          },
+          {
+            "id": "HP40",
+            "name": "支付",
+            "status": "new",
+            "desc": "微信支付/支付宝",
+            "detail": "1.功能概述：微信支付/支付宝。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__secondary - payment method.png"
+          },
+          {
+            "id": "HP41",
+            "name": "支付失败处理",
+            "status": "new",
+            "desc": "4种失败场景",
+            "detail": "1.功能概述：4种失败场景。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__Prepaid.png"
+          },
+          {
+            "id": "HP42",
+            "name": "银联支付",
+            "status": "new",
+            "desc": "China Union Pay",
+            "detail": "1.功能概述：China Union Pay。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__review res__secondary - payment method.png"
+          },
+          {
+            "id": "HP43",
+            "name": "预订确认",
+            "status": "live",
+            "desc": "成功页",
+            "detail": "1.功能概述：成功页。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__reservation conf__BASE.png"
+          },
+          {
+            "id": "HP44",
+            "name": "商品推荐位",
+            "status": "new",
+            "note": "交叉销售"
+          }
+        ]
+      },
+      {
+        "name": "首页其他",
+        "features": [
+          {
+            "id": "HP45",
+            "name": "会员信息",
+            "status": "live",
+            "desc": "等级/积分快捷展示",
+            "detail": "1.功能概述：等级/积分快捷展示。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          },
+          {
+            "id": "HP46",
+            "name": "联名卡",
+            "status": "new",
+            "note": "信用卡推广"
+          },
+          {
+            "id": "HP47",
+            "name": "商品推荐位",
+            "status": "new",
+            "note": "目的地/R&B/推荐"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "discover",
+    "name": "探索",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.35-4.35\"/></svg>",
+    "desc": "内容发现、品牌体验、主题浏览——灵感与探索",
+    "count": 18,
+    "sections": [
+      {
+        "name": "探索搜索",
+        "features": [
+          {
+            "id": "DC01",
+            "name": "探索搜索栏",
+            "status": "new",
+            "desc": "内容关键词/酒店/目的地",
+            "detail": "1.功能概述：内容关键词/酒店/目的地。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__Overview.png"
+          },
+          {
+            "id": "DC02",
+            "name": "搜索自动建议",
+            "status": "new",
+            "desc": "实时联想",
+            "detail": "1.功能概述：实时联想。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Shop&Book_CN APP_1.2__search hub__Base Screens.png"
+          }
+        ]
+      },
+      {
+        "name": "品牌专区",
+        "features": [
+          {
+            "id": "DC03",
+            "name": "品牌专区",
+            "status": "new",
+            "desc": "品牌信息/内容",
+            "detail": "1.功能概述：品牌信息/内容。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__brand sub-tab.png"
+          },
+          {
+            "id": "DC04",
+            "name": "品牌详情页",
+            "status": "new",
+            "desc": "Landing page",
+            "detail": "1.功能概述：Landing page。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__brand sub-tab.png"
+          }
+        ]
+      },
+      {
+        "name": "主题内容",
+        "features": [
+          {
+            "id": "DC05",
+            "name": "目的地",
+            "status": "new",
+            "desc": "城市/景点指南",
+            "detail": "1.功能概述：城市/景点指南。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__探索__18-探索目的地.jpg"
+          },
+          {
+            "id": "DC06",
+            "name": "新开业酒店",
+            "status": "new",
+            "desc": "最新开业",
+            "detail": "1.功能概述：最新开业。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          },
+          {
+            "id": "DC07",
+            "name": "餐饮",
+            "status": "new",
+            "desc": "餐厅推荐",
+            "detail": "1.功能概述：餐厅推荐。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          },
+          {
+            "id": "DC08",
+            "name": "商务",
+            "status": "new",
+            "desc": "商务出行",
+            "detail": "1.功能概述：商务出行。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          },
+          {
+            "id": "DC09",
+            "name": "休闲",
+            "status": "new",
+            "desc": "度假/休闲",
+            "detail": "1.功能概述：度假/休闲。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          },
+          {
+            "id": "DC10",
+            "name": "内容 Landing Page",
+            "status": "new",
+            "desc": "图文/视频+预订CTA",
+            "detail": "1.功能概述：图文/视频+预订CTA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__native campaign page.png"
+          }
+        ]
+      },
+      {
+        "name": "用户内容",
+        "features": [
+          {
+            "id": "DC11",
+            "name": "UCC 内容",
+            "status": "new",
+            "desc": "用户生成内容",
+            "detail": "1.功能概述：用户生成内容。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          }
+        ]
+      },
+      {
+        "name": "每日海报",
+        "features": [
+          {
+            "id": "DC12",
+            "name": "全屏海报卡片",
+            "status": "new",
+            "desc": "每日推荐",
+            "detail": "1.功能概述：每日推荐。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__daily poster.png"
+          },
+          {
+            "id": "DC13",
+            "name": "海报分享",
+            "status": "new",
+            "desc": "微信好友/朋友圈",
+            "detail": "1.功能概述：微信好友/朋友圈。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__daily poster.png"
+          },
+          {
+            "id": "DC14",
+            "name": "海报收藏",
+            "status": "new",
+            "desc": "添加到愿望清单",
+            "detail": "1.功能概述：添加到愿望清单。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__探索__3-点击收藏.jpg"
+          }
+        ]
+      },
+      {
+        "name": "引导入口",
+        "features": [
+          {
+            "id": "DC15",
+            "name": "搜索结果页入口",
+            "status": "new",
+            "desc": "Discover CTA",
+            "detail": "1.功能概述：Discover CTA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__CTA to Discover.png"
+          },
+          {
+            "id": "DC16",
+            "name": "预订确认页入口",
+            "status": "new",
+            "desc": "Discover CTA",
+            "detail": "1.功能概述：Discover CTA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__CTA to Discover.png"
+          },
+          {
+            "id": "DC17",
+            "name": "行程空状态入口",
+            "status": "new",
+            "desc": "Discover CTA",
+            "detail": "1.功能概述：Discover CTA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__CTA to Discover.png"
+          },
+          {
+            "id": "DC18",
+            "name": "愿望清单空状态入口",
+            "status": "new",
+            "desc": "Discover CTA",
+            "detail": "1.功能概述：Discover CTA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__CTA to Discover.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shop",
+    "name": "商城",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>",
+    "desc": "商城首页、购物车、订单、券购买——零售与权益",
+    "count": 28,
+    "sections": [
+      {
+        "name": "商城首页",
+        "features": [
+          {
+            "id": "SP01",
+            "name": "商城搜索栏",
+            "status": "new",
+            "note": "关键词/酒店/目的地"
+          },
+          {
+            "id": "SP02",
+            "name": "商品推荐位",
+            "status": "new",
+            "note": "直播/促销"
+          },
+          {
+            "id": "SP03",
+            "name": "直播",
+            "status": "new",
+            "note": "Live Stream"
+          }
+        ]
+      },
+      {
+        "name": "购物车",
+        "features": [
+          {
+            "id": "SP04",
+            "name": "购物车",
+            "status": "new",
+            "note": "券/商品"
+          },
+          {
+            "id": "SP05",
+            "name": "券商品",
+            "status": "new",
+            "note": "房券/餐饮券"
+          },
+          {
+            "id": "SP06",
+            "name": "精品商品",
+            "status": "new",
+            "note": "Boutique"
+          }
+        ]
+      },
+      {
+        "name": "我的订单",
+        "features": [
+          {
+            "id": "SP07",
+            "name": "券订单",
+            "status": "new",
+            "note": "购买记录"
+          },
+          {
+            "id": "SP08",
+            "name": "券订单 redemption",
+            "status": "new",
+            "note": "核销"
+          },
+          {
+            "id": "SP09",
+            "name": "券订单退款",
+            "status": "new",
+            "note": "Refund"
+          },
+          {
+            "id": "SP10",
+            "name": "精品订单",
+            "status": "new",
+            "note": "商品购买记录"
+          },
+          {
+            "id": "SP11",
+            "name": "忠诚度订单",
+            "status": "new",
+            "note": "积分兑换订单"
+          }
+        ]
+      },
+      {
+        "name": "店铺入口",
+        "features": [
+          {
+            "id": "SP12",
+            "name": "券店铺",
+            "status": "new",
+            "note": "房券/餐饮券"
+          },
+          {
+            "id": "SP13",
+            "name": "房券",
+            "status": "new",
+            "note": "Room Voucher"
+          },
+          {
+            "id": "SP14",
+            "name": "房券详情页",
+            "status": "new",
+            "note": "Voucher Detail"
+          },
+          {
+            "id": "SP15",
+            "name": "房券支付",
+            "status": "new",
+            "note": "微信支付"
+          },
+          {
+            "id": "SP16",
+            "name": "餐饮券",
+            "status": "new",
+            "note": "F&B Voucher"
+          },
+          {
+            "id": "SP17",
+            "name": "餐饮券详情页",
+            "status": "new",
+            "note": "Voucher Detail"
+          },
+          {
+            "id": "SP18",
+            "name": "餐饮券支付",
+            "status": "new",
+            "note": "微信支付"
+          },
+          {
+            "id": "SP19",
+            "name": "精品店铺",
+            "status": "new",
+            "note": "Boutique Storefront"
+          },
+          {
+            "id": "SP20",
+            "name": "精品详情页",
+            "status": "new",
+            "note": "Boutique Detail"
+          },
+          {
+            "id": "SP21",
+            "name": "精品支付",
+            "status": "new",
+            "note": "微信支付"
+          },
+          {
+            "id": "SP22",
+            "name": "忠诚度店铺",
+            "status": "new",
+            "note": "积分商城"
+          },
+          {
+            "id": "SP23",
+            "name": "购买积分",
+            "status": "new",
+            "desc": "Buy Points",
+            "detail": "1.功能概述：Buy Points。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__rewards.png"
+          },
+          {
+            "id": "SP24",
+            "name": "积分兑换",
+            "status": "new",
+            "note": "Points Redemption"
+          },
+          {
+            "id": "SP25",
+            "name": "积分兑换-客房",
+            "status": "new",
+            "note": "Room"
+          },
+          {
+            "id": "SP26",
+            "name": "积分兑换-非客房",
+            "status": "new",
+            "note": "Non-Room"
+          },
+          {
+            "id": "SP27",
+            "name": "时刻竞拍",
+            "status": "new",
+            "note": "Moments Bidding"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trips",
+    "name": "行程",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/></svg>",
+    "desc": "行程管理、入住服务、历史记录——入住体验全链路",
+    "count": 32,
+    "sections": [
+      {
+        "name": "即将开始的行程",
+        "features": [
+          {
+            "id": "TP01",
+            "name": "行程卡片",
+            "status": "live",
+            "desc": "酒店/日期/状态",
+            "detail": "1.功能概述：酒店/日期/状态。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__行程__1-首页.jpg"
+          },
+          {
+            "id": "TP02",
+            "name": "快速 CTA-预入住",
+            "status": "new",
+            "desc": "房间升级",
+            "detail": "1.功能概述：房间升级。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__✅ Trips Landing UX Design.png"
+          },
+          {
+            "id": "TP03",
+            "name": "快速 CTA-修改预订",
+            "status": "new",
+            "desc": "Modify Reservation",
+            "detail": "1.功能概述：Modify Reservation。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__✅ Trips Landing UX Design.png"
+          },
+          {
+            "id": "TP04",
+            "name": "快速 CTA-手机入住",
+            "status": "new",
+            "desc": "Mobile Check-in",
+            "detail": "1.功能概述：Mobile Check-in。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__checkin in&out.png"
+          },
+          {
+            "id": "TP05",
+            "name": "快速 CTA-手机房卡",
+            "status": "new",
+            "desc": "Mobile Key",
+            "detail": "1.功能概述：Mobile Key。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__mobile key.png"
+          },
+          {
+            "id": "TP06",
+            "name": "快速 CTA-手机退房",
+            "status": "new",
+            "desc": "Mobile Check-out",
+            "detail": "1.功能概述：Mobile Check-out。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__checkin in&out.png"
+          }
+        ]
+      },
+      {
+        "name": "行程详情",
+        "features": [
+          {
+            "id": "TP07",
+            "name": "行程详情页",
+            "status": "live",
+            "desc": "完整预订信息",
+            "detail": "1.功能概述：完整预订信息。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Trips Detail UX Design.png"
+          },
+          {
+            "id": "TP08",
+            "name": "预订头信息",
+            "status": "new",
+            "desc": "日期/天气等",
+            "detail": "1.功能概述：日期/天气等。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Trips Detail UX Design.png"
+          },
+          {
+            "id": "TP09",
+            "name": "入住中心",
+            "status": "new",
+            "desc": "电话/聊天/发票/服务请求",
+            "detail": "1.功能概述：电话/聊天/发票/服务请求。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Trips Detail UX Design.png"
+          },
+          {
+            "id": "TP10",
+            "name": "手机入住/退房",
+            "status": "new",
+            "desc": "自助服务",
+            "detail": "1.功能概述：自助服务。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__checkin in&out.png"
+          },
+          {
+            "id": "TP11",
+            "name": "手机房卡",
+            "status": "new",
+            "desc": "Digital Key",
+            "detail": "1.功能概述：Digital Key。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__mobile key.png"
+          },
+          {
+            "id": "TP12",
+            "name": "房间升级",
+            "status": "new",
+            "desc": "付费/NUA",
+            "detail": "1.功能概述：付费/NUA。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__room upgrade(paid&nua).png"
+          },
+          {
+            "id": "TP13",
+            "name": "餐饮",
+            "status": "new",
+            "desc": "R&B Outlets",
+            "detail": "1.功能概述：R&B Outlets。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Discover CN App 1.2__inspiration sub-tab.png"
+          },
+          {
+            "id": "TP14",
+            "name": "酒店设施",
+            "status": "new",
+            "desc": "Facilities",
+            "detail": "1.功能概述：Facilities。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Trips Detail UX Design.png"
+          },
+          {
+            "id": "TP15",
+            "name": "券轮播与入口",
+            "status": "new",
+            "desc": "Voucher Carousel",
+            "detail": "1.功能概述：Voucher Carousel。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Trips Detail UX Design.png"
+          },
+          {
+            "id": "TP16",
+            "name": "商品推荐位",
+            "status": "new",
+            "note": "Merchandising"
+          }
+        ]
+      },
+      {
+        "name": "其他行程",
+        "features": [
+          {
+            "id": "TP17",
+            "name": "缺失住宿申请",
+            "status": "new",
+            "desc": "Missing Stay Request",
+            "detail": "1.功能概述：Missing Stay Request。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Find existing reservation.png"
+          },
+          {
+            "id": "TP18",
+            "name": "旅行足迹",
+            "status": "new",
+            "desc": "Travel Footprint Summary",
+            "detail": "1.功能概述：Travel Footprint Summary。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__✅ Trips Landing UX Design.png"
+          },
+          {
+            "id": "TP19",
+            "name": "历史与取消行程",
+            "status": "new",
+            "desc": "Past and Cancelled",
+            "detail": "1.功能概述：Past and Cancelled。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Base Screens.png"
+          },
+          {
+            "id": "TP20",
+            "name": "筛选历史行程",
+            "status": "new",
+            "desc": "Filter past",
+            "detail": "1.功能概述：Filter past。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Trips CN App__Base Screens.png"
+          },
+          {
+            "id": "TP21",
+            "name": "查找现有预订",
+            "status": "live",
+            "desc": "非登录查询",
+            "detail": "1.功能概述：非登录查询。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__行程__2-查找现有预定.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "account",
+    "name": "账户",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg>",
+    "desc": "会员状态、积分、权益、个人资料——忠诚度运营核心",
+    "count": 52,
+    "sections": [
+      {
+        "name": "账户状态",
+        "features": [
+          {
+            "id": "AC01",
+            "name": "会员等级展示",
+            "status": "live",
+            "desc": "银/金/白金/钛金/大使",
+            "detail": "1.功能概述：银/金/白金/钛金/大使。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__1-首页.jpg"
+          },
+          {
+            "id": "AC02",
+            "name": "保级进度条",
+            "status": "live",
+            "desc": "年度房晚进度",
+            "detail": "1.功能概述：年度房晚进度。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__1-首页.jpg"
+          },
+          {
+            "id": "AC03",
+            "name": "积分余额",
+            "status": "live",
+            "desc": "当前可用积分",
+            "detail": "1.功能概述：当前可用积分。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__1-首页.jpg"
+          },
+          {
+            "id": "AC04",
+            "name": "联名卡",
+            "status": "new",
+            "note": "Co-brand Card"
+          },
+          {
+            "id": "AC05",
+            "name": "账户活动",
+            "status": "live",
+            "desc": "积分/房晚记录",
+            "detail": "1.功能概述：积分/房晚记录。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__3-奖励积分.jpg"
+          }
+        ]
+      },
+      {
+        "name": "会员快捷入口",
+        "features": [
+          {
+            "id": "AC06",
+            "name": "酒店订单",
+            "status": "new",
+            "desc": "Navigate to Trips",
+            "detail": "1.功能概述：Navigate to Trips。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          },
+          {
+            "id": "AC07",
+            "name": "商城订单",
+            "status": "new",
+            "desc": "Navigate to Shop",
+            "detail": "1.功能概述：Navigate to Shop。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          },
+          {
+            "id": "AC08",
+            "name": "愿望清单",
+            "status": "live",
+            "desc": "收藏酒店",
+            "detail": "1.功能概述：收藏酒店。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__wishlists landing.png"
+          },
+          {
+            "id": "AC09",
+            "name": "浏览历史",
+            "status": "new",
+            "desc": "View History",
+            "detail": "1.功能概述：View History。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          }
+        ]
+      },
+      {
+        "name": "积分专区",
+        "features": [
+          {
+            "id": "AC10",
+            "name": "积分余额详情",
+            "status": "new",
+            "desc": "Points Balance",
+            "detail": "1.功能概述：Points Balance。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__3-奖励积分.jpg"
+          },
+          {
+            "id": "AC11",
+            "name": "赚取积分",
+            "status": "new",
+            "desc": "Earn Points",
+            "detail": "1.功能概述：Earn Points。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          },
+          {
+            "id": "AC12",
+            "name": "兑换积分",
+            "status": "new",
+            "desc": "Redeem Points",
+            "detail": "1.功能概述：Redeem Points。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__rewards.png"
+          },
+          {
+            "id": "AC13",
+            "name": "购买积分",
+            "status": "new",
+            "desc": "Buy & Gift Points",
+            "detail": "1.功能概述：Buy & Gift Points。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__rewards.png"
+          },
+          {
+            "id": "AC14",
+            "name": "积分商城",
+            "status": "new",
+            "desc": "Loyalty Storefront",
+            "detail": "1.功能概述：Loyalty Storefront。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__rewards.png"
+          }
+        ]
+      },
+      {
+        "name": "奖励",
+        "features": [
+          {
+            "id": "AC15",
+            "name": "免费房晚(FNA)",
+            "status": "pending",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__rewards.png"
+          },
+          {
+            "id": "AC16",
+            "name": "房晚升级(NUA)",
+            "status": "live",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__优先延迟退房.jpg"
+          },
+          {
+            "id": "AC17",
+            "name": "Gated Offers",
+            "status": "live",
+            "desc": "专属优惠",
+            "detail": "1.功能概述：专属优惠。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__promotions&offers.png"
+          }
+        ]
+      },
+      {
+        "name": "大使服务",
+        "features": [
+          {
+            "id": "AC18",
+            "name": "大使专线",
+            "status": "new",
+            "desc": "Ambassador Service",
+            "detail": "1.功能概述：Ambassador Service。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          }
+        ]
+      },
+      {
+        "name": "促销与优惠",
+        "features": [
+          {
+            "id": "AC19",
+            "name": "促销活动列表",
+            "status": "pending",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__promotions&offers.png"
+          },
+          {
+            "id": "AC20",
+            "name": "优惠详情",
+            "status": "pending",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__promotions&offers.png"
+          }
+        ]
+      },
+      {
+        "name": "会员权益",
+        "features": [
+          {
+            "id": "AC21",
+            "name": "按等级权益展示",
+            "status": "new",
+            "desc": "8项专项礼遇",
+            "detail": "1.功能概述：8项专项礼遇。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__2-您可享受8项专项礼遇.jpg"
+          },
+          {
+            "id": "AC22",
+            "name": "权益详情",
+            "status": "new",
+            "desc": "详细说明",
+            "detail": "1.功能概述：详细说明。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__已登录__2-您可享受8项专项礼遇.jpg"
+          }
+        ]
+      },
+      {
+        "name": "个人资料",
+        "features": [
+          {
+            "id": "AC23",
+            "name": "个人信息",
+            "status": "pending",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__my profile（1.2）.png"
+          },
+          {
+            "id": "AC24",
+            "name": "会员卡",
+            "status": "new",
+            "desc": "Add to Digital Wallets",
+            "detail": "1.功能概述：Add to Digital Wallets。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__member card（1.2）.png"
+          },
+          {
+            "id": "AC25",
+            "name": "偏好设置",
+            "status": "new",
+            "desc": "客房/沟通/语言/旅行/饮食",
+            "detail": "1.功能概述：客房/沟通/语言/旅行/饮食。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__preferences.png"
+          },
+          {
+            "id": "AC26",
+            "name": "发票信息管理",
+            "status": "new",
+            "desc": "Fapiao",
+            "detail": "1.功能概述：Fapiao。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__my profile（1.2）.png"
+          },
+          {
+            "id": "AC27",
+            "name": "地址管理",
+            "status": "new",
+            "desc": "Address",
+            "detail": "1.功能概述：Address。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__my profile（1.2）.png"
+          },
+          {
+            "id": "AC28",
+            "name": "设置",
+            "status": "new",
+            "desc": "Settings",
+            "detail": "1.功能概述：Settings。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__setting.png"
+          }
+        ]
+      },
+      {
+        "name": "客户服务",
+        "features": [
+          {
+            "id": "AC29",
+            "name": "客户支持",
+            "status": "new",
+            "desc": "Customer Support",
+            "detail": "1.功能概述：Customer Support。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          }
+        ]
+      },
+      {
+        "name": "QRV",
+        "features": [
+          {
+            "id": "AC30",
+            "name": "员工身份验证",
+            "status": "new",
+            "desc": "BAU vs QRV",
+            "detail": "1.功能概述：BAU vs QRV。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__QRV CN APP__Corporate Flow.png"
+          },
+          {
+            "id": "AC31",
+            "name": "企业客户验证",
+            "status": "new",
+            "desc": "MMP Corporate",
+            "detail": "1.功能概述：MMP Corporate。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__QRV CN APP__Corporate Flow.png"
+          },
+          {
+            "id": "AC32",
+            "name": "万豪商务平台",
+            "status": "new",
+            "desc": "Marriott Business",
+            "detail": "1.功能概述：Marriott Business。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__QRV CN APP__Marriott Business.png"
+          },
+          {
+            "id": "AC33",
+            "name": "亲友价验证",
+            "status": "new",
+            "desc": "Friends & Family",
+            "detail": "1.功能概述：Friends & Family。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__QRV CN APP__Associate Flow.png"
+          },
+          {
+            "id": "AC34",
+            "name": "经验证的特别房价",
+            "status": "new",
+            "desc": "Explore Rate/QCC",
+            "detail": "1.功能概述：Explore Rate/QCC。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__QRV CN APP__account__Verified Special Rates.png"
+          }
+        ]
+      },
+      {
+        "name": "情感化运营",
+        "features": [
+          {
+            "id": "AC35",
+            "name": "欢迎入会庆祝",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_celebratory_1.png"
+          },
+          {
+            "id": "AC36",
+            "name": "保级成功庆祝",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_celebratory_1.png"
+          },
+          {
+            "id": "AC37",
+            "name": "生日祝福",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_celebratory_1.png"
+          },
+          {
+            "id": "AC38",
+            "name": "入会周年庆祝",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_celebratory_1.png"
+          },
+          {
+            "id": "AC39",
+            "name": "年终状态回顾",
+            "status": "new",
+            "desc": "Your 2025 Status",
+            "detail": "1.功能概述：Your 2025 Status。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__Year end processing.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wallet",
+    "name": "钱包",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21 12V7H5a2 2 0 0 1 0-4h14v4\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h16v-5\"/><path d=\"M18 12a2 2 0 0 0 0 4h4v-4Z\"/></svg>",
+    "desc": "积分余额、礼品卡、支付方式——资产管理中心（设计中）",
+    "count": 24,
+    "sections": [
+      {
+        "name": "钱包首页",
+        "features": [
+          {
+            "id": "WL01",
+            "name": "积分余额",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL02",
+            "name": "礼品卡余额",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Overview.png"
+          },
+          {
+            "id": "WL03",
+            "name": "会员卡快捷入口",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__QR CODE.png"
+          },
+          {
+            "id": "WL04",
+            "name": "礼品卡入口",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Overview.png"
+          },
+          {
+            "id": "WL05",
+            "name": "支付方式入口",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL06",
+            "name": "交易记录入口",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL07",
+            "name": "积分明细入口",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL08",
+            "name": "推广与优惠",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL09",
+            "name": "我的收藏",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL10",
+            "name": "客户支持",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__pdf_account_landing_1.png"
+          },
+          {
+            "id": "WL11",
+            "name": "8种状态变体",
+            "status": "design",
+            "desc": "默认/奖励/礼品卡/暗黑等",
+            "detail": "1.功能概述：默认/奖励/礼品卡/暗黑等。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          }
+        ]
+      },
+      {
+        "name": "礼品卡",
+        "features": [
+          {
+            "id": "WL12",
+            "name": "礼品卡列表",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Overview.png"
+          },
+          {
+            "id": "WL13",
+            "name": "礼品卡详情",
+            "status": "design",
+            "desc": "卡号/余额/有效期",
+            "detail": "1.功能概述：卡号/余额/有效期。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Details.png"
+          },
+          {
+            "id": "WL14",
+            "name": "手动添加礼品卡",
+            "status": "design",
+            "desc": "输入卡号/CVV",
+            "detail": "1.功能概述：输入卡号/CVV。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Add Gift Card.png"
+          },
+          {
+            "id": "WL15",
+            "name": "领取赠送礼品卡",
+            "status": "design",
+            "desc": "保存到钱包",
+            "detail": "1.功能概述：保存到钱包。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__New Gift Card.png"
+          },
+          {
+            "id": "WL16",
+            "name": "礼品卡兑换",
+            "status": "design",
+            "desc": "MFA验证",
+            "detail": "1.功能概述：MFA验证。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Redeem Gift Card.png"
+          },
+          {
+            "id": "WL17",
+            "name": "锁定卡片",
+            "status": "design",
+            "desc": "安全机制",
+            "detail": "1.功能概述：安全机制。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
+          },
+          {
+            "id": "WL18",
+            "name": "挂失卡片",
+            "status": "design",
+            "desc": "安全机制",
+            "detail": "1.功能概述：安全机制。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
+          },
+          {
+            "id": "WL19",
+            "name": "移除卡片",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
+          },
+          {
+            "id": "WL20",
+            "name": "交易明细",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Details.png"
+          },
+          {
+            "id": "WL21",
+            "name": "底部弹窗",
+            "status": "design",
+            "desc": "使用/添加/领取",
+            "detail": "1.功能概述：使用/添加/领取。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Gift Card Bottom Sheet.png"
+          }
+        ]
+      },
+      {
+        "name": "资产导航",
+        "features": [
+          {
+            "id": "WL22",
+            "name": "支付方式管理",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Wallet Overview.png"
+          },
+          {
+            "id": "WL23",
+            "name": "账户活动",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__account hub.png"
+          },
+          {
+            "id": "WL24",
+            "name": "资产总览",
+            "status": "design",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Access Assets.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "auth",
+    "name": "安全认证",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>",
+    "desc": "登录、注册、MFA、Push——安全与合规",
+    "count": 18,
+    "sections": [
+      {
+        "name": "未登录",
+        "features": [
+          {
+            "id": "SO01",
+            "name": "隐私政策弹窗",
+            "status": "live",
+            "desc": "同意/不同意",
+            "detail": "1.功能概述：同意/不同意。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__登录__9-勾选隐私政策.jpg"
+          },
+          {
+            "id": "SO02",
+            "name": "Onboarding 引导",
+            "status": "new",
+            "desc": "4步引导",
+            "detail": "1.功能概述：4步引导。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__signed out state__onboarding flow.png"
+          },
+          {
+            "id": "SO03",
+            "name": "注册",
+            "status": "live",
+            "desc": "加入万豪旅享家",
+            "detail": "1.功能概述：加入万豪旅享家。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__登录__4-点击加入万豪旅享家.jpg"
+          },
+          {
+            "id": "SO04",
+            "name": "登录",
+            "status": "live",
+            "desc": "账号密码",
+            "detail": "1.功能概述：账号密码。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__登录__11-点击登录.jpg"
+          },
+          {
+            "id": "SO05",
+            "name": "忘记密码",
+            "status": "live",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__登录__12-找回密码.jpg"
+          },
+          {
+            "id": "SO06",
+            "name": "查找会员编号",
+            "status": "live",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__登录__13-查找会员编号.jpg"
+          },
+          {
+            "id": "SO07",
+            "name": "生物识别登录",
+            "status": "new",
+            "desc": "Face ID",
+            "detail": "1.功能概述：Face ID。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__signed out state__Sign in.png"
+          },
+          {
+            "id": "SO08",
+            "name": "免密登录",
+            "status": "new",
+            "desc": "Backlog Q3/Q4",
+            "detail": "1.功能概述：Backlog Q3/Q4。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__signed out state__Sign in.png"
+          },
+          {
+            "id": "SO09",
+            "name": "未登录首页",
+            "status": "new",
+            "desc": "功能限制+引导",
+            "detail": "1.功能概述：功能限制+引导。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/现有功能截图__APP__账户__未登录__1-首页.jpg"
+          }
+        ]
+      },
+      {
+        "name": "安全",
+        "features": [
+          {
+            "id": "SEC01",
+            "name": "多因素认证(MFA)",
+            "status": "new",
+            "desc": "手机/邮箱",
+            "detail": "1.功能概述：手机/邮箱。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__MFA.png"
+          },
+          {
+            "id": "SEC02",
+            "name": "礼品卡兑换MFA",
+            "status": "design",
+            "desc": "短信/邮箱",
+            "detail": "1.功能概述：短信/邮箱。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Wallet CN App__Redeem Gift Card.png"
+          },
+          {
+            "id": "SEC03",
+            "name": "Push 权限申请",
+            "status": "new",
+            "desc": "7个场景",
+            "detail": "1.功能概述：7个场景。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__push+opt in.png"
+          },
+          {
+            "id": "SEC04",
+            "name": "Push 功能引导",
+            "status": "new",
+            "desc": "价值说明",
+            "detail": "1.功能概述：价值说明。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__push+opt in.png"
+          },
+          {
+            "id": "SEC05",
+            "name": "Push 分类管理",
+            "status": "new",
+            "desc": "通知开关",
+            "detail": "1.功能概述：通知开关。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Loyalty CN App__push+opt in.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mbop",
+    "name": "MBOP",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 2L2 7l10 5 10-5-10-5z\"/><path d=\"m2 17 10 5 10-5\"/><path d=\"m2 12 10 5 10-5\"/></svg>",
+    "desc": "万豪优惠平台——活动套餐浏览与预订",
+    "count": 11,
+    "sections": [
+      {
+        "name": "MBOP",
+        "features": [
+          {
+            "id": "M01",
+            "name": "活动套餐列表",
+            "status": "new",
+            "desc": "图片/标题/价格",
+            "detail": "1.功能概述：图片/标题/价格。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Base screen.png"
+          },
+          {
+            "id": "M02",
+            "name": "活动套餐详情",
+            "status": "new",
+            "desc": "描述/价格/日期",
+            "detail": "1.功能概述：描述/价格/日期。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Base screen.png"
+          },
+          {
+            "id": "M03",
+            "name": "日历选择",
+            "status": "new",
+            "desc": "灵活日期",
+            "detail": "1.功能概述：灵活日期。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Calendar Flow.png"
+          },
+          {
+            "id": "M04",
+            "name": "地图视图",
+            "status": "new",
+            "desc": "位置+价格气泡",
+            "detail": "1.功能概述：位置+价格气泡。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Map view.png"
+          },
+          {
+            "id": "M05",
+            "name": "排序",
+            "status": "new",
+            "desc": "推荐/价格/距离",
+            "detail": "1.功能概述：推荐/价格/距离。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Sort & Filter & Terms.png"
+          },
+          {
+            "id": "M06",
+            "name": "城市筛选",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Sort & Filter & Terms.png"
+          },
+          {
+            "id": "M07",
+            "name": "条款说明",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Sort & Filter & Terms.png"
+          },
+          {
+            "id": "M08",
+            "name": "活动标签组件",
+            "status": "new",
+            "desc": "适用日期等",
+            "detail": "1.功能概述：适用日期等。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__New Components.png"
+          },
+          {
+            "id": "M09",
+            "name": "活动卡片组件",
+            "status": "new",
+            "desc": "大图+名称+价格",
+            "detail": "1.功能概述：大图+名称+价格。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Base screen.png"
+          },
+          {
+            "id": "M10",
+            "name": "原型交互流程",
+            "status": "new",
+            "desc": "列表→详情→日历",
+            "detail": "1.功能概述：列表→详情→日历。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Prototype.png"
+          },
+          {
+            "id": "M11",
+            "name": "现有MBOP页面",
+            "status": "live",
+            "desc": "暗黑模式",
+            "detail": "1.功能概述：暗黑模式。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__MBOP CN APP__Current MBOP screens.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "group",
+    "name": "团体预订",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
+    "desc": "单酒店/多酒店团体预订与管理",
+    "count": 7,
+    "sections": [
+      {
+        "name": "团体预订",
+        "features": [
+          {
+            "id": "GB01",
+            "name": "单酒店团体预订",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB02",
+            "name": "多酒店团体预订",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB03",
+            "name": "团体预订首页",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB04",
+            "name": "团体行程管理",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB05",
+            "name": "团体预订编辑",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB06",
+            "name": "团体预订确认",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__UI.png"
+          },
+          {
+            "id": "GB07",
+            "name": "暗黑模式",
+            "status": "new",
+            "desc": "—",
+            "detail": "1.功能概述：—。2.交互说明：点击对应入口进入功能页面。3.状态说明：当前功能已上线。",
+            "screenshot": "images/UI__Group booking__Dark mode.png"
+          }
+        ]
+      }
+    ]
+  }
+]
