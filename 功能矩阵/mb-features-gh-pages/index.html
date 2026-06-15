@@ -64,9 +64,9 @@
     }
 
     .header-inner {
-      max-width: 1440px;
+      max-width: 1760px;
       margin: 0 auto;
-      padding: 20px 40px;
+      padding: 10px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -136,6 +136,28 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 2px;
+    }
+
+    .data-source-status {
+      flex-shrink: 0;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .data-source-status[data-state="online"] {
+      border-color: #86EFAC;
+      background: #F0FDF4;
+      color: #166534;
+    }
+
+    .data-source-status[data-state="fallback"] {
+      border-color: #FDE68A;
+      background: #FFFBEB;
+      color: #92400E;
     }
 
     /* ===== Global Search ===== */
@@ -387,11 +409,11 @@
 
     /* ===== Main Layout ===== */
     .main {
-      max-width: 1440px;
+      max-width: 1760px;
       margin: 0 auto;
-      padding: 100px 40px 48px;
+      padding: 72px 28px 36px;
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 184px 1fr;
       gap: 0;
       min-height: 100vh;
     }
@@ -399,10 +421,10 @@
     /* ===== Sidebar ===== */
     .sidebar {
       position: sticky;
-      top: 88px;
-      height: calc(100vh - 120px);
+      top: 70px;
+      height: calc(100vh - 82px);
       overflow-y: auto;
-      padding-right: 24px;
+      padding: 16px 14px 0 0;
       border-right: 1px solid var(--border);
     }
 
@@ -428,11 +450,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
+      padding: 8px 9px;
+      border-radius: 7px;
       text-decoration: none;
       color: var(--text-inverse-muted);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 500;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -466,9 +488,9 @@
     }
 
     .nav-icon {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
+      width: 15px;
+      height: 15px;
+      margin-right: 7px;
       opacity: 0.5;
       transition: opacity 0.2s ease;
     }
@@ -750,6 +772,12 @@
       display: flex;
       gap: 6px;
       align-items: center;
+    }
+
+    .section-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .badge {
@@ -1282,6 +1310,1376 @@
     .section-card:nth-child(6) { animation-delay: 0.3s; }
     .section-card:nth-child(7) { animation-delay: 0.35s; }
     .section-card:nth-child(8) { animation-delay: 0.4s; }
+
+/* ===== Benchmark Matrix View ===== */
+
+/* Override .content constraints when benchmark is shown */
+.content:has(.bm-view) {
+  background: #e9eff8;
+  padding: 0;
+  margin-left: 0;
+  border-radius: 0;
+}
+
+.bm-view {
+  --bm-score-0: #e5e7eb;
+  --bm-score-1: #5fb89e;
+  --bm-score-2: #ffb900;
+  --bm-score-3: #70a9e7;
+  --bm-line: #d1d8e0;
+  --bm-muted: #5f6d77;
+  --bm-card-bg: #ffffff;
+  --bm-page-bg: #e9eff8;
+  --bm-shadow: 0 4px 14px rgba(48,65,85,0.08);
+  --bm-shadow-lg: 0 8px 22px rgba(48,65,85,0.14);
+  --bm-navy: #1a2b3c;
+  --bm-maroon: #8b1737;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a2b3c;
+  background: var(--bm-page-bg);
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bm-view *, .bm-view *::before, .bm-view *::after {
+  box-sizing: border-box;
+}
+
+.bm-view button, .bm-view input {
+  font: inherit;
+}
+
+/* ---- Topbar ---- */
+.bm-view .bm-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 24px 12px;
+  margin: 0 -24px;
+  background: var(--bm-card-bg);
+  box-shadow: var(--bm-shadow);
+  border-bottom: 1px solid var(--bm-line);
+}
+
+.bm-view .bm-title-block h2 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--bm-navy);
+}
+
+.bm-view .bm-title-block p {
+  margin: 4px 0 0;
+  color: var(--bm-muted);
+  font-size: 12px;
+}
+
+.bm-view .bm-total-badge {
+  min-width: 120px;
+  padding: 10px 16px;
+  color: white;
+  background: linear-gradient(135deg, #ffb900 0%, #e6a600 100%);
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: var(--bm-shadow-lg);
+  flex-shrink: 0;
+}
+
+.bm-view .bm-total-badge strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.bm-view .bm-total-badge span {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.bm-view .bm-coverage-stats {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-coverage-stat {
+  min-width: 90px;
+  padding: 10px 14px;
+  background: var(--bm-card-bg);
+  border: 1px solid var(--bm-line);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--bm-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bm-view .bm-coverage-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--bm-shadow-lg);
+}
+
+.bm-view .bm-coverage-stat strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.bm-view .bm-coverage-stat span {
+  display: block;
+  margin-top: 4px;
+  color: var(--bm-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.bm-view .bm-coverage-stat.primary strong { color: #5fb89e; }
+.bm-view .bm-coverage-stat.missing strong { color: #9ca3af; }
+.bm-view .bm-coverage-stat.pending strong { color: #f97316; }
+
+/* ---- Controlbar ---- */
+.bm-view .bm-controlbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #fff;
+  border: 1px solid var(--bm-line);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  margin: 0 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.bm-view .bm-brand-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.bm-view .bm-brand-tabs::-webkit-scrollbar { display: none; }
+
+.bm-view .bm-controlbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-brand-tab {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  color: #5f6d77;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-brand-tab:hover:not(:disabled) {
+  border-color: rgba(212,149,106,0.3);
+  color: #1a2b3c;
+  background: rgba(212,149,106,0.06);
+}
+
+.bm-view .bm-brand-tab.active {
+  color: var(--accent, #D4956A);
+  background: rgba(212,149,106,0.12);
+  border-color: rgba(212,149,106,0.3);
+  font-weight: 600;
+}
+
+.bm-view .bm-brand-tab:disabled {
+  color: #c8d0d6;
+  background: #f4f6f8;
+  border-color: #e0e5ea;
+  cursor: not-allowed;
+}
+
+.bm-view .bm-brand-status {
+  padding: 1px 5px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.bm-view .bm-search-box {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  background: #fff;
+  border: 1px solid #cbd5df;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  flex: 1;
+  min-width: 160px;
+  max-width: 320px;
+}
+
+.bm-view .bm-search-box span {
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #5f6d77;
+}
+
+.bm-view .bm-gap-toggle {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  color: #7b2941;
+  background: #fff;
+  border: 1px solid #d9b7c1;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bm-view .bm-gap-toggle:hover {
+  background: #fdf2f4;
+  border-color: #c49aa6;
+}
+
+.bm-view .bm-gap-toggle.active {
+  color: #fff;
+  background: #8b1737;
+  border-color: #8b1737;
+}
+
+.bm-view .bm-search-box:focus-within {
+  border-color: #70a9e7;
+  box-shadow: 0 0 0 3px rgba(112, 169, 231, 0.15);
+}
+
+.bm-view .bm-search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #1a2b3c;
+  background: transparent;
+  font-size: 12px;
+}
+
+.bm-view .bm-search-box button {
+  border: 0;
+  color: #9ca3af;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-search-box button:hover {
+  color: #6b7280;
+}
+
+.bm-view .bm-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #5f6d77;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.bm-view .bm-legend-swatch {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.bm-view .bm-legend-swatch.bm-score-unknown {
+  border: 1px dashed #9ca3af;
+  background: transparent !important;
+}
+
+/* ---- Matrix Layout ---- */
+.bm-view .bm-matrix-layout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+  padding: 16px 0 28px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  overflow: visible;
+}
+
+.bm-view .bm-matrix-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Module Card ---- */
+.bm-view .bm-module-card {
+  width: 100%;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bm-card-bg);
+  border: 1px solid var(--bm-line);
+  border-radius: 12px;
+  box-shadow: var(--bm-shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.bm-view .bm-module-card:hover {
+  box-shadow: var(--bm-shadow-lg);
+  transform: translateY(-1px);
+}
+
+.bm-view .bm-module-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--bm-module-accent, #1a2b3c);
+  border-radius: 12px 0 0 12px;
+}
+
+.bm-view .bm-module-heading {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px 0 14px;
+  border-bottom: 1px solid var(--bm-line);
+  border-top: none;
+  background: linear-gradient(to right, #f8fafc, #fff);
+}
+
+.bm-view .bm-module-number {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--bm-module-accent, #1a2b3c);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-module-heading h3 {
+  margin: 0;
+  color: var(--bm-navy);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.bm-view .bm-module-heading small {
+  color: #9ca3af;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.bm-view .bm-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 10px;
+}
+
+.bm-view .bm-module-card.bm-dense .bm-section-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bm-view .bm-module-card.bm-extra-dense .bm-section-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bm-view .bm-section-group {
+  min-width: 0;
+  padding-top: 0;
+}
+
+.bm-view .bm-section-group h4 {
+  margin: 0 0 4px;
+  overflow: hidden;
+  color: #374151;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 3px 0;
+  background: #f4f6f8;
+  border-radius: 4px;
+}
+
+.bm-view .bm-feature-grid {
+  display: grid;
+  gap: 3px;
+}
+
+.bm-view .bm-feature-tile {
+  width: 100%;
+  min-height: 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.25;
+  position: relative;
+  overflow: hidden;
+}
+
+.bm-view .bm-feature-tile:hover {
+  z-index: 2;
+  filter: brightness(0.94);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  outline: 2px solid #1a2b3c;
+  outline-offset: 1px;
+}
+
+.bm-view .bm-feature-tile.bm-score-0 { background: #e5e7eb; color: #6b7280; }
+.bm-view .bm-feature-tile.bm-score-1 { background: #5fb89e; color: #fff; }
+.bm-view .bm-feature-tile.bm-score-2 { background: #ffb900; color: #1a2b3c; }
+.bm-view .bm-feature-tile.bm-score-3 { background: #70a9e7; color: #fff; }
+.bm-view .bm-feature-tile.bm-score-unknown { background: #f3f4f6; color: #9ca3af; border: 1px dashed #d1d5db; }
+
+.bm-view .bm-feature-name {
+  min-width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  font-size: 10px;
+  line-height: 1.25;
+  text-align: left;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: 500;
+}
+
+.bm-match-code {
+  padding: 1px 4px;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.bm-view .bm-feature-tile.bm-score-0 .bm-match-code,
+.bm-view .bm-feature-tile.bm-score-1 .bm-match-code,
+.bm-view .bm-feature-tile.bm-score-2 .bm-match-code {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.bm-view .bm-module-review {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+  margin: 0 10px 10px;
+  padding: 8px 10px;
+  color: #5f6d77;
+  background: #f8fafc;
+  border-left: 3px solid #8b1737;
+  border-radius: 0 8px 8px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.bm-view .bm-module-review strong {
+  color: #8b1737;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---- Drawer ---- */
+.bm-drawer-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.bm-detail-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(880px, 92vw);
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px;
+  background: #fff;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+  border-radius: 14px 0 0 14px;
+}
+
+.bm-drawer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #6b7280;
+  background: #f9fafb;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: grid;
+  place-items: center;
+}
+
+.bm-drawer-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.bm-drawer-kicker {
+  margin-bottom: 6px;
+  color: #8b1737;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.bm-detail-drawer h2 {
+  margin: 0;
+  padding-right: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b3c;
+  line-height: 1.3;
+}
+
+.bm-drawer-description {
+  margin: 10px 0 16px;
+  color: #5f6d77;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.bm-drawer-section {
+  margin-top: 24px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #e8ecf0;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.bm-drawer-section h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2b3c;
+  letter-spacing: 0.02em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.bm-rating-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.bm-rating-label {
+  min-width: 70px;
+  padding: 6px 10px;
+  color: #fff;
+  background: #3d4f5f;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.bm-rating-label.bm-score-0 { background: #6b7280; }
+.bm-rating-label.bm-score-1 { background: #3d4f5f; }
+.bm-rating-label.bm-score-2 { background: #3d4f5f; }
+.bm-rating-label.bm-score-3 { background: #3d4f5f; }
+.bm-rating-label.bm-score-unknown { background: #e5e7eb; color: #6b7280; border: 1px dashed #d1d5db; }
+
+.bm-rating-detail p {
+  margin: 0;
+  color: #5f6d77;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.bm-match-panel,
+.bm-unmatched-panel {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.bm-match-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.bm-match-topline span {
+  padding: 2px 6px;
+  color: #fff;
+  background: #3d4f5f;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.bm-match-topline small {
+  color: #9ca3af;
+  font-size: 9px;
+}
+
+.bm-match-panel strong,
+.bm-unmatched-panel strong {
+  font-size: 11px;
+  color: #374151;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.bm-match-panel p,
+.bm-unmatched-panel p {
+  margin: 0;
+  color: #5f6d77;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.bm-match-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 5px 12px;
+  color: #fff;
+  background: #3d4f5f;
+  border: 0;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bm-match-link:hover {
+  background: #2d3f4f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ---- Drawer: new sections ---- */
+.bm-drawer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 14px;
+}
+
+.bm-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: #f0f2f5;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #3d4f5f;
+}
+
+.bm-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.bm-info-grid > div {
+  background: #f5f7f8;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.bm-info-grid b {
+  font-size: 10px;
+  color: #111820;
+}
+
+.bm-info-grid p {
+  font-size: 10px;
+  color: #5f6d77;
+  line-height: 1.6;
+  margin: 3px 0 0;
+}
+
+.bm-practice-panel,
+.bm-verify-panel {
+  background: #f5f7f8;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.bm-practice-panel p,
+.bm-verify-panel p {
+  font-size: 10px;
+  color: #5f6d77;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bm-gap-panel {
+  border: 1px solid #d9e1e6;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.bm-gap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.bm-gap-head b {
+  font-size: 10px;
+  color: #111820;
+}
+
+.bm-gap-level {
+  font-size: 9px;
+  color: #8b1737;
+  font-weight: 700;
+}
+
+.bm-gap-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.bm-gap-columns section {
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #3d4f5f;
+}
+
+.bm-gap-columns section strong {
+  font-size: 9px;
+  color: #111820;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.bm-gap-columns section p {
+  font-size: 9px;
+  color: #5f6d77;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bm-evidence-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.bm-evidence-title b {
+  font-size: 10px;
+  color: #111820;
+}
+
+.bm-evidence-title span {
+  font-size: 9px;
+  color: #78858e;
+}
+
+.bm-evidence-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.bm-evidence-item {
+  border: 1px solid #e8ecf0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bm-evidence-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--bm-evidence-accent, #3d4f5f);
+  border-radius: 8px 0 0 8px;
+}
+
+.bm-evidence-item[data-score="0"]::before { background: #9ca3af; }
+.bm-evidence-item[data-score="1"]::before { background: #6b9b8a; }
+.bm-evidence-item[data-score="2"]::before { background: #d4a84b; }
+.bm-evidence-item[data-score="3"]::before { background: #6a9bc7; }
+
+.bm-evidence-item header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.bm-evidence-item header strong {
+  font-size: 13px;
+  color: #1a2b3c;
+  font-weight: 600;
+}
+
+.bm-evidence-screenshot {
+  margin: 0 0 10px 8px;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8fafc;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bm-evidence-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.bm-evidence-screenshot--empty {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.bm-evidence-level {
+  color: #3d4f5f;
+  background: #f0f2f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.bm-evidence-level.evidence-app {
+  color: #3d4f5f;
+  background: #f0f2f5;
+}
+
+.bm-evidence-level.evidence-exists {
+  color: #3d4f5f;
+  background: #f0f2f5;
+}
+
+.bm-evidence-level.evidence-pending {
+  color: #6b7280;
+  background: #e5e7eb;
+}
+
+.bm-evidence-rating {
+  margin: 4px 0 6px 8px;
+}
+
+.bm-evidence-item p {
+  font-size: 11px;
+  color: #5f6d77;
+  line-height: 1.6;
+  margin: 4px 0 0 8px;
+}
+
+.bm-evidence-item p b {
+  color: #111820;
+  font-weight: 600;
+}
+
+.bm-evidence-leading {
+  margin-top: 6px;
+}
+
+.bm-evidence-caution {
+  grid-column: 1 / -1;
+  font-size: 9px;
+  color: #7b6870;
+  background: #fbf3f5;
+  padding: 5px 6px;
+  border-radius: 4px;
+}
+
+/* ---- Module accent colors ---- */
+.bm-view .bm-module-card { --bm-module-accent: #3d4f5f; }
+
+/* ---- Responsive ---- */
+@media (max-width: 1200px) {
+  .bm-view .bm-matrix-layout { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bm-view .bm-controlbar { flex-wrap: wrap; }
+  .bm-view .bm-legend { flex-wrap: wrap; }
+  .bm-view .bm-topbar { flex-wrap: wrap; }
+}
+
+@media (max-width: 760px) {
+  .bm-view .bm-topbar { flex-direction: column; align-items: stretch; }
+  .bm-view .bm-coverage-stats, .bm-view .bm-brand-tabs { flex-wrap: wrap; }
+  .bm-view .bm-matrix-layout { grid-template-columns: 1fr; }
+  .bm-view .bm-module-card.bm-dense .bm-section-grid,
+  .bm-view .bm-module-card.bm-extra-dense .bm-section-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+    /* ===== Benchmark Matrix V2: focused three-column reading view ===== */
+    body:has(.bm-view) .header-inner {
+      max-width: 1760px;
+      min-height: 64px;
+      padding: 10px 28px;
+    }
+
+    body:has(.bm-view) .brand-subtitle,
+    body:has(.bm-view) .header-stats .stat-item:nth-child(1),
+    body:has(.bm-view) .header-stats .stat-item:nth-child(2),
+    body:has(.bm-view) .header-stats .stat-item:nth-child(3),
+    body:has(.bm-view) .header-stats .stat-item:nth-child(4) {
+      display: none;
+    }
+
+    body:has(.bm-view) .global-search {
+      max-width: 380px;
+      margin: 0 24px;
+    }
+
+    body:has(.bm-view) .header-stats {
+      gap: 18px;
+    }
+
+    body:has(.bm-view) .stat-value {
+      font-size: 22px;
+    }
+
+    body:has(.bm-view) .main {
+      max-width: 1760px;
+      grid-template-columns: 184px minmax(0, 1fr);
+      padding: 72px 28px 36px;
+    }
+
+    body:has(.bm-view) .sidebar {
+      top: 70px;
+      height: calc(100vh - 82px);
+      padding: 16px 14px 0 0;
+    }
+
+
+    body:has(.bm-view) .sidebar .filter-section {
+      margin-top: 18px;
+      padding-top: 16px;
+    }
+
+    body:has(.bm-view) .sidebar .filter-chip {
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+
+    body:has(.bm-view) .content {
+      margin-left: 12px;
+    }
+
+    .bm-view {
+      --bm-score-0: #f0f2f4;
+      --bm-score-1: #dff2eb;
+      --bm-score-2: #fff0bf;
+      --bm-score-3: #e4effb;
+      --bm-line: #dce3e9;
+      --bm-page-bg: #f1f4f7;
+      --bm-shadow: 0 2px 8px rgba(36, 52, 66, 0.06);
+      --bm-shadow-lg: 0 8px 24px rgba(36, 52, 66, 0.11);
+    }
+
+    .bm-view .bm-topbar {
+      gap: 16px;
+      padding: 13px 20px;
+      margin: 0;
+      border: 1px solid var(--bm-line);
+      border-radius: 12px 12px 0 0;
+      box-shadow: none;
+    }
+
+    .bm-view .bm-title-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .bm-view .bm-title-block h2 {
+      font-size: 20px;
+    }
+
+    .bm-view .bm-title-block p {
+      margin-top: 2px;
+      font-size: 11px;
+    }
+
+    .bm-view .bm-total-badge {
+      min-width: 72px;
+      padding: 7px 10px;
+      color: #7b5b08;
+      background: #fff3c9;
+      border: 1px solid #f0d67c;
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .bm-view .bm-total-badge strong {
+      font-size: 20px;
+    }
+
+    .bm-view .bm-total-badge span {
+      font-size: 9px;
+    }
+
+    .bm-view .bm-coverage-stats {
+      gap: 6px;
+    }
+
+    .bm-view .bm-coverage-stat {
+      min-width: 78px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      box-shadow: none;
+    }
+
+    .bm-view .bm-coverage-stat:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .bm-view .bm-coverage-stat strong {
+      font-size: 18px;
+    }
+
+    .bm-view .bm-coverage-stat span {
+      font-size: 9px;
+    }
+
+    .bm-view .bm-controlbar {
+      top: 64px;
+      gap: 8px;
+      padding: 8px 12px;
+      margin: 0;
+      border: 1px solid var(--bm-line);
+      border-top: 0;
+      background: rgba(248, 250, 252, 0.96);
+    }
+
+    .bm-view .bm-brand-tab {
+      height: 28px;
+      padding: 0 9px;
+      border-radius: 5px;
+      font-size: 10px;
+    }
+
+    .bm-view .bm-search-box {
+      height: 28px;
+      min-width: 135px;
+      max-width: 230px;
+      font-size: 10px;
+    }
+
+    .bm-view .bm-search-box input {
+      font-size: 10px;
+    }
+
+    .bm-view .bm-legend {
+      gap: 7px;
+      font-size: 9px;
+    }
+
+    .bm-view .bm-legend-swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+    }
+
+    .bm-view .bm-gap-toggle {
+      height: 28px;
+      padding: 0 10px;
+      font-size: 10px;
+    }
+
+    .bm-view .bm-matrix-layout {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 14px 0 32px;
+      margin: 0;
+    }
+
+    .bm-view .bm-matrix-column {
+      gap: 14px;
+    }
+
+    .bm-view .bm-module-card {
+      border-radius: 9px;
+      box-shadow: var(--bm-shadow);
+    }
+
+    .bm-view .bm-module-card:hover {
+      transform: none;
+      box-shadow: var(--bm-shadow-lg);
+    }
+
+    .bm-view .bm-module-card::before {
+      width: 2px;
+      border-radius: 9px 0 0 9px;
+    }
+
+    .bm-view .bm-module-heading {
+      min-height: 44px;
+      justify-content: flex-start;
+      padding: 0 14px;
+      background: #fff;
+    }
+
+    .bm-view .bm-module-number {
+      width: 21px;
+      height: 21px;
+      border-radius: 4px;
+      font-size: 9px;
+    }
+
+    .bm-view .bm-module-heading h3 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .bm-view .bm-module-heading small {
+      margin-left: auto;
+    }
+
+    .bm-view .bm-section-grid,
+    .bm-view .bm-module-card.bm-dense .bm-section-grid,
+    .bm-view .bm-module-card.bm-extra-dense .bm-section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      padding: 12px;
+    }
+
+    .bm-view .bm-section-group h4 {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 7px;
+      padding: 1px 0 5px 9px;
+      color: #233d66;
+      background: transparent;
+      border-bottom: 1px solid #d9e1e8;
+      border-radius: 0;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: left;
+      letter-spacing: .02em;
+    }
+
+    .bm-view .bm-section-group h4::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 3px;
+      height: 12px;
+      background: #273B70;
+      border-radius: 2px;
+    }
+
+    .bm-view .bm-section-group {
+      width: 100%;
+      margin: 0 0 9px;
+    }
+
+    .bm-view .bm-section-column {
+      min-width: 0;
+    }
+
+    .bm-view .bm-feature-grid {
+      gap: 4px;
+    }
+
+    .bm-view .bm-feature-tile {
+      min-height: 30px;
+      padding: 5px 7px 5px 9px;
+      color: #263640;
+      background: var(--bm-score-0);
+      border: 1px solid transparent;
+      border-left-width: 3px;
+      border-radius: 4px;
+      font-size: 10px;
+      box-shadow: none;
+    }
+
+    .bm-view .bm-feature-tile:hover {
+      filter: none;
+      transform: translateY(-1px);
+      outline: none;
+      border-color: #9eabb5;
+      box-shadow: 0 3px 8px rgba(36,52,66,.10);
+    }
+
+    .bm-view .bm-feature-tile.bm-score-0 { background: #f1f3f5; color: #8a949c; border-left-color: #b8c0c7; }
+    .bm-view .bm-feature-tile.bm-score-1 { background: #e5f4ef; color: #226a58; border-left-color: #4eae92; }
+    .bm-view .bm-feature-tile.bm-score-2 { background: #fff3cc; color: #795b08; border-left-color: #e7ac00; }
+    .bm-view .bm-feature-tile.bm-score-3 { background: #e8f1fb; color: #315f91; border-left-color: #609bd8; }
+    .bm-view .bm-feature-tile.bm-score-unknown { background: #fafbfc; color: #9aa4ac; border: 1px dashed #c8d0d6; border-left: 3px solid #c8d0d6; }
+
+    .bm-view .bm-feature-name {
+      font-size: 10px;
+      font-weight: 600;
+      -webkit-line-clamp: 2;
+    }
+
+    .bm-match-code {
+      display: none;
+      color: #66747e;
+      background: rgba(255,255,255,.65) !important;
+    }
+
+    .bm-view .bm-feature-tile:hover .bm-match-code,
+    .bm-view .bm-feature-tile:focus-visible .bm-match-code {
+      display: inline-block;
+    }
+
+    .bm-view .bm-module-review {
+      margin: 0 12px 12px;
+      padding: 9px 10px;
+      background: #fbf6f7;
+      border-left-width: 2px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
+    .bm-view .bm-module-review strong {
+      font-size: 9px;
+    }
+
+    @media (max-width: 1400px) {
+      body:has(.bm-view) .main {
+        grid-template-columns: 160px minmax(0, 1fr);
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      .bm-view .bm-legend {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      body:has(.bm-view) .sidebar {
+        display: none;
+      }
+      body:has(.bm-view) .main {
+        display: block;
+      }
+      body:has(.bm-view) .content {
+        margin-left: 0;
+      }
+      .bm-view .bm-matrix-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -1318,6 +2716,8 @@
           <div class="stat-label">新增/迭代</div>
         </div>
       </div>
+      <div class="data-source-status" id="dataSourceStatus" title="当前页面使用的数据来源">本地数据</div>
+
     </div>
   </header>
 
@@ -1343,11 +2743,11 @@
           </button>
           <button class="filter-chip" data-filter="new">
             <span class="filter-dot dot-new"></span>
-            新增
+            新功能
           </button>
           <button class="filter-chip" data-filter="iterate">
             <span class="filter-dot dot-iterate"></span>
-            计划更新
+            功能迭代
           </button>
           <button class="filter-chip" data-filter="pending">
             <span class="filter-dot dot-pending"></span>
@@ -1363,9 +2763,13 @@
     </main>
   </div>
 
+  <!-- Drawer root (outside content to survive re-renders) -->
+  <div id="bmDrawerRoot"></div>
+
 <script>
     // CACHE-BUST: 47399
 const iconMap = {
+  "benchmark": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>`,
   "overview": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`,
   "launch": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>`,
   "homepage": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
@@ -1381,6 +2785,13 @@ const iconMap = {
 
     // ===== DATA =====
 let modules = [
+  {
+    "id": "benchmark",
+    "name": "竞品矩阵",
+    "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 3v18h18\"/><path d=\"M7 16l4-8 4 4 4-8\"/></svg>",
+    "desc": "酒店行业 APP 功能全景矩阵 — 144 个功能 × 7 品牌对标",
+    "isBenchmark": true
+  },
   {
     "id": "overview",
     "name": "总览",
@@ -1899,8 +3310,8 @@ let modules = [
             "desc": "探索首页下拉刷新功能，下拉后展示每日推荐灵感内容",
             "detail": "1.展示位置：探索首页「旅途灵感」Tab下，页面顶部。2.触发方式：在页面顶部下拉刷新。3.下拉状态：下拉时展示提示文案「下拉获取今日灵感」+向下箭头图标。4.释放刷新：下拉到一定距离后释放，触发刷新获取当日推荐内容。5.灵感内容：刷新后展示每日推荐的目的地、酒店、活动等内容卡片。6.授权提示：首次使用可能需要位置/个性化推荐授权。7.空态/无权限：未授权时展示授权引导或默认内容。8.交互说明：下拉→释放→加载新内容→展示当日灵感卡片流。",
             "screenshots": [
-              "images/探索/今日灵感授权.png",
-              "images/探索/获取今日灵感.png"
+              "images/探索/探索今日灵感.png",
+              "images/探索/探索今日灵感下拉.png"
             ]
           },
           {
@@ -1909,7 +3320,7 @@ let modules = [
             "status": "live",
             "desc": "探索首页双列布局内容卡片，展示限时促销、目的地探索、新酒店开业、品牌大使等推荐内容",
             "detail": "1.展示位置：探索首页「旅途灵感」Tab下，位于今日灵感入口下方。2.布局方式：2×2双列网格布局，共4张卡片。3.卡片内容：左上「限时促销」威斯汀酒店促销卡片；右上「开启江浙沪的精彩奇遇」目的地探索卡片；左下「即刻启程」上海外滩瑞吉酒店新开业卡片；右下「与万丽大使领航员马伯庸一起发现未见」品牌大使/活动卡片。4.标签标识：每张卡片右上角带「新」标签，标识新上线内容。5.浏览量：部分卡片展示浏览量数据（如37,000+）。6.交互说明：点击卡片进入对应内容详情页或活动页面。7.展示逻辑：由运营后台配置，定期更新推荐内容。",
-            "screenshot": "images/探索/第一屏的4张.png"
+            "screenshot": "images/探索/4个内容.png"
           },
           {
             "id": "DC01-3",
@@ -1925,7 +3336,7 @@ let modules = [
             "status": "live",
             "desc": "探索首页底部纵向内容列表，展示品牌故事、会员活动、酒店推荐等图文内容",
             "detail": "1.展示位置：探索首页「旅途灵感」Tab下，位于目的地卡片下方，纵向列表布局。2.内容类型：品牌故事、会员活动、酒店推荐、目的地攻略等。3.列表项示例：「南京丽思卡尔顿酒店」酒店推荐卡片；「即刻启程 上海外滩瑞吉酒店」新酒店推荐；「潮玩南京 心选假日」目的地活动；「万豪旅享家 苏州W酒店」品牌酒店推荐；「潮玩 Sanlitun 北京」城市攻略；「万豪旅享家 广州丽思卡尔顿酒店」酒店推荐。4.卡片结构：左侧图片+右侧标题文案，或全宽图片+底部文案叠加。5.品牌标识：部分卡片展示万豪品牌Logo。6.交互说明：点击列表项进入对应内容详情页或酒店详情页。7.加载机制：支持下拉加载更多内容，无限滚动浏览。",
-            "screenshot": "images/探索/内容列表.png"
+            "screenshot": "images/探索/内容流.png"
           }
         ]
       },
@@ -3298,30 +4709,635 @@ let modules = [
     ]
   }
 ];
-    console.log("[DEBUG] Loaded", modules.length, "modules");
+    const FEISHU_API_URL = 'https://mb-features-api.415537164.workers.dev/';
+    const fallbackModules = modules;
+    const benchmarkModule = modules.find(m => m.isBenchmark);
+    console.log("[DEBUG] Loaded fallback data:", modules.length, "modules");
+
+    function ensureBenchmarkModule(mods) {
+      if (!mods.some(m => m.isBenchmark) && benchmarkModule) {
+        mods.unshift(benchmarkModule);
+      }
+      return mods;
+    }
 
     // ===== STATE =====
-    let currentModule = 'overview';
+    let currentModule = 'benchmark';
     let currentFilter = 'all';
     let expandedSections = new Set();
     let globalSearchQuery = '';
     let searchMatches = new Map(); // moduleId -> Set(featureIds)
     let overviewFilter = null; // null | 'all' | 'live' | 'new' | 'iterate' | 'pending'
 
-    initApp();
+    function parseHash() {
+      const hash = location.hash.replace(/^#/, '');
+      const params = {};
+      hash.split('&').forEach(pair => {
+        const [k, v] = pair.split('=');
+        if (k && v) params[decodeURIComponent(k)] = decodeURIComponent(v);
+      });
+      return params;
+    }
+
+    function navigateToHash() {
+      const params = parseHash();
+      if (!params.module) return;
+      const targetModule = modules.find(m => m.id === params.module);
+      if (!targetModule) return;
+
+      currentModule = params.module;
+      renderNav();
+      renderContent();
+
+      if (params.feature && !targetModule.isOverview) {
+        setTimeout(() => {
+          const sectionIndex = targetModule.sections.findIndex(s =>
+            s.features.some(f => f.id === params.feature)
+          );
+          if (sectionIndex === -1) return;
+
+          const sectionId = `${targetModule.id}-section-${sectionIndex}`;
+          if (!expandedSections.has(sectionId)) {
+            const header = document.querySelector(`[data-section="${sectionId}"]`);
+            if (header) header.click();
+          }
+
+          setTimeout(() => {
+            const detailId = `${sectionId}-detail-${params.feature}`;
+            const row = document.querySelector(`[data-detail="${detailId}"]`);
+            if (row) {
+              toggleFeatureDetail(detailId, row);
+              setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+            }
+          }, 100);
+        }, 50);
+      }
+    }
+
+    // ===== BENCHMARK MATRIX =====
+    const benchmarkData = {"summary":{"level1":11,"level2":40,"level3":144,"matched":43,"suggested":35,"unmatched":66,"pending":101},"modules":[{"name":"启动与引导","sections":[{"name":"启动页","features":[{"id":"F001","name":"启动页广告","description":"APP启动时的全屏广告/品牌展示页","ratings":{"marriott":{"score":3,"note":""},"huazhu":{"score":3,"note":"展现近期活动（如618）"},"ihg":{"score":3,"note":""},"atour":{"score":2,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"LH03","name":"未登录-开屏广告","moduleId":"launch","moduleName":"启动","sectionName":"启动","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"},{"id":"LH04","name":"已登录-开屏广告","moduleId":"launch","moduleName":"启动","sectionName":"启动","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"新用户引导","features":[{"id":"F002","name":"新用户注册引导","description":"新用户注册流程、会员权益介绍","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":3,"note":"新人权益引导登录注册领取"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"LH03","name":"未登录-开屏广告","moduleId":"launch","moduleName":"启动","sectionName":"启动","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F003","name":"新用户功能引导","description":"首次打开APP的核心功能操作指引","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":3,"note":"刚进入app时整页介绍+会员特权+主页按钮功能"},"ihg":{"score":0,"note":""},"atour":{"score":3,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F004","name":"新用户专属福利","description":"新用户注册/首单专属优惠券、权益","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":1,"note":"订酒店+商城新用户优惠但对比后发现比其他OTA贵"},"ihg":{"score":0,"note":""},"atour":{"score":3,"note":"- 首页新人礼包 \n- 立即预定按钮提示新客首晚8折\n- 会员tab引导领取入会新人礼"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"营销","sections":[{"name":"营销推荐位","features":[{"id":"F005","name":"广告及推荐","description":"轮播广告、活动推广位","ratings":{"marriott":{"score":1,"note":"跳转去小程序 无法在app内完成流程"},"huazhu":{"score":2,"note":"占位小 但会引导用户在app内完成操作"},"ihg":{"score":1,"note":"广告内容少，单调"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP01","name":"轮播 Banner","moduleId":"homepage","moduleName":"首页","sectionName":"Home Hero","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F006","name":"弹窗推广","description":"弹窗推广热门活动","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP01","name":"轮播 Banner","moduleId":"homepage","moduleName":"首页","sectionName":"Home Hero","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F007","name":"目的地推荐","description":"目的地营销、特色旅游目的地推广","ratings":{"marriott":{"score":1,"note":"有，但是内容相当分散，分散在首页为你推荐和探索板块"},"huazhu":{"score":3,"note":"“逛逛”页中PGC 顶部有轮播广告+活动推广 可检索目的地和按旅程类型分成不同tab"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F008","name":"旅程类型分类","description":"按照旅游目的/形成类型 智能分类推荐目的地及酒店 以PGC展现","ratings":{"marriott":{"score":null,"note":"待验证"},"huazhu":{"score":3,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F009","name":"日历","description":"每日推荐目的地/酒店","ratings":{"marriott":{"score":2,"note":"对比后可能为3"},"huazhu":{"score":1,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F010","name":"个性化推荐","description":"基于用户行为的酒店/活动个性化推荐","ratings":{"marriott":{"score":1,"note":"有近期查看；“为你推荐”模块看不出千人千面"},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F011","name":"合作伙伴推广","description":"合作伙伴信息推广","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":"例如滴滴联名"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"内容","sections":[{"name":"主题内容推荐","features":[{"id":"F012","name":"品牌专区","description":"各品牌介绍、专属活动、内容推荐","ratings":{"marriott":{"score":1,"note":"有，但跳转到对应品牌官网，还会出现landing page不匹配的情况"},"huazhu":{"score":2,"note":"旗下酒店简介PGC 但有些没有跳转预定的按钮"},"ihg":{"score":1,"note":"按旅行类型分类但介绍较少 无活动"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"DC03","name":"品牌专区","moduleId":"discover","moduleName":"探索","sectionName":"品牌专区","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F013","name":"目的地主题","description":"按目的地分类的旅游攻略、酒店套餐、活动","ratings":{"marriott":{"score":1,"note":"有，但是没有内容，直接去到搜索结果页"},"huazhu":{"score":3,"note":"“逛逛”页可选择目的地 出现PGC包含攻略+酒店特色"},"ihg":{"score":1,"note":"搜索页简单地点介绍"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F014","name":"特色酒店推荐","description":"如新酒店专属推广、开业福利","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":2,"note":"首页广告轮播位有新店推广双倍积分活动"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F015","name":"餐饮主题","description":"餐饮套餐、下午茶、特色餐厅推荐","ratings":{"marriott":{"score":1,"note":"酒店详情页"},"huazhu":{"score":1,"note":"酒店详情页"},"ihg":{"score":2,"note":"酒店详情页"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP23","name":"餐饮","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F016","name":"其他主题","description":"按照不同用户群体进行专项推荐","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F017","name":"会员活动","description":"会员活动信息露出","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":3,"note":"“会员”tab介绍权益+特权卡+优惠+任务+积分"},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP38","name":"会员流程","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"内容社区","features":[{"id":"F018","name":"UGC内容专区","description":"用户生成的旅行攻略、酒店体验、打卡内容","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"搜索","sections":[{"name":"搜索核心入口","features":[{"id":"F019","name":"搜索中心入口","description":"酒店/目的地搜索核心入口","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP02","name":"搜索栏","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"搜索中心","features":[{"id":"F020","name":"目的地搜索","description":"按城市/目的地搜索酒店","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F021","name":"酒店名称搜索","description":"直接输入酒店名称精准搜索","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F022","name":"全场景搜索栏","description":"支持内容/酒店/目的地全维度关键词搜索","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP02","name":"搜索栏","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F023","name":"搜索自动联想","description":"输入关键词时自动推荐相关酒店/目的地","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F024","name":"关键词搜索","description":"根据最近的搜索记录在搜索栏下显示关键词","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F025","name":"最近搜索记录","description":"展示用户历史搜索的酒店/目的地","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F026","name":"热门城市列表","description":"快速选择热门旅游/商务城市","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP04","name":"目的地","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F027","name":"附近酒店定位","description":"基于用户定位推荐附近的酒店","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP07","name":"获取定位权限","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"搜索结果","features":[{"id":"F028","name":"搜索结果展示","description":"清晰展示出搜索结果","ratings":{"marriott":{"score":3,"note":"地图、卡片、列表形式展现搜索结果"},"huazhu":{"score":3,"note":"周边商圈/景点+卡片形式"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP15","name":"地图视图/列表视图/网格视图","moduleId":"homepage","moduleName":"首页","sectionName":"搜索结果","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F029","name":"筛选与排序","description":"可对搜索结果进行筛选","ratings":{"marriott":{"score":2,"note":"需要对比别的品牌该功能，对比完有可能是3"},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP12","name":"筛选","moduleId":"homepage","moduleName":"首页","sectionName":"搜索结果","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"},{"id":"HP13","name":"排序","moduleId":"homepage","moduleName":"首页","sectionName":"搜索结果","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F030","name":"酒店信息卡片","description":"搜索结果中展示酒店核心信息","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP18","name":"酒店卡片","moduleId":"homepage","moduleName":"首页","sectionName":"搜索结果","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]}]},{"name":"酒店预订全流程","sections":[{"name":"酒店详情页","features":[{"id":"F031","name":"酒店基础信息展示","description":"酒店地址、星级、品牌、设施、用户评分等核心信息","ratings":{"marriott":{"score":1,"note":"用户评分基于用户住完后的调研得到"},"huazhu":{"score":3,"note":"有酒店周边推荐地点app内直接查看路线+常见问题Q&A+住客评价"},"ihg":{"score":1,"note":"无评分和星级"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F032","name":"酒店房型展示","description":"各房型信息、价格、床型、面积、设施展示","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP40","name":"支付","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F033","name":"积分兑换/购买","description":"提供积分兑换住宿方案","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP14","name":"使用积分","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F034","name":"其他房价方案","description":"提供其他房价方案（如企业/推广活动代码，学生/长者折扣）","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":1,"note":"学生认证可领特权但在会员页"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP07","name":"特别房价","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F035","name":"Offfolio推荐","description":"酒店餐饮服务、套餐及配套设施推广","ratings":{"marriott":{"score":1,"note":"对比后可能为2"},"huazhu":{"score":1,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F036","name":"用户评价与图片","description":"用户真实评价、酒店实景图片、VR看房","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":"酒店周边+房型+设施照片+用户真实评价"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F037","name":"酒店设施与服务","description":"酒店配套设施、服务项目详细介绍","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F038","name":"酒店位置与交通","description":"酒店地图定位、周边交通、景点、商圈介绍","ratings":{"marriott":{"score":2,"note":"用户体验不是很好，不太明显"},"huazhu":{"score":3,"note":"搜索结果页和酒店详情页都有"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F039","name":"相关内容推荐","description":"同目的地其他酒店、相关活动套餐推荐","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F040","name":"优惠券入口","description":"该酒店可用的优惠券、套餐券领取入口","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F041","name":"套餐推荐","description":"推荐套餐（住宿+x）房价","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F042","name":"增值服务推荐","description":"房型升级、早餐、延迟退房等增值服务推荐","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"预订流程","features":[{"id":"F043","name":"一键预订页","description":"完成房型选择、日期选择、入住人信息填写","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP40","name":"支付","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F044","name":"入住人信息管理","description":"入住人信息填写、保存、快速选择","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F045","name":"特殊需求填写","description":"床型偏好、吸烟/无烟、无障碍房等特殊需求","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":"可提交偏好 但只能从标签中选择 入住当日反馈结果"},"ihg":{"score":2,"note":"可提交偏好但按当日情况看是否可满足"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP06","name":"房间&宾客&宠物设置","moduleId":"homepage","moduleName":"首页","sectionName":"Search Hub","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F046","name":"预定价格保障","description":"规定时段如门市价出现降价将进行差价赔付","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F047","name":"预订信息确认","description":"预订前订单信息、价格、取消政策核对","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP42","name":"银联支付","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"支付流程","features":[{"id":"F048","name":"多支付方式支持","description":"微信支付、银联、信用卡、积分抵扣等支付方式","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP43","name":"预订确认","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F049","name":"支付安全保障","description":"支付环境加密、支付失败处理、订单状态同步","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":"跳转到对应结算app支付"},"ihg":{"score":2,"note":"跳转到对应结算app支付"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP40","name":"支付","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"预订结果","features":[{"id":"F050","name":"预订成功页","description":"预订成功后订单信息、入住须知、酒店联系方式展示","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP44","name":"商品推荐位","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F051","name":"订单状态实时同步","description":"预订、支付、确认、取消等订单状态实时更新","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F052","name":"订单通知","description":"预订成功、订单变更、入住提醒等推送/短信通知","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":2,"note":"短信+邮箱"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"订单管理","features":[{"id":"F053","name":"订单修改","description":"预订后修改入住日期、房型、入住人信息等","ratings":{"marriott":{"score":0,"note":"有修改功能，但是只能换酒店"},"huazhu":{"score":0,"note":"支付后无法修改"},"ihg":{"score":0,"note":"支付后无法修改"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F054","name":"订单取消","description":"按取消政策申请订单取消、退款处理","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F055","name":"取消政策展示","description":"订单取消规则、退款比例、时限清晰展示","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"行程与在住服务","sections":[{"name":"行程管理","features":[{"id":"F056","name":"即将入住行程","description":"未来即将入住的酒店订单展示","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP09","name":"入住中心","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F057","name":"历史行程","description":"已完成入住的酒店订单历史记录","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP20","name":"筛选历史行程","moduleId":"trips","moduleName":"行程","sectionName":"其他行程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F058","name":"已取消行程","description":"已取消的酒店订单记录","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP19","name":"历史与取消行程","moduleId":"trips","moduleName":"行程","sectionName":"其他行程","confidence":0.6,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F059","name":"行程筛选","description":"按时间、酒店、订单状态等筛选行程","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP20","name":"筛选历史行程","moduleId":"trips","moduleName":"行程","sectionName":"其他行程","confidence":0.5,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F060","name":"待支付","description":"待支付订单","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F061","name":"待评价","description":"待评价订单","ratings":{"marriott":{"score":0,"note":"邮件通知评价"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"行程卡片","features":[{"id":"F062","name":"入住前快捷操作","description":"房型升级、修改订单等快捷入口","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP09","name":"入住中心","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F063","name":"入住后快捷操作","description":"移动端房卡、客房服务、延迟退房、一键退房等","ratings":{"marriott":{"score":1,"note":"有此功能（部分酒店上线）"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP09","name":"入住中心","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"行程详情页","features":[{"id":"F064","name":"行程基础信息","description":"入住/退房日期、酒店信息、房型、订单号等","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F065","name":"在住服务中心","description":"在住期间的客房服务、需求提交、聊天咨询、FAQ","ratings":{"marriott":{"score":1,"note":"但是很多酒店找不到入口"},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F066","name":"移动端入住/退房","description":"线上提前办理入住、一键退房功能","ratings":{"marriott":{"score":1,"note":"有该功能但是并未有实际效果"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP09","name":"入住中心","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F067","name":"移动端电子房卡","description":"手机蓝牙房卡、无接触开门功能","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F068","name":"房型升级入口","description":"在住期间/入住前的房型升级申请、付费升级","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F069","name":"酒店设施与门店","description":"酒店配套设施、餐厅、健身中心等入口与介绍","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP14","name":"酒店设施","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F070","name":"优惠券推荐","description":"行程相关的餐饮、SPA、升级等优惠券推荐","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP21","name":"酒店信息（现有）","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F071","name":"天气信息","description":"入住目的地的天气情况展示","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F072","name":"到店指南","description":"介绍如何到达，提供哪些服务，酒店特色，周边推荐等信息","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":3,"note":""},"atour":{"score":3,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F073","name":"增值服务","description":"进行个性化增值服务选购与搭配","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":3,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"行程服务","features":[{"id":"F074","name":"入住码","description":"分享入住码给好友提前办理登记，用入住码核销早餐/乘电梯","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"TP09","name":"入住中心","moduleId":"trips","moduleName":"行程","sectionName":"行程详情","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F075","name":"在线选房","description":"支持地图选房/偏好选房","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F076","name":"访客邀请","description":"分享访客码","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F077","name":"在线续住","description":"一键续住","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F078","name":"开发票","description":"提前预约开具发票","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"客房服务","features":[{"id":"F079","name":"客房送物","description":"提交所需物品需求","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F080","name":"智能客房","description":"控制窗帘/灯光等等","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F081","name":"智慧洗衣","description":"提前查看是否有空闲衣物，并获取洗衣状态提醒","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"其他行程服务","features":[{"id":"F082","name":"住宿问题反馈","description":"住宿期间问题、补登申请、投诉反馈入口","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"酒店详情页有用户评价 入住结束后可能有评论和投诉入口"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"会员体系","sections":[{"name":"会员信息展示","features":[{"id":"F083","name":"会员等级展示","description":"当前会员等级、升级进度、等级权益展示","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC01","name":"会员等级展示","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F084","name":"会员电子卡","description":"会员电子会员卡、支持添加到手机数字钱包","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP38","name":"会员流程","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"会员等级与权益","features":[{"id":"F085","name":"等级升级保级规则","description":"会员等级升级保级积分规则说明","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC01","name":"会员等级展示","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F086","name":"专属会员权益","description":"会员专属房价、延迟退房、免费早餐、行政酒廊等权益","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC01","name":"会员等级展示","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F087","name":"会员专属活动","description":"会员专属促销、套餐、抽奖、体验活动","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP38","name":"会员流程","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"快捷入口","features":[{"id":"F088","name":"酒店订单快速跳转","description":"一键跳转至行程/订单管理页","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":"行程页包括服务快捷键"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC06","name":"酒店订单","moduleId":"account","moduleName":"账户","sectionName":"会员快捷入口","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F089","name":"商城订单快速跳转","description":"一键跳转至商城/我的订单页","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC07","name":"商城订单","moduleId":"account","moduleName":"账户","sectionName":"会员快捷入口","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F090","name":"心愿单/收藏","description":"酒店、套餐、商品的收藏与心愿单管理","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC08","name":"愿望清单","moduleId":"account","moduleName":"账户","sectionName":"会员快捷入口","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F091","name":"浏览历史","description":"用户浏览过的酒店、商品、内容的历史记录","ratings":{"marriott":{"score":1,"note":"首页有"},"huazhu":{"score":3,"note":"看过/收藏/住过都有"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC09","name":"浏览历史","moduleId":"account","moduleName":"账户","sectionName":"会员快捷入口","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"会员中心","features":[{"id":"F092","name":"签到","description":"连续签到林任务/积分/奖励","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":2,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F093","name":"任务中心","description":"做任务赚福利","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":2,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F094","name":"领券活动","description":"根据会员等级抢不同品牌/合作伙伴的不同种类券","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F095","name":"积分兑换","description":"积分抵扣现金/兑换房晚/兑换商品","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC12","name":"兑换积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":0.67,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F096","name":"积分公益","description":"和社会组织联动用积分兑换相关商品献爱心","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F097","name":"积分竞拍","description":"积分竞拍好物品","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F098","name":"会员等级赠送","description":"可以赠送好友某会员等级体验卡","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":2,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP38","name":"会员流程","moduleId":"homepage","moduleName":"首页","sectionName":"预订流程","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"积分管理","features":[{"id":"F099","name":"积分余额展示","description":"当前可用积分、即将过期积分展示","ratings":{"marriott":{"score":1,"note":"跳转到website"},"huazhu":{"score":1,"note":"位置不明显"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC02","name":"保级进度条","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F100","name":"积分明细","description":"积分获取、消耗、过期的明细记录","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC02","name":"保级进度条","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F101","name":"积分兑换入口","description":"积分兑换商品、房券、权益的入口","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC12","name":"兑换积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":0.67,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F102","name":"积分购买/赠送","description":"积分充值购买、转赠给他人的功能","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC13","name":"购买积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":0.5,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"勋章与足迹","features":[{"id":"F103","name":"成就勋章","description":"展示成就勋章","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F104","name":"足迹","description":"历史入住酒店、旅行城市的足迹统计与展示","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":3,"note":""},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"商城与购物","sections":[{"name":"商城首页","features":[{"id":"F105","name":"商城搜索栏","description":"支持关键词、酒店、目的地的商品搜索","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP01","name":"商城搜索栏","moduleId":"shop","moduleName":"商城","sectionName":"商城首页","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F106","name":"新人领券","description":"新人领取优惠","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F107","name":"营销推荐位","description":"商城活动、直播、爆款商品推荐位","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F108","name":"直播带货入口","description":"酒店套餐、商品的直播带货专区","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP03","name":"直播","moduleId":"shop","moduleName":"商城","sectionName":"商城首页","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"商品分类","features":[{"id":"F109","name":"优惠券商店","description":"酒店房券、餐饮券、SPA券等各类优惠券购买","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F110","name":"精品周边商店","description":"品牌周边、实物商品、礼品卡购买","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F111","name":"会员积分商店","description":"积分兑换商品、房券、权益、积分购买/赠送","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":"积分专区分类用处多"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"商品详情","features":[{"id":"F112","name":"商品信息展示","description":"商品详情、使用规则、有效期、价格展示","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP02","name":"商品推荐位","moduleId":"shop","moduleName":"商城","sectionName":"商城首页","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F113","name":"购买流程","description":"商品选择、规格选择、下单、支付流程","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP23","name":"购买积分","moduleId":"shop","moduleName":"商城","sectionName":"店铺入口","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F114","name":"会员折扣","description":"特定会员等级享有优惠价格","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F115","name":"券码核销","description":"优惠券的核销、使用、退款流程","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F116","name":"商品赠送好友","description":"购买后转赠好友发送祝福","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":0,"note":""},"shangriLa":{"score":2,"note":""},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"订单管理","features":[{"id":"F117","name":"优惠券订单管理","description":"优惠券订单的查看、核销、退款、售后","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP07","name":"券订单","moduleId":"shop","moduleName":"商城","sectionName":"我的订单","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F118","name":"精品订单管理","description":"实物商品订单的查看、物流、售后","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP10","name":"精品订单","moduleId":"shop","moduleName":"商城","sectionName":"我的订单","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F119","name":"积分订单管理","description":"积分兑换订单的查看、核销、售后","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"购物车","features":[{"id":"F120","name":"购物车","description":"购物车管理、批量下单","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"SP04","name":"购物车","moduleId":"shop","moduleName":"商城","sectionName":"购物车","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]}]},{"name":"账户与个人中心","sections":[{"name":"个人资料管理","features":[{"id":"F121","name":"个人信息编辑","description":"姓名、手机号、邮箱、身份证等个人信息管理","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC10","name":"积分余额详情","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F122","name":"偏好设置","description":"酒店偏好、床型偏好、吸烟偏好、通知偏好设置","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":3,"note":"旅行偏好可设置客房/宠物/品味/兴趣/心仪品牌"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":3,"note":"分步多次收集，颗粒度很细，如旅行灵感，水的偏好"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC11","name":"赚取积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F123","name":"账单信息管理","description":"历史消费账单、发票管理、下载","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F124","name":"地址管理","description":"收货地址、酒店入住地址的新增、编辑、删除","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":1,"note":"只有商城内收货地址"},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC27","name":"地址管理","moduleId":"account","moduleName":"账户","sectionName":"个人资料","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F125","name":"系统设置","description":"账号安全、密码修改、隐私设置、通用设置","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":1,"note":""},"ihg":{"score":1,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC12","name":"兑换积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"账户动态","features":[{"id":"F126","name":"账户操作记录","description":"登录、订单、支付、积分变动等账户动态记录","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"联名卡管理","features":[{"id":"F127","name":"联名卡申请","description":"联名信用卡申请入口、权益介绍","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC13","name":"购买积分","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F128","name":"联名卡权益","description":"联名卡专属权益、活动、积分规则","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC04","name":"联名卡","moduleId":"account","moduleName":"账户","sectionName":"账户状态","confidence":0.82,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]}]},{"name":"客服与帮助","sections":[{"name":"客服中心","features":[{"id":"F129","name":"在线客服","description":"APP内在线聊天客服、人工客服入口","ratings":{"marriott":{"score":0,"note":"未预定状态下没有看到"},"huazhu":{"score":2,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":2,"note":""},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC14","name":"积分商城","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F130","name":"客服热线","description":"官方客服电话、服务时间展示","ratings":{"marriott":{"score":1,"note":""},"huazhu":{"score":2,"note":"无服务时间"},"ihg":{"score":2,"note":"无服务时间"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC14","name":"积分商城","moduleId":"account","moduleName":"账户","sectionName":"积分专区","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"帮助中心","features":[{"id":"F131","name":"常见问题FAQ","description":"预订、入住、会员、积分等常见问题解答","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":2,"note":"在在线智能客服入口"},"ihg":{"score":1,"note":"只有积分相关少数常见问题"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC15","name":"免费房晚(FNA)","moduleId":"account","moduleName":"账户","sectionName":"奖励","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]},{"id":"F132","name":"操作指南","description":"APP核心功能的操作教程、图文指引","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":""},"ihg":{"score":0,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F133","name":"政策规则","description":"预订政策、取消规则、会员规则、隐私政策等","ratings":{"marriott":{"score":2,"note":""},"huazhu":{"score":2,"note":""},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"AC15","name":"免费房晚(FNA)","moduleId":"account","moduleName":"账户","sectionName":"奖励","confidence":1,"method":"manual","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"反馈与投诉","features":[{"id":"F134","name":"问题反馈","description":"APP使用、酒店服务、订单问题的反馈入口","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":2,"note":""},"ihg":{"score":1,"note":"目前只发现APP问题反馈"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F135","name":"投诉处理","description":"投诉提交、进度查询、结果反馈","ratings":{"marriott":{"score":0,"note":"尚未发现，可能有"},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]},{"name":"特色与增值服务","sections":[{"name":"礼宾服务","features":[{"id":"F136","name":"专属礼宾服务","description":"高端会员专属礼宾服务、行程定制、需求对接","ratings":{"marriott":{"score":null,"note":"这部分流程暂时走不通"},"huazhu":{"score":null,"note":"这部分流程暂时走不通"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"商务服务","features":[{"id":"F137","name":"会议与活动","description":"酒店会议室、活动场地预订、商务服务","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":null,"note":"待验证"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F138","name":"办公服务","description":"酒店办公空间、打印、网络等商务服务","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":null,"note":"待验证"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]},{"name":"休闲服务","features":[{"id":"F139","name":"SPA与健身","description":"酒店SPA、健身中心、瑜伽等服务预订","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F140","name":"亲子服务","description":"亲子房、儿童乐园、亲子活动等服务","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F141","name":"餐饮服务","description":"酒店餐厅预订、下午茶、自助餐、特色餐饮套餐","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"尚未发现，可能有"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[{"id":"HP23","name":"餐饮","moduleId":"homepage","moduleName":"首页","sectionName":"酒店详情","confidence":1,"method":"fuzzy","url":"https://jojo-lij.github.io/mb-features/"}]}]},{"name":"出行服务","features":[{"id":"F142","name":"接送机服务","description":"酒店接送机、接送站服务预订","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"需电话联系"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F143","name":"租车服务","description":"目的地租车、包车服务预订","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":0,"note":"需电话联系"},"ihg":{"score":0,"note":"尚未发现，可能有"},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]},{"id":"F144","name":"旅游攻略","description":"目的地旅游攻略、景点推荐、行程规划","ratings":{"marriott":{"score":0,"note":""},"huazhu":{"score":3,"note":"地图上展示 app内可直接展示路线"},"ihg":{"score":2,"note":""},"atour":{"score":null,"note":"待验证"},"mandarinOriental":{"score":null,"note":"待验证"},"shangriLa":{"score":null,"note":"待验证"},"hilton":{"score":null,"note":"待验证"}},"matches":[]}]}]}]};
+    const bmBrands = [
+      { key: "marriott", label: "万豪旅享家", enabled: true },
+      { key: "huazhu", label: "华住会", enabled: true },
+      { key: "ihg", label: "洲际优悦会", enabled: true },
+      { key: "atour", label: "亚朵", enabled: false },
+      { key: "mandarinOriental", label: "文华东方", enabled: false },
+      { key: "shangriLa", label: "香格里拉", enabled: false },
+      { key: "hilton", label: "希尔顿荣誉会", enabled: false }
+    ];
+    const bmModuleColors = ["#273B70","#273B70","#273B70","#273B70","#273B70","#273B70","#273B70","#273B70","#273B70","#273B70","#273B70"];
+    const bmModuleReviews = {
+      "启动与引导": "开屏表现较强，但新客福利与功能引导弱于华住，转化承接不足。",
+      "营销": "具备基础推荐位，但目的地运营、弹窗触达和个性化明显落后华住。",
+      "内容": "内容以品牌与酒店信息为主，目的地攻略和社区化内容深度不足。",
+      "搜索": "地图与结果展示有优势，但精准搜索、联想和关键词运营仍弱于华住。",
+      "酒店预订全流程": "预订主链路已覆盖，但支付安全、订单通知、修改与取消能力明显弱于华住。",
+      "行程与在住服务": "仅覆盖基础行程和部分移动能力，选房、入住码、续住及客房服务明显缺失。",
+      "会员体系": "等级权益基础清晰，但任务、领券、积分玩法和会员运营显著弱于华住。",
+      "商城与购物": "当前框架下基本缺位，是万豪相对华住最明显的功能空白。",
+      "账户与个人中心": "个人资料与联名卡能力相对领先，但账单、地址和账户动态仍有缺口。",
+      "客服与帮助": "热线与政策可见，但在线客服、FAQ、反馈闭环明显弱于华住。",
+      "特色与增值服务": "除礼宾待确认外基本未覆盖，餐饮、接送、亲子和商务服务均缺少线上入口。"
+    };
+    const bmState = { brand: "marriott", query: "", gapOnly: false };
+    const bmScoreLabels = ["无功能", "有功能", "有特色", "行业顶尖"];
+    const bmEsc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const bmScoreClass = s => s === null ? "bm-score-unknown" : "bm-score-" + s;
+    const bmScoreLabel = s => s === null ? "待确认" : bmScoreLabels[s];
+
+    function bmAllFeatures() {
+      return benchmarkData.modules.flatMap(m => m.sections.flatMap(s => s.features));
+    }
+
+    function bmCurrentBrand() {
+      return bmBrands.find(b => b.key === bmState.brand);
+    }
+
+    function bmCoverage() {
+      const r = { covered: 0, missing: 0, pending: 0 };
+      bmAllFeatures().forEach(f => {
+        const s = f.ratings[bmState.brand].score;
+        if (s === null) r.pending++;
+        else if (s === 0) r.missing++;
+        else r.covered++;
+      });
+      return r;
+    }
+
+    function renderBenchmark() {
+      const stats = bmCoverage();
+      const brandLabel = bmCurrentBrand().label;
+
+      const brandTabsHtml = bmBrands.map(b =>
+        `<button type="button" class="bm-brand-tab ${bmState.brand === b.key ? 'active' : ''}" data-bm-brand="${b.key}" ${b.enabled ? '' : 'disabled'}>${b.label}${b.enabled ? '' : '<span class="bm-brand-status">未上线</span>'}</button>`
+      ).join('');
+
+      const coverageHtml = `
+        <div class="bm-coverage-stat primary"><strong>${stats.covered}</strong><span>${brandLabel} · 已覆盖</span></div>
+        <div class="bm-coverage-stat missing"><strong>${stats.missing}</strong><span>无功能</span></div>
+        <div class="bm-coverage-stat pending"><strong>${stats.pending}</strong><span>待确认</span></div>
+      `;
+
+      const renderModule = (mod, mi) => {
+        const sections = mod.sections.map(s => ({
+          ...s,
+          features: s.features.filter(f => {
+            const rating = f.ratings[bmState.brand];
+            if (bmState.gapOnly && rating.score !== 0) return false;
+            if (!bmState.query) return true;
+            const text = [f.name, f.description, ...f.matches.map(m => m.id + m.name)].join(' ').toLowerCase();
+            return text.includes(bmState.query.toLowerCase());
+          })
+        })).filter(s => s.features.length);
+        if (!sections.length) return '';
+        const vc = sections.reduce((s, sec) => s + sec.features.length, 0);
+        const dc = vc >= 22 ? 'bm-extra-dense' : vc >= 10 ? 'bm-dense' : '';
+        const sectionColumns = [[], []];
+        const sectionWeights = [0, 0];
+        sections.forEach(sec => {
+          const target = sectionWeights[0] <= sectionWeights[1] ? 0 : 1;
+          sectionColumns[target].push(sec);
+          sectionWeights[target] += sec.features.length + 1;
+        });
+        const renderSection = sec => `<div class="bm-section-group">
+          <h4 title="${bmEsc(sec.name)}">${bmEsc(sec.name)}</h4>
+          <div class="bm-feature-grid">
+            ${sec.features.map(f => {
+              const r = f.ratings[bmState.brand];
+              const m0 = f.matches[0];
+              const code = m0?.method === 'manual' ? m0.id : '';
+              return `<button type="button" class="bm-feature-tile ${bmScoreClass(r.score)}" data-bm-feature="${f.id}" title="${bmEsc(f.name)} · ${bmScoreLabel(r.score)}">
+                <span class="bm-feature-name">${bmEsc(f.name)}</span>
+                ${code ? `<span class="bm-match-code">${code}</span>` : ''}
+              </button>`;
+            }).join('')}
+          </div>
+        </div>`;
+        return `<section class="bm-module-card ${dc}">
+          <div class="bm-module-heading">
+            <span class="bm-module-number">${String(mi + 1).padStart(2, '0')}</span>
+            <h3>${bmEsc(mod.name)}</h3>
+            <small>${vc}项</small>
+          </div>
+          <div class="bm-section-grid">
+            ${sectionColumns.map(col => `<div class="bm-section-column">${col.map(renderSection).join('')}</div>`).join('')}
+          </div>
+          <div class="bm-module-review"><strong>差距结论</strong><span>${bmEsc(bmModuleReviews[mod.name])}</span></div>
+        </section>`;
+      };
+
+      const visibleModules = benchmarkData.modules.map((mod, i) => ({
+        html: renderModule(mod, i),
+        weight: mod.sections.reduce((sum, sec) => sum + sec.features.length + 2, 0)
+      })).filter(item => item.html);
+      const moduleColumns = [[], [], []];
+      const moduleColumnWeights = [0, 0, 0];
+      visibleModules.forEach(item => {
+        const target = moduleColumnWeights.indexOf(Math.min(...moduleColumnWeights));
+        moduleColumns[target].push(item.html);
+        moduleColumnWeights[target] += item.weight;
+      });
+      const matrixHtml = moduleColumns.map(col =>
+        `<div class="bm-matrix-column">${col.join('')}</div>`
+      ).join('');
+
+      return `<div class="bm-view">
+        <header class="bm-topbar">
+          <div class="bm-title-row">
+            <div class="bm-title-block">
+              <h2>酒店行业 APP 功能全景矩阵</h2>
+              <p>统一 144 个功能框架，切换品牌即可查看完整覆盖全貌</p>
+            </div>
+            <div class="bm-total-badge"><strong>144</strong><span>个三级功能</span></div>
+          </div>
+          <div class="bm-coverage-stats">${coverageHtml}</div>
+        </header>
+        <div class="bm-controlbar">
+          <div class="bm-brand-tabs" id="bmBrandTabs">${brandTabsHtml}</div>
+          <div class="bm-controlbar-right">
+            <label class="bm-search-box">
+              <span>搜索</span>
+              <input id="bmSearchInput" placeholder="功能名称 / 功能说明 / 万豪编号">
+              <button id="bmClearSearch" type="button" hidden>×</button>
+            </label>
+            <button type="button" class="bm-gap-toggle ${bmState.gapOnly ? 'active' : ''}" id="bmGapToggle">只看差距 ${stats.missing}</button>
+            <div class="bm-legend">
+              <span class="bm-legend-item"><i class="bm-legend-swatch bm-score-0" style="background:var(--bm-score-0)"></i>无功能</span>
+              <span class="bm-legend-item"><i class="bm-legend-swatch bm-score-1" style="background:var(--bm-score-1)"></i>有功能</span>
+              <span class="bm-legend-item"><i class="bm-legend-swatch bm-score-2" style="background:var(--bm-score-2)"></i>有特色</span>
+              <span class="bm-legend-item"><i class="bm-legend-swatch bm-score-3" style="background:var(--bm-score-3)"></i>行业顶尖</span>
+              <span class="bm-legend-item"><i class="bm-legend-swatch bm-score-unknown"></i>待确认</span>
+            </div>
+          </div>
+        </div>
+        <main class="bm-matrix-layout">${matrixHtml}</main>
+      </div>`;
+    }
+
+    function bindBenchmarkHandlers() {
+      document.querySelectorAll('[data-bm-brand]:not(:disabled)').forEach(btn => {
+        btn.onclick = () => {
+          bmState.brand = btn.dataset.bmBrand;
+          renderContent();
+        };
+      });
+
+      document.querySelectorAll('[data-bm-feature]').forEach(btn => {
+        btn.onclick = () => bmOpenDrawer(btn.dataset.bmFeature);
+      });
+
+      const searchInput = document.getElementById('bmSearchInput');
+      const clearBtn = document.getElementById('bmClearSearch');
+      if (searchInput) {
+        searchInput.oninput = () => {
+          bmState.query = searchInput.value.trim();
+          if (clearBtn) clearBtn.hidden = !bmState.query;
+          renderContent();
+          const si = document.getElementById('bmSearchInput');
+          if (si) { si.focus(); si.value = bmState.query; }
+        };
+      }
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          bmState.query = '';
+          renderContent();
+        };
+      }
+      const gapToggle = document.getElementById('bmGapToggle');
+      if (gapToggle) {
+        gapToggle.onclick = () => {
+          bmState.gapOnly = !bmState.gapOnly;
+          renderContent();
+        };
+      }
+    }
+
+    function bmOpenDrawer(id) {
+      const feature = bmAllFeatures().find(f => f.id === id);
+      if (!feature) return;
+      const rating = feature.ratings[bmState.brand];
+      const match = feature.matches[0];
+      const brandLabel = bmCurrentBrand().label;
+
+      // Build evidence panels for all brands that have ratings for this feature
+      const evidenceHtml = bmBrands.filter(b => b.enabled).map(b => {
+        const r = feature.ratings[b.key];
+        if (!r) return '';
+        const scoreLabel = bmScoreLabel(r.score);
+        const scoreClass = bmScoreClass(r.score);
+        const note = r.note || '暂无备注';
+        // Evidence level based on score
+        const level = r.score === 3 ? '官方直接证据' : r.score === 2 ? '官方 App 描述' : r.score === 1 ? '功能存在' : r.score === 0 ? '待补证' : '待验证';
+        const levelClass = r.score === 3 ? 'evidence-direct' : r.score === 2 ? 'evidence-app' : r.score === 1 ? 'evidence-exists' : 'evidence-pending';
+        // Leading judgment text
+        const leadingText = r.score >= 2 ? '品牌被列为该能力域参考对象，但此项领先性仍需通过功能实测、覆盖率和体验评分确认。' :
+                           r.score === 1 ? '功能存在但覆盖范围、体验细节或与其他环节的衔接仍需核验。' :
+                           '当前已收集来源尚未直接证明该 App 在此原子功能上的领先表现。';
+        // Screenshot placeholder
+        const screenshotHtml = r.screenshot ?
+          `<div class="bm-evidence-screenshot"><img src="${bmEsc(r.screenshot)}" alt="${bmEsc(b.label)} 证据截图" loading="lazy"></div>` :
+          `<div class="bm-evidence-screenshot bm-evidence-screenshot--empty"><span>待补充 App 实测截图</span></div>`;
+        return `<article class="bm-evidence-item" data-score="${r.score ?? -1}">
+          <header><strong>${bmEsc(b.label)}</strong><span class="bm-evidence-level ${levelClass}">${level}</span></header>
+          ${screenshotHtml}
+          <div class="bm-evidence-rating"><span class="bm-rating-label ${scoreClass}">${scoreLabel}</span></div>
+          <p><b>能力证据：</b>${bmEsc(note)}</p>
+          <p class="bm-evidence-leading"><b>领先判断：</b>${bmEsc(leadingText)}</p>
+        </article>`;
+      }).filter(Boolean).join('');
+
+      // Gap analysis based on current brand rating vs best competitor
+      const allRatings = Object.entries(feature.ratings).filter(([k, v]) => v && v.score !== null && bmBrands.find(b => b.key === k && b.enabled));
+      const bestScore = allRatings.length ? Math.max(...allRatings.map(([_, v]) => v.score)) : 0;
+      const currentScore = rating.score ?? 0;
+      const gapLevel = currentScore >= bestScore ? '轻微' : currentScore >= bestScore - 1 ? '中等' : '显著';
+      const gapPriority = currentScore === 0 ? 'P0' : currentScore === 1 ? 'P1' : 'P2';
+      const gapShortcoming = currentScore === 0 ? `项目资料暂未发现"${feature.name}"，与代表性标杆存在明确能力缺口。` : currentScore === 1 ? `"${feature.name}"功能存在但覆盖范围、体验细节或与其他环节的衔接仍需核验。` : `"${feature.name}"已具备基础能力，但领先性仍有提升空间。`;
+      const gapImpact = `影响${feature.name.includes('预订') || feature.name.includes('支付') ? '转化效率' : feature.name.includes('会员') || feature.name.includes('积分') ? '会员价值认知' : '用户体验完整性'}，${currentScore < bestScore ? '与行业标杆存在明显差距。' : '需持续保持竞争力。'}`;
+      const gapAction = currentScore === 0 ? `建议优先补齐"${feature.name}"，参考${allRatings.filter(([_, v]) => v.score >= 2).map(([k, _]) => bmBrands.find(b => b.key === k)?.label || k).join('、') || '行业标杆'}的领先实践。` : `建议优化"${feature.name}"体验深度，向行业顶尖水平看齐。`;
+
+      let matchHtml;
+      if (match) {
+        const deepLink = `#module=${match.moduleId}&feature=${match.id}`;
+        matchHtml = `<div class="bm-match-panel">
+          <div class="bm-match-topline">
+            <span>${match.id}</span>
+            <small>${match.method === 'manual' ? '已确认匹配' : '候选匹配，待确认'}</small>
+          </div>
+          <strong>${bmEsc(match.moduleName)} / ${bmEsc(match.sectionName)} / ${bmEsc(match.name)}</strong>
+          <a class="bm-match-link" href="${deepLink}" target="_blank">查看万豪功能详情 →</a>
+        </div>`;
+      } else {
+        matchHtml = `<div class="bm-unmatched-panel">
+          <strong>暂无对应编号</strong>
+          <p>线上功能库中未找到可靠的对应功能。</p>
+        </div>`;
+      }
+
+      document.getElementById('bmDrawerRoot').innerHTML = `
+        <div class="bm-drawer-layer">
+          <aside class="bm-detail-drawer" role="dialog" aria-modal="true">
+            <button class="bm-drawer-close" type="button">×</button>
+            <div class="bm-drawer-kicker">${brandLabel} · ${feature.id}</div>
+            <h2>${bmEsc(feature.name)}</h2>
+            <p class="bm-drawer-description">${bmEsc(feature.description)}</p>
+
+            <!-- Tags row -->
+            <div class="bm-drawer-tags">
+              <span class="bm-tag">${bmEsc(feature.id)}</span>
+              <span class="bm-tag">${bmEsc(rating.score === null ? '待确认' : bmScoreLabel(rating.score))}</span>
+              <span class="bm-tag">差距：${gapLevel}</span>
+              <span class="bm-tag">${gapPriority}</span>
+            </div>
+
+            <!-- Function description & leaders -->
+            <div class="bm-drawer-section">
+              <div class="bm-info-grid">
+                <div><b>功能说明</b><p>${bmEsc(feature.description)}</p></div>
+                <div><b>领先 App</b><p>${bmEsc(bmBrands.filter(b => b.enabled && feature.ratings[b.key]?.score >= 2).map(b => b.label).join('、') || '待确认')}</p></div>
+              </div>
+            </div>
+
+            <!-- Benchmark practice assessment -->
+            <div class="bm-drawer-section">
+              <h3>标杆实践判断</h3>
+              <div class="bm-practice-panel">
+                <p>${bmEsc(allRatings.filter(([_, v]) => v.score >= 2).map(([k, _]) => bmBrands.find(b => b.key === k)?.label || k).join('、') || '行业标杆')}等代表性 App 已围绕"${bmEsc(feature.name)}"形成公开实践或行业探索；实际覆盖品牌、门店和区域存在差异。</p>
+              </div>
+            </div>
+
+            <!-- Marriott verification hint -->
+            <div class="bm-drawer-section">
+              <h3>万豪核验提示</h3>
+              <div class="bm-verify-panel">
+                <p>${rating.score === null ? '公开信息或项目资料不足，建议进行 App 与门店实测。' : rating.score === 0 ? '项目资料暂未发现，需与产品团队确认是否存在其他入口。' : '项目资料显示已具备，仍建议抽样核验端到端体验。'}</p>
+              </div>
+            </div>
+
+            <!-- Gap analysis -->
+            <div class="bm-drawer-section">
+              <h3>万豪不足与补齐方向</h3>
+              <div class="bm-gap-panel">
+                <div class="bm-gap-head">
+                  <b>差距分析</b>
+                  <span class="bm-gap-level">${gapLevel}差距 · ${gapPriority}</span>
+                </div>
+                <div class="bm-gap-columns">
+                  <section><strong>当前不足</strong><p>${bmEsc(gapShortcoming)}</p></section>
+                  <section><strong>潜在影响</strong><p>${bmEsc(gapImpact)}</p></section>
+                  <section><strong>建议补齐</strong><p>${bmEsc(gapAction)}</p></section>
+                </div>
+              </div>
+            </div>
+
+            <!-- Evidence section -->
+            <div class="bm-drawer-section">
+              <div class="bm-evidence-title">
+                <b>领先 App 证据</b>
+                <span>核验日期：2026-06-15</span>
+              </div>
+              <div class="bm-evidence-list">
+                ${evidenceHtml}
+                <div class="bm-evidence-caution">图片为官方网页或官方 App Store 页面截图，用于证明品牌及相关能力方向；不是 App 实测截图。单项领先性及门店覆盖率仍需通过统一任务脚本横向实测。</div>
+              </div>
+            </div>
+
+            <!-- Match link -->
+            <div class="bm-drawer-section">
+              <h3>万豪完整功能对应</h3>
+              ${matchHtml}
+            </div>
+          </aside>
+        </div>`;
+
+      const root = document.getElementById('bmDrawerRoot');
+      root.querySelector('.bm-drawer-close').onclick = bmCloseDrawer;
+      root.querySelector('.bm-drawer-layer').onclick = e => {
+        if (e.target.classList.contains('bm-drawer-layer')) bmCloseDrawer();
+      };
+    }
+
+    function bmCloseDrawer() {
+      const root = document.getElementById('bmDrawerRoot');
+      if (root) root.innerHTML = '';
+    }
 
     function initApp() {
-      const loading = document.getElementById('loading');
-      if (loading) loading.style.display = 'none';
+      const cachedModules = readModulesCache();
+      if (cachedModules) modules = ensureBenchmarkModule(cachedModules);
+
       updateHeaderStats();
       renderNav();
       renderContent();
       renderFilters();
       bindGlobalSearch();
+
+      navigateToHash();
+      window.addEventListener('hashchange', navigateToHash);
+
+      loadOnlineModules();
+      setInterval(loadOnlineModules, 60000);
+    }
+
+    async function loadOnlineModules() {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+      try {
+        const requestUrl = `${FEISHU_API_URL}?_=${Date.now()}`;
+        const response = await fetch(requestUrl, {
+          signal: controller.signal,
+          cache: 'no-store',
+          headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const payload = await response.json();
+        if (payload.success === false) throw new Error(payload.error || '飞书接口返回失败');
+
+        const records = payload.records || payload.data?.items || [];
+        const onlineModules = transformFeishuRecords(records);
+        if (!isUsableOnlineModules(onlineModules)) {
+          throw new Error('飞书表格缺少模块名称、分组名称或完整功能记录');
+        }
+
+        const newModules = ensureBenchmarkModule(onlineModules);
+        const oldJson = JSON.stringify(modules);
+        const newJson = JSON.stringify(newModules);
+        if (oldJson === newJson) {
+          setDataSourceStatus('飞书在线', 'online');
+          return;
+        }
+        modules = newModules;
+        localStorage.setItem('mb-features-online-cache', JSON.stringify(onlineModules));
+
+        if (!modules.some(module => module.id === currentModule)) currentModule = 'overview';
+        updateHeaderStats();
+        renderNav();
+        if (!activeDetailId) {
+          renderContent();
+        }
+        setDataSourceStatus('飞书在线', 'online');
+        console.log('[DATA] 已加载飞书在线数据：', records.length, '条记录');
+      } catch (error) {
+        setDataSourceStatus('本地数据', 'fallback', error.message);
+        console.warn('[DATA] 飞书在线数据加载失败，继续使用缓存或内嵌数据：', error.message);
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+
+    function setDataSourceStatus(text, state, detail = '') {
+      const element = document.getElementById('dataSourceStatus');
+      if (!element) return;
+      element.textContent = text;
+      element.dataset.state = state;
+      element.title = detail || (state === 'online'
+        ? '数据来自飞书多维表格，每分钟自动同步'
+        : '飞书数据暂不可用，当前使用本地数据');
+    }
+
+    function readModulesCache() {
+      try {
+        const cached = JSON.parse(localStorage.getItem('mb-features-online-cache'));
+        return isUsableOnlineModules(cached) ? cached : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function isUsableOnlineModules(candidate) {
+      if (!Array.isArray(candidate) || candidate.length <= 1) return false;
+      const featureModules = candidate.filter(module => !module.isOverview);
+      const featureCount = featureModules.reduce((sum, module) =>
+        sum + module.sections.reduce((sectionSum, section) => sectionSum + section.features.length, 0), 0);
+      return featureCount > 0
+        && featureModules.every(module => module.name && module.name !== '未分类')
+        && featureModules.every(module => module.sections.every(section => section.name && section.name !== '未分类'));
+    }
+
+    function transformFeishuRecords(records) {
+      const fallbackById = new Map(fallbackModules.map(module => [module.id, module]));
+      const fallbackByName = new Map(fallbackModules.map(module => [module.name, module]));
+      const moduleMap = new Map();
+      const generatedModuleIds = new Map();
+      const statusAliases = {
+        '已上线': 'live', live: 'live',
+        '新增': 'new', new: 'new',
+        '迭代中': 'iterate', '计划更新': 'iterate', iterate: 'iterate',
+        '设计中': 'design', design: 'design',
+        '待确认': 'pending', pending: 'pending'
+      };
+
+      records.forEach((record, recordIndex) => {
+        const fields = record.fields || record;
+        const featureId = getFieldText(fields, ['功能编号', '编号', 'featureId', 'id']);
+        const featureName = getFieldText(fields, ['功能名称', 'name']);
+        if (!featureId || !featureName) return;
+
+        const moduleName = getFieldText(fields, ['模块名称', '模块', 'moduleName', 'module']) || '未分类';
+        const knownModule = fallbackByName.get(moduleName);
+        const moduleId = getFieldText(fields, ['模块编码', 'moduleId'])
+          || knownModule?.id
+          || generatedModuleIds.get(moduleName)
+          || `online-${moduleMap.size + 1}`;
+        generatedModuleIds.set(moduleName, moduleId);
+        const sectionName = getFieldText(fields, ['分组名称', '功能分组', '分组', 'section']) || '未分类';
+
+        if (!moduleMap.has(moduleId)) {
+          const fallback = fallbackById.get(moduleId) || knownModule;
+          moduleMap.set(moduleId, {
+            id: moduleId,
+            name: moduleName,
+            desc: getFieldText(fields, ['模块说明', 'moduleDesc']) || fallback?.desc || '',
+            order: getFieldNumber(fields, ['模块排序', 'moduleOrder'], fallbackModules.indexOf(fallback)),
+            sections: new Map()
+          });
+        }
+
+        const module = moduleMap.get(moduleId);
+        if (!module.sections.has(sectionName)) {
+          module.sections.set(sectionName, {
+            name: sectionName,
+            order: getFieldNumber(fields, ['分组排序', 'sectionOrder'], module.sections.size),
+            features: []
+          });
+        }
+
+        const screenshotText = getFieldText(fields, ['截图路径', '截图', 'screenshots']);
+        const screenshots = screenshotText
+          ? screenshotText.split(/\r?\n|\s*\|\s*/).map(item => item.trim()).filter(Boolean)
+          : [];
+        const rawStatus = getFieldText(fields, ['状态', 'status']);
+
+        const feature = {
+          id: featureId,
+          name: featureName,
+          status: statusAliases[rawStatus] || 'pending',
+          desc: getFieldText(fields, ['简要说明', '说明', 'desc']),
+          detail: getFieldText(fields, ['功能说明', '详情', 'detail']),
+          updateLog: getFieldText(fields, ['更新记录', '更新日志', 'updateLog']),
+          order: getFieldNumber(fields, ['排序', '功能排序', 'order'], recordIndex)
+        };
+
+        if (screenshots.length === 1) feature.screenshot = screenshots[0];
+        if (screenshots.length > 1) feature.screenshots = screenshots;
+        module.sections.get(sectionName).features.push(feature);
+      });
+
+      const overview = {
+        ...fallbackModules.find(module => module.isOverview),
+        id: 'overview',
+        name: '总览',
+        isOverview: true
+      };
+
+      const result = [...moduleMap.values()]
+        .sort((a, b) => a.order - b.order)
+        .map(module => ({
+          id: module.id,
+          name: module.name,
+          desc: module.desc,
+          sections: [...module.sections.values()]
+            .sort((a, b) => a.order - b.order)
+            .map(section => ({
+              name: section.name,
+              features: section.features
+                .sort((a, b) => a.order - b.order)
+                .map(({ order, ...feature }) => feature)
+            }))
+        }));
+
+      return [overview, ...result];
+    }
+
+    function getFieldText(fields, aliases) {
+      for (const alias of aliases) {
+        const value = fields[alias];
+        if (value === undefined || value === null) continue;
+        const text = normalizeFeishuValue(value);
+        if (text !== '') return text;
+      }
+      return '';
+    }
+
+    function getFieldNumber(fields, aliases, fallback = 0) {
+      const value = getFieldText(fields, aliases);
+      const number = Number(value);
+      return Number.isFinite(number) ? number : fallback;
+    }
+
+    function normalizeFeishuValue(value) {
+      if (typeof value === 'string' || typeof value === 'number') return String(value).trim();
+      if (Array.isArray(value)) return value.map(normalizeFeishuValue).filter(Boolean).join('\n');
+      if (typeof value === 'object') {
+        return normalizeFeishuValue(value.text ?? value.name ?? value.value ?? value.link ?? '');
+      }
+      return '';
     }
 
     function updateHeaderStats() {
-      const moduleList = modules.filter(m => !m.isOverview);
+      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
       const totalFeatures = moduleList.reduce((sum, m) => sum + getModuleFeatureCount(m), 0);
       const allFeatures = moduleList.flatMap(m => getAllFeatures(m));
       const statusCounts = countByStatus(allFeatures);
@@ -3419,8 +5435,8 @@ let modules = [
     // ===== HELPERS =====
     const statusMap = {
       live:    { label: '已上线', class: 'status-live', badge: 'badge-live' },
-      new:     { label: '新增', class: 'status-new', badge: 'badge-new' },
-      iterate: { label: '计划更新', class: 'status-iterate', badge: 'badge-iterate' },
+      new:     { label: '新功能', class: 'status-new', badge: 'badge-new' },
+      iterate: { label: '功能迭代', class: 'status-iterate', badge: 'badge-iterate' },
       pending: { label: '待确认', class: 'status-pending', badge: 'badge-pending' }
     };
 
@@ -3455,10 +5471,10 @@ let modules = [
           <li class="nav-item">
             <a class="nav-link ${isActive ? 'active' : ''}" data-module="${m.id}">
               <span style="display:flex;align-items:center;">
-                <span class="nav-icon">${iconMap[m.id]}</span>
+                <span class="nav-icon">${iconMap[m.id] || iconMap.overview}</span>
                 ${m.name}
               </span>
-              ${!m.isOverview ? `<span class="nav-count">${getModuleFeatureCount(m)}</span>` : ''}
+              ${(!m.isOverview && !m.isBenchmark) ? `<span class="nav-count">${getModuleFeatureCount(m)}</span>` : ''}
             </a>
           </li>
         `;
@@ -3475,7 +5491,7 @@ let modules = [
     }
 
     function renderOverview() {
-      const moduleList = modules.filter(m => !m.isOverview);
+      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
       const totalFeatures = moduleList.reduce((sum, m) => sum + getModuleFeatureCount(m), 0);
       const allFeatures = moduleList.flatMap(m => getAllFeatures(m));
       const statusCounts = countByStatus(allFeatures);
@@ -3558,7 +5574,7 @@ let modules = [
     }
 
     function renderOverviewFeatureList(filter, totalFeatures, statusCounts) {
-      const moduleList = modules.filter(m => !m.isOverview);
+      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
       const filterLabelMap = {
         all: { label: '全部功能', count: totalFeatures },
         live: { label: '已上线功能', count: statusCounts.live },
@@ -3621,7 +5637,7 @@ let modules = [
           <div class="search-results-module">
             <div class="search-results-module-header">
               <div class="search-results-module-title">
-                <span class="module-icon" style="width:20px;height:20px;">${iconMap[module.id]}</span>
+                <span class="module-icon" style="width:20px;height:20px;">${iconMap[module.id] || iconMap.overview}</span>
                 <span>${module.name}</span>
                 <span class="search-results-count">${features.length} 项</span>
               </div>
@@ -3741,7 +5757,7 @@ let modules = [
           <div class="search-results-module">
             <div class="search-results-module-header">
               <div class="search-results-module-title">
-                <span class="module-icon" style="width:20px;height:20px;">${iconMap[module.id]}</span>
+                <span class="module-icon" style="width:20px;height:20px;">${iconMap[module.id] || iconMap.overview}</span>
                 <span>${module.name}</span>
                 <span class="search-results-count">${features.length} 项</span>
               </div>
@@ -3781,10 +5797,10 @@ let modules = [
 
       // 收集所有截图
       const shots = [];
-      if (f.screenshot) shots.push({ src: f.screenshot, label: '图1' });
-      if (f.screenshot2) shots.push({ src: f.screenshot2, label: '图2' });
+      if (f.screenshot) shots.push({ src: f.screenshot, label: '图1', path: f.screenshot });
+      if (f.screenshot2) shots.push({ src: f.screenshot2, label: '图2', path: f.screenshot2 });
       if (f.screenshots && Array.isArray(f.screenshots)) {
-        f.screenshots.forEach((s, i) => shots.push({ src: s, label: '图' + (i + 1) }));
+        f.screenshots.forEach((s, i) => shots.push({ src: s, label: '图' + (i + 1), path: s }));
       }
 
       const galleryId = 'gallery-' + f.id;
@@ -3967,7 +5983,9 @@ let modules = [
                 <span class="section-name">${section.name}</span>
                 <span class="section-count">(${sectionFeatures.length}${currentFilter !== 'all' ? '' : '/' + section.features.length})</span>
               </div>
-              <div class="section-badges">${badgesHtml}</div>
+              <div class="section-header-right">
+                <div class="section-badges">${badgesHtml}</div>
+              </div>
             </div>
             <div class="section-content ${isExpanded ? 'expanded' : ''}">
               <table class="feature-table">
@@ -3997,7 +6015,7 @@ let modules = [
       return `
         <div class="module-header">
           <div class="module-title-row">
-            <div class="module-icon">${iconMap[module.id]}</div>
+            <div class="module-icon">${iconMap[module.id] || iconMap.overview}</div>
             <h1 class="module-title">${module.name}</h1>
           </div>
           <p class="module-desc">${module.desc}</p>
@@ -4024,6 +6042,18 @@ let modules = [
     function renderContent() {
       const content = document.getElementById('content');
       const module = modules.find(m => m.id === currentModule);
+      if (!module) {
+        currentModule = 'overview';
+        renderNav();
+        renderContent();
+        return;
+      }
+
+      if (module.isBenchmark) {
+        content.innerHTML = renderBenchmark();
+        bindBenchmarkHandlers();
+        return;
+      }
 
       if (globalSearchQuery && module.isOverview) {
         content.innerHTML = renderSearchResults();
@@ -4071,6 +6101,18 @@ let modules = [
       } else {
         content.innerHTML = renderModule(module);
         bindModuleHandlers(content);
+        if (activeDetailId) {
+          const row = document.querySelector(`[data-detail="${activeDetailId}"]`);
+          const detailRow = document.getElementById(activeDetailId);
+          const detailPanel = document.getElementById(activeDetailId + '-panel');
+          if (row && detailRow && detailPanel) {
+            row.classList.add('active');
+            detailRow.style.display = 'table-row';
+            detailPanel.classList.add('expanded');
+          } else {
+            activeDetailId = null;
+          }
+        }
       }
     }
 
@@ -4230,10 +6272,11 @@ let modules = [
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') { closeLightbox(); bmCloseDrawer(); }
     });
 
     // ===== INIT =====
+    initApp();
 
   </script>
 </body>
