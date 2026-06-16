@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>万豪功能说明 — 飞书导出工具</title>
+  <style>
+    :root {
+      --bg: #F0EFEA;
+      --text: #1a1a1a;
+      --text-secondary: #666;
+      --border: #ddd;
+      --accent: #8B6914;
+      --accent-light: #f5f0e8;
+      --success: #2d7d46;
+      --card: #fff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .file-input {
+      display: none;
+    }
+    .file-label {
+      display: block;
+      padding: 40px;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .file-label:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .file-label.has-files {
+      border-color: var(--success);
+      background: #f0f7f2;
+    }
+    .file-label svg {
+      width: 40px;
+      height: 40px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .file-label p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .file-label .file-list {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text);
+      text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .file-label .file-list li {
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+    .file-label .file-list li:last-child { border-bottom: none; }
+    .status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    .status.success {
+      background: #f0f7f2;
+      color: var(--success);
+    }
+    .status.error {
+      background: #fdf2f2;
+      color: #c0392b;
+    }
+    .status.info {
+      background: #f5f0e8;
+      color: var(--accent);
+    }
+    .preview {
+      margin-top: 16px;
+      max-height: 400px;
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .preview table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .preview th {
+      background: var(--accent-light);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    .preview td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .preview tr:hover td {
+      background: var(--accent-light);
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .field-map {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px 16px;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .field-map dt {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .field-map dd {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <h1>飞书表格导出工具</h1>
+  <p class="subtitle">将本地 js/modules/*.js 数据导出为 CSV，供导入飞书多维表格</p>
+
+  <!-- Step 1: Select Files -->
+  <div class="card">
+    <h2><span class="step-num">1</span>选择模块文件</h2>
+    <input type="file" id="fileInput" class="file-input" multiple accept=".js" webkitdirectory directory>
+    <label for="fileInput" class="file-label" id="fileLabel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p>点击选择 <code>js/modules/</code> 文件夹<br>或拖拽 .js 文件到此处</p>
+      <ul class="file-list" id="fileList"></ul>
+    </label>
+    <div id="step1Status"></div>
+  </div>
+
+  <!-- Step 2: Preview & Export -->
+  <div class="card" id="step2" style="display:none;">
+    <h2><span class="step-num">2</span>预览与导出</h2>
+    <div class="field-map">
+      <dt>导出字段</dt><dd>功能编号、功能名称、模块名称、分组名称、状态、简要说明、功能说明、截图路径、更新记录、排序</dd>
+      <dt>状态映射</dt><dd>live→已上线 / new→新增 / iterate→迭代中 / design→设计中 / pending→待确认</dd>
+      <dt>数据行数</dt><dd id="rowCount">—</dd>
+    </div>
+    <div class="preview" id="preview"></div>
+    <div class="actions">
+      <button class="btn" id="exportBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        下载 CSV 文件
+      </button>
+      <button class="btn btn-secondary" id="copyBtn">复制 CSV 内容</button>
+    </div>
+    <div id="step2Status"></div>
+  </div>
+
+  <script>
+    // 状态映射
+    const STATUS_MAP = {
+      live: '已上线',
+      new: '新增',
+      iterate: '迭代中',
+      design: '设计中',
+      pending: '待确认'
+    };
+
+    let parsedData = [];
+    let csvContent = '';
+
+    // 文件选择
+    const fileInput = document.getElementById('fileInput');
+    const fileLabel = document.getElementById('fileLabel');
+    const fileList = document.getElementById('fileList');
+    const step1Status = document.getElementById('step1Status');
+    const step2 = document.getElementById('step2');
+    const step2Status = document.getElementById('step2Status');
+
+    fileInput.addEventListener('change', handleFiles);
+
+    // 拖拽支持
+    fileLabel.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileLabel.style.borderColor = 'var(--accent)';
+    });
+    fileLabel.addEventListener('dragleave', () => {
+      fileLabel.style.borderColor = '';
+    });
+    fileLabel.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileLabel.style.borderColor = '';
+      const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.js'));
+      if (files.length) processFiles(files);
+    });
+
+    function handleFiles(e) {
+      const files = Array.from(e.target.files).filter(f => f.name.endsWith('.js'));
+      processFiles(files);
+    }
+
+    async function processFiles(files) {
+      if (!files.length) {
+        showStatus(step1Status, '未选择 .js 文件', 'error');
+        return;
+      }
+
+      // 显示文件列表
+      fileList.innerHTML = files.map(f =>
+        `<li><span>${f.name}</span><span>${(f.size/1024).toFixed(1)} KB</span></li>`
+      ).join('');
+      fileLabel.classList.add('has-files');
+
+      // 解析文件
+      const modules = [];
+      const mockModules = { push: (m) => modules.push(m) };
+
+      for (const file of files.sort((a, b) => a.name.localeCompare(b.name))) {
+        const text = await file.text();
+        // 替换 modules.push 为 mockModules.push
+        const wrapped = text.replace(/modules\.push/g, 'mockModules.push');
+        try {
+          eval(wrapped);
+        } catch (err) {
+          showStatus(step1Status, `解析失败: ${file.name} — ${err.message}`, 'error');
+          return;
+        }
+      }
+
+      // 生成数据
+      parsedData = [];
+      let order = 0;
+
+      for (const module of modules) {
+        if (module.isOverview || module.isBenchmark) continue;
+        if (!module.sections) continue;
+
+        for (const section of module.sections) {
+          if (!section.features) continue;
+
+          for (const feature of section.features) {
+            order++;
+            const screenshots = feature.screenshots
+              ? feature.screenshots.join('\n')
+              : (feature.screenshot || '');
+
+            parsedData.push({
+              '功能编号': feature.id || '',
+              '功能名称': feature.name || '',
+              '模块名称': module.name || '',
+              '分组名称': section.name || '',
+              '状态': STATUS_MAP[feature.status] || feature.status || '待确认',
+              '简要说明': feature.desc || '',
+              '功能说明': feature.detail || '',
+              '截图路径': screenshots,
+              '更新记录': feature.updateLog || '',
+              '排序': order
+            });
+          }
+        }
+      }
+
+      showStatus(step1Status, `成功解析 ${modules.length} 个模块，${parsedData.length} 条功能记录`, 'success');
+
+      // 生成 CSV
+      csvContent = generateCSV(parsedData);
+
+      // 显示预览
+      document.getElementById('rowCount').textContent = `${parsedData.length} 条`;
+      renderPreview(parsedData);
+      step2.style.display = 'block';
+    }
+
+    function generateCSV(data) {
+      const headers = ['功能编号', '功能名称', '模块名称', '分组名称', '状态', '简要说明', '功能说明', '截图路径', '更新记录', '排序'];
+      const rows = [headers.join(',')];
+
+      for (const row of data) {
+        const values = headers.map(h => escapeCSV(row[h]));
+        rows.push(values.join(','));
+      }
+
+      return '﻿' + rows.join('\n'); // BOM for Excel
+    }
+
+    function escapeCSV(value) {
+      if (value === null || value === undefined) return '';
+      const str = String(value);
+      if (/[",\n\r]/.test(str)) {
+        return '"' + str.replace(/"/g, '""') + '"';
+      }
+      return str;
+    }
+
+    function renderPreview(data) {
+      const headers = ['功能编号', '功能名称', '模块名称', '分组名称', '状态'];
+      const previewData = data.slice(0, 50); // 只预览前50条
+
+      let html = '<table><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+      html += previewData.map(row =>
+        '<tr>' + headers.map(h => `<td title="${escapeHtml(row[h])}">${escapeHtml(truncate(row[h], 40))}</td>`).join('') + '</tr>'
+      ).join('');
+      html += '</tbody></table>';
+
+      if (data.length > 50) {
+        html += `<p style="padding:12px;text-align:center;color:var(--text-secondary);font-size:13px;">... 还有 ${data.length - 50} 条记录 ...</p>`;
+      }
+
+      document.getElementById('preview').innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function truncate(str, len) {
+      if (!str) return '';
+      return str.length > len ? str.slice(0, len) + '...' : str;
+    }
+
+    function showStatus(el, msg, type) {
+      el.innerHTML = `<div class="status ${type}">${msg}</div>`;
+    }
+
+    // 导出按钮
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const date = new Date().toISOString().split('T')[0];
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `export_${date}.csv`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showStatus(step2Status, 'CSV 文件已下载', 'success');
+    });
+
+    // 复制按钮
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(csvContent);
+        showStatus(step2Status, 'CSV 内容已复制到剪贴板，可直接粘贴到飞书表格', 'success');
+      } catch {
+        showStatus(step2Status, '复制失败，请使用下载按钮', 'error');
+      }
+    });
+  </script>
+</body>
+</html>
