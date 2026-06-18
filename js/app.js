@@ -32,6 +32,7 @@ let activeDetailId = null;
     // ===== STATE =====
     let currentModule = 'benchmark';
     let currentFilter = 'all';
+    let motPriorityFilter = 'all';
     let expandedSections = new Set();
     let globalSearchQuery = '';
     let searchMatches = new Map(); // moduleId -> Set(featureIds)
@@ -649,7 +650,7 @@ let activeDetailId = null;
     }
 
     function updateHeaderStats() {
-      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
+      const moduleList = modules.filter(isPrimaryFeatureModule);
       const totalFeatures = moduleList.reduce((sum, m) => sum + getModuleFeatureCount(m), 0);
       const allFeatures = moduleList.flatMap(m => getAllFeatures(m));
       const statusCounts = countByStatus(allFeatures);
@@ -758,6 +759,10 @@ let activeDetailId = null;
       return counts;
     }
 
+    function isPrimaryFeatureModule(module) {
+      return !module.isOverview && !module.isBenchmark && module.id !== 'mot';
+    }
+
     function getAllFeatures(module) {
       if (!module.sections) return [];
       return module.sections.flatMap(s => s.features);
@@ -771,6 +776,11 @@ let activeDetailId = null;
     function filterFeatures(features, filter) {
       if (filter === 'all') return features;
       return features.filter(f => f.status === filter);
+    }
+
+    function filterMotPriority(features) {
+      if (motPriorityFilter === 'all') return features;
+      return features.filter(f => (f.priority || 'P2') === motPriorityFilter);
     }
 
     // ===== RENDER =====
@@ -802,7 +812,7 @@ let activeDetailId = null;
     }
 
     function renderOverview() {
-      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
+      const moduleList = modules.filter(isPrimaryFeatureModule);
       const totalFeatures = moduleList.reduce((sum, m) => sum + getModuleFeatureCount(m), 0);
       const allFeatures = moduleList.flatMap(m => getAllFeatures(m));
       const statusCounts = countByStatus(allFeatures);
@@ -885,7 +895,7 @@ let activeDetailId = null;
     }
 
     function renderOverviewFeatureList(filter, totalFeatures, statusCounts) {
-      const moduleList = modules.filter(m => !m.isOverview && !m.isBenchmark);
+      const moduleList = modules.filter(isPrimaryFeatureModule);
       const filterLabelMap = {
         all: { label: '全部功能', count: totalFeatures },
         '已上线': { label: '已上线功能', count: statusCounts['已上线'] },
@@ -1231,14 +1241,22 @@ let activeDetailId = null;
     }
 
     function renderModule(module) {
+      const isMotModule = module.id === 'mot';
       const allFeatures = getAllFeatures(module);
-      const filteredFeatures = filterFeatures(allFeatures, currentFilter).filter(f => featureMatchesSearch(f));
+      const filteredFeatures = (isMotModule
+        ? filterMotPriority(filterFeatures(allFeatures, currentFilter))
+        : filterFeatures(allFeatures, currentFilter))
+        .filter(f => featureMatchesSearch(f, module.id));
       const counts = countByStatus(filteredFeatures);
 
       let sectionsHtml = '';
       module.sections.forEach((section, idx) => {
-        const sectionFeatures = filterFeatures(section.features, currentFilter).filter(f => featureMatchesSearch(f));
-        if (sectionFeatures.length === 0 && (currentFilter !== 'all' || globalSearchQuery)) return;
+        const sectionFeatures = (isMotModule
+          ? filterMotPriority(filterFeatures(section.features, currentFilter))
+          : filterFeatures(section.features, currentFilter))
+          .filter(f => featureMatchesSearch(f, module.id));
+        const hasActiveFilter = currentFilter !== 'all' || globalSearchQuery || (isMotModule && motPriorityFilter !== 'all');
+        if (sectionFeatures.length === 0 && hasActiveFilter) return;
 
         const sectionId = `${module.id}-section-${idx}`;
         const isExpanded = expandedSections.has(sectionId);
@@ -1249,71 +1267,112 @@ let activeDetailId = null;
           .map(([status, count]) => `<span class="badge ${statusMap[status].badge}">${count}</span>`)
           .join('');
 
-        const featuresHtml = sectionFeatures.map(f => {
-          const s = statusMap[f.status];
-          const detailId = `${sectionId}-detail-${f.id}`;
-          const screenshotCount = (() => {
-            let count = 0;
-            if (f.screenshot) count++;
-            if (f.screenshot2) count++;
-            if (f.screenshots && Array.isArray(f.screenshots)) count += f.screenshots.length;
-            return count;
-          })();
-          const hasScreenshot = screenshotCount > 0;
-          const screenshotCell = hasScreenshot
-            ? `<button class="screenshot-count-badge has-screenshot" onclick="event.stopPropagation(); toggleFeatureDetail('${detailId}', this.closest('tr'))">${screenshotCount} 张</button>`
-            : `<span class="screenshot-placeholder-text">—</span>`;
+        // MOT 模块使用卡片样式
+        const isMot = isMotModule;
 
-          const detailPanel = renderFeatureDetail(f, detailId);
-
-          return `
-            <tr class="feature-row" data-detail="${detailId}" onclick="toggleFeatureDetail('${detailId}', this)">
-              <td><span class="feature-id">${f.id}</span></td>
-              <td><span class="feature-name">${f.name}</span></td>
-              <td><span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span></td>
-              <td class="feature-note">${f.desc || f.note || ''}</td>
-              <td class="feature-screenshot-cell" onclick="event.stopPropagation();">${screenshotCell}</td>
-            </tr>
-            ${detailPanel}
+        let featuresHtml;
+        if (isMot) {
+          // MOT 旅程泳道布局
+          featuresHtml = sectionFeatures.map(f => {
+            const s = statusMap[f.status] || statusMap['待确认'];
+            const priority = f.priority || 'P2';
+            return `
+            <div class="mot-card mot-card-${priority.toLowerCase()}">
+              <div class="mot-card-meta">
+                <span class="mot-card-id">${f.id}</span>
+                <span class="mot-card-priority mot-priority-${priority.toLowerCase()}">${priority}</span>
+                <span class="mot-card-status feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span>
+              </div>
+              <div class="mot-card-name">${f.name}</div>
+              <div class="mot-card-desc">${f.desc || ''}</div>
+            </div>
           `;
-        }).join('');
+          }).join('');
+        } else {
+          // 原有表格布局
+          featuresHtml = sectionFeatures.map(f => {
+            const s = statusMap[f.status];
+            const detailId = `${sectionId}-detail-${f.id}`;
+            const screenshotCount = (() => {
+              let count = 0;
+              if (f.screenshot) count++;
+              if (f.screenshot2) count++;
+              if (f.screenshots && Array.isArray(f.screenshots)) count += f.screenshots.length;
+              return count;
+            })();
+            const hasScreenshot = screenshotCount > 0;
+            const screenshotCell = hasScreenshot
+              ? `<button class="screenshot-count-badge has-screenshot" onclick="event.stopPropagation(); toggleFeatureDetail('${detailId}', this.closest('tr'))">${screenshotCount} 张</button>`
+              : `<span class="screenshot-placeholder-text">—</span>`;
 
-        const allExpanded = sectionFeatures.every(f => {
+            const detailPanel = renderFeatureDetail(f, detailId);
+
+            return `
+              <tr class="feature-row" data-detail="${detailId}" onclick="toggleFeatureDetail('${detailId}', this)">
+                <td><span class="feature-id">${f.id}</span></td>
+                <td><span class="feature-name">${f.name}</span></td>
+                <td><span class="feature-status ${s.class}"><span class="status-dot" style="background:currentColor;"></span>${s.label}</span></td>
+                <td class="feature-note">${f.desc || f.note || ''}</td>
+                <td class="feature-screenshot-cell" onclick="event.stopPropagation();">${screenshotCell}</td>
+              </tr>
+              ${detailPanel}
+            `;
+          }).join('');
+        }
+
+        const allExpanded = !isMot && sectionFeatures.every(f => {
           const did = `${sectionId}-detail-${f.id}`;
           const dp = document.getElementById(did + '-panel');
           return dp && dp.classList.contains('expanded');
         });
 
-        sectionsHtml += `
-          <div class="section-card">
-            <div class="section-header" data-section="${sectionId}">
-              <div class="section-header-left">
-                <span class="section-toggle ${isExpanded ? 'expanded' : ''}">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </span>
-                <span class="section-name">${section.name}</span>
-                <span class="section-count">(${sectionFeatures.length}${currentFilter !== 'all' ? '' : '/' + section.features.length})</span>
+        if (isMot) {
+          // MOT 平摊分类布局
+          sectionsHtml += `
+            <div class="mot-section-card">
+              <div class="mot-section-header">
+                <div class="mot-section-index">${String(idx + 1).padStart(2, '0')}</div>
+                <div class="mot-section-title">
+                  <strong>${section.name}</strong>
+                </div>
+                <small>${sectionFeatures.length}${hasActiveFilter ? '' : '/' + section.features.length}</small>
               </div>
-              <div class="section-header-right">
-                <div class="section-badges">${badgesHtml}</div>
+              <div class="mot-card-grid">${featuresHtml}</div>
+            </div>
+          `;
+        } else {
+          // 原有表格布局
+          sectionsHtml += `
+            <div class="section-card">
+              <div class="section-header" data-section="${sectionId}">
+                <div class="section-header-left">
+                  <span class="section-toggle ${isExpanded ? 'expanded' : ''}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </span>
+                  <span class="section-name">${section.name}</span>
+                  <span class="section-count">(${sectionFeatures.length}${hasActiveFilter ? '' : '/' + section.features.length})</span>
+                </div>
+                <div class="section-header-right">
+                  <div class="section-badges">${badgesHtml}</div>
+                </div>
+              </div>
+              <div class="section-content ${isExpanded ? 'expanded' : ''}">
+                <table class="feature-table">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">编号</th>
+                      <th>功能名称</th>
+                      <th style="width:100px;">状态</th>
+                      <th>说明</th>
+                      <th style="width:100px;">截图</th>
+                    </tr>
+                  </thead>
+                  <tbody>${featuresHtml}</tbody>
+                </table>
               </div>
             </div>
-            <div class="section-content ${isExpanded ? 'expanded' : ''}">
-              <table class="feature-table">
-                <thead>
-                  <tr>
-                    <th style="width:80px;">编号</th>
-                    <th>功能名称</th>
-                    <th style="width:100px;">状态</th>
-                    <th>说明</th>
-                    <th style="width:100px;">截图</th>
-                  </tr>
-                </thead>
-                <tbody>${featuresHtml}</tbody>
-              </table>
-            </div>
-          </div>
-        `;
+          `;
+        }
       });
 
       const searchInfoHtml = globalSearchQuery ? `
@@ -1322,6 +1381,41 @@ let activeDetailId = null;
           ${searchMatches.size > 1 ? `<span class="search-modules-hint">共 ${searchMatches.size} 个模块匹配</span>` : ''}
         </div>
       ` : '';
+      const motFilterHtml = isMotModule ? `
+        <div class="mot-filter-bar">
+          <div class="mot-filter-group">
+            <span class="mot-filter-label">状态</span>
+            ${[
+              { value: 'all', label: '全部' },
+              { value: '新功能', label: '新功能' },
+              { value: '功能迭代', label: '功能迭代' },
+              { value: '待确认', label: '待确认' }
+            ].map(option => `
+              <button type="button" class="mot-filter-chip ${currentFilter === option.value ? 'active' : ''}" data-mot-status="${option.value}">
+                ${option.label}
+              </button>
+            `).join('')}
+          </div>
+          <div class="mot-filter-group">
+            <span class="mot-filter-label">优先级</span>
+            ${[
+              { value: 'all', label: '全部' },
+              { value: 'P0', label: 'P0' },
+              { value: 'P1', label: 'P1' },
+              { value: 'P2', label: 'P2' }
+            ].map(option => `
+              <button type="button" class="mot-filter-chip mot-filter-priority ${motPriorityFilter === option.value ? 'active' : ''}" data-mot-priority="${option.value}">
+                ${option.label}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
+      const sectionsOutputHtml = sectionsHtml
+        ? (isMotModule ? `<div class="mot-board">${sectionsHtml}</div>` : sectionsHtml)
+        : ((globalSearchQuery || currentFilter !== 'all' || (isMotModule && motPriorityFilter !== 'all'))
+          ? '<div class="search-empty-state">没有符合当前条件的功能</div>'
+          : '');
 
       return `
         <div class="module-header">
@@ -1346,7 +1440,9 @@ let activeDetailId = null;
           <input type="text" class="search-input" id="searchInput" placeholder="搜索功能名称、编号或说明...">
         </div>
 
-        ${sectionsHtml || (globalSearchQuery ? '<div class="search-empty-state">当前模块中没有匹配 "' + globalSearchQuery + '" 的功能</div>' : '')}
+        ${motFilterHtml}
+
+        ${sectionsOutputHtml}
       `;
     }
 
@@ -1475,6 +1571,23 @@ let activeDetailId = null;
           }
         });
       }
+
+      content.querySelectorAll('[data-mot-status]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.dataset.motStatus;
+          document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.classList.toggle('active', chip.dataset.filter === currentFilter);
+          });
+          renderContent();
+        });
+      });
+
+      content.querySelectorAll('[data-mot-priority]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          motPriorityFilter = btn.dataset.motPriority;
+          renderContent();
+        });
+      });
     }
 
     function renderStatusFilters() {
