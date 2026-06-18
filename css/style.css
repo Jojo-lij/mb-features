@@ -3439,6 +3439,11 @@
       font-weight: 700;
     }
 
+    .mot-card-status.status-live { color: #2F6F58; }
+    .mot-card-status.status-new { color: #355F86; }
+    .mot-card-status.status-iterate { color: #8A6516; }
+    .mot-card-status.status-pending { color: #667078; }
+
     .mot-card-name {
       color: #111820;
       font-size: 12.5px;
