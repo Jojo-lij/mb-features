@@ -6,10 +6,10 @@ modules.push(
     "desc": "单酒店/多酒店团体预订与管理",
     "sections": [
       {
-        "name": "团体预订",
+        "name": "GB01 团体预订",
         "features": [
           {
-            "id": "GB01",
+            "id": "GB01-1",
             "name": "单酒店团体预订",
             "status": "新功能",
             "desc": "为同一酒店预订多间客房，支持批量设置入住信息和宾客偏好",
@@ -17,7 +17,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB02",
+            "id": "GB01-2",
             "name": "多酒店团体预订",
             "status": "新功能",
             "desc": "为多个不同酒店同时预订客房，适用于大型活动、会议等场景",
@@ -25,7 +25,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB03",
+            "id": "GB01-3",
             "name": "团体预订首页",
             "status": "新功能",
             "desc": "团体预订功能入口首页，展示预订选项、历史团体预订和引导信息",
@@ -33,7 +33,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB04",
+            "id": "GB01-4",
             "name": "团体行程管理",
             "status": "新功能",
             "desc": "管理已创建的团体预订，支持查看详情、修改、取消和添加房间",
@@ -41,7 +41,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB05",
+            "id": "GB01-5",
             "name": "团体预订编辑",
             "status": "新功能",
             "desc": "编辑已创建的团体预订信息，支持修改房间、宾客、日期和偏好",
@@ -49,7 +49,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB06",
+            "id": "GB01-6",
             "name": "团体预订确认",
             "status": "新功能",
             "desc": "团体预订提交后的确认页面，展示完整预订信息和下一步操作",
@@ -57,7 +57,7 @@ modules.push(
             "screenshot": "images/团体预订/UI__Group booking__UI.png"
           },
           {
-            "id": "GB07",
+            "id": "GB01-7",
             "name": "暗黑模式",
             "status": "新功能",
             "desc": "团体预订全页面的暗黑模式适配，确保低光环境下的舒适体验",

@@ -6,10 +6,10 @@ modules.push(
     "desc": "登录、注册、MFA、Push——安全与合规",
     "sections": [
       {
-        "name": "未登录",
+        "name": "SO01 未登录",
         "features": [
           {
-            "id": "SO01",
+            "id": "SO01-1",
             "name": "隐私政策弹窗",
             "status": "已上线",
             "desc": "首次启动APP时展示的隐私政策与用户协议确认弹窗，用户需同意后方可使用",
@@ -17,7 +17,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__登录__9-勾选隐私政策.jpg"
           },
           {
-            "id": "SO02",
+            "id": "SO01-2",
             "name": "Onboarding 引导",
             "status": "新功能",
             "desc": "新用户首次进入APP的4步引导流程，介绍核心功能和价值主张",
@@ -25,7 +25,7 @@ modules.push(
             "screenshot": "images/账户/UI__signed out state__onboarding flow.png"
           },
           {
-            "id": "SO03",
+            "id": "SO01-3",
             "name": "注册",
             "status": "已上线",
             "desc": "万豪旅享家会员注册流程，支持手机号/邮箱注册，填写基本信息完成入会",
@@ -33,7 +33,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__登录__4-点击加入万豪旅享家.jpg"
           },
           {
-            "id": "SO04",
+            "id": "SO01-4",
             "name": "登录",
             "status": "已上线",
             "desc": "万豪旅享家会员登录，支持账号密码、短信验证码、第三方授权登录",
@@ -41,7 +41,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__登录__11-点击登录.jpg"
           },
           {
-            "id": "SO05",
+            "id": "SO01-5",
             "name": "忘记密码",
             "status": "已上线",
             "desc": "通过手机号/邮箱验证身份后重置登录密码",
@@ -49,7 +49,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__登录__12-找回密码.jpg"
           },
           {
-            "id": "SO06",
+            "id": "SO01-6",
             "name": "查找会员编号",
             "status": "已上线",
             "desc": "通过注册邮箱或手机号找回忘记的会员编号",
@@ -57,7 +57,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__登录__13-查找会员编号.jpg"
           },
           {
-            "id": "SO07",
+            "id": "SO01-7",
             "name": "生物识别登录",
             "status": "新功能",
             "desc": "支持Face ID/Touch ID/指纹等生物识别方式快速登录",
@@ -65,7 +65,7 @@ modules.push(
             "screenshot": "images/账户/UI__signed out state__Sign in.png"
           },
           {
-            "id": "SO08",
+            "id": "SO01-8",
             "name": "免密登录",
             "status": "新功能",
             "desc": "基于设备信任的免密码快速登录，Backlog Q3/Q4规划",
@@ -73,7 +73,7 @@ modules.push(
             "screenshot": "images/账户/UI__signed out state__Sign in.png"
           },
           {
-            "id": "SO09",
+            "id": "SO01-9",
             "name": "未登录首页",
             "status": "新功能",
             "desc": "未登录状态下的首页展示，功能受限并引导用户登录/注册",
@@ -83,10 +83,10 @@ modules.push(
         ]
       },
       {
-        "name": "安全",
+        "name": "SEC01 安全",
         "features": [
           {
-            "id": "SEC01",
+            "id": "SEC01-1",
             "name": "多因素认证(MFA)",
             "status": "新功能",
             "desc": "账户安全增强验证，支持手机验证码、邮箱验证码、Authenticator应用",
@@ -94,7 +94,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__MFA.png"
           },
           {
-            "id": "SEC02",
+            "id": "SEC01-2",
             "name": "礼品卡兑换MFA",
             "status": "功能迭代",
             "desc": "礼品卡兑换操作时的强制MFA安全验证，保护用户资产安全",
@@ -102,7 +102,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Redeem Gift Card.png"
           },
           {
-            "id": "SEC03",
+            "id": "SEC01-3",
             "name": "Push 权限申请",
             "status": "新功能",
             "desc": "APP Push通知权限申请，覆盖7个关键场景，引导用户开启以提升触达率",
@@ -110,7 +110,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__push+opt in.png"
           },
           {
-            "id": "SEC04",
+            "id": "SEC01-4",
             "name": "Push 功能引导",
             "status": "新功能",
             "desc": "向用户说明Push通知的价值和功能，提升用户开启通知的意愿",
@@ -118,7 +118,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__push+opt in.png"
           },
           {
-            "id": "SEC05",
+            "id": "SEC01-5",
             "name": "Push 分类管理",
             "status": "新功能",
             "desc": "精细化Push通知分类管理，用户可按类别开关通知，提升通知体验",

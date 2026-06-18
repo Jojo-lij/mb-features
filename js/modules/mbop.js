@@ -6,7 +6,7 @@ modules.push(
     "desc": "万豪优惠平台——活动套餐浏览与预订",
     "sections": [
       {
-        "name": "MBOP",
+        "name": "M01 MBOP",
         "features": [
           {
             "id": "M01",

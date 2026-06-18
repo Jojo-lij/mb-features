@@ -6,10 +6,10 @@ modules.push(
     "desc": "行程管理、入住服务、历史记录——入住体验全链路",
     "sections": [
       {
-        "name": "即将开始的行程",
+        "name": "TP01 即将开始的行程",
         "features": [
           {
-            "id": "TP01",
+            "id": "TP01-1",
             "name": "行程卡片",
             "status": "已上线",
             "desc": "行程首页展示即将入住的酒店卡片，含酒店信息、入住日期、行程状态",
@@ -17,7 +17,7 @@ modules.push(
             "screenshot": "images/行程/现有功能截图__APP__行程__1-首页.jpg"
           },
           {
-            "id": "TP02",
+            "id": "TP01-2",
             "name": "快速 CTA-预入住",
             "status": "新功能",
             "desc": "行程卡片上的快捷操作按钮，支持房间升级等预入住服务",
@@ -25,7 +25,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__✅ Trips Landing UX Design.png"
           },
           {
-            "id": "TP03",
+            "id": "TP01-3",
             "name": "快速 CTA-修改预订",
             "status": "新功能",
             "desc": "行程卡片上的快捷操作按钮，支持快速修改预订信息",
@@ -33,7 +33,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__✅ Trips Landing UX Design.png"
           },
           {
-            "id": "TP04",
+            "id": "TP01-4",
             "name": "快速 CTA-手机入住",
             "status": "新功能",
             "desc": "行程卡片上的快捷操作按钮，支持手机自助办理入住",
@@ -41,7 +41,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__checkin in&out.png"
           },
           {
-            "id": "TP05",
+            "id": "TP01-5",
             "name": "快速 CTA-手机房卡",
             "status": "新功能",
             "desc": "行程卡片上的快捷操作按钮，支持使用手机作为数字房卡开门",
@@ -49,7 +49,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__mobile key.png"
           },
           {
-            "id": "TP06",
+            "id": "TP01-6",
             "name": "快速 CTA-手机退房",
             "status": "新功能",
             "desc": "行程卡片上的快捷操作按钮，支持手机自助办理退房",
@@ -59,10 +59,10 @@ modules.push(
         ]
       },
       {
-        "name": "行程详情",
+        "name": "TP01 行程详情",
         "features": [
           {
-            "id": "TP07",
+            "id": "TP01-7",
             "name": "行程详情页",
             "status": "已上线",
             "desc": "展示完整预订信息、入住服务、酒店设施、券入口等一站式行程管理页面",
@@ -70,7 +70,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Trips Detail UX Design.png"
           },
           {
-            "id": "TP08",
+            "id": "TP01-8",
             "name": "预订头信息",
             "status": "新功能",
             "desc": "行程详情页顶部展示的核心预订信息：日期、天气、酒店、房型、确认号",
@@ -78,7 +78,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Trips Detail UX Design.png"
           },
           {
-            "id": "TP09",
+            "id": "TP01-9",
             "name": "入住中心",
             "status": "新功能",
             "desc": "行程详情页快捷服务入口：电话直拨、在线聊天、发票申请、服务请求",
@@ -86,7 +86,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Trips Detail UX Design.png"
           },
           {
-            "id": "TP10",
+            "id": "TP01-10",
             "name": "手机入住/退房",
             "status": "新功能",
             "desc": "自助办理入住和退房，无需前往前台排队",
@@ -94,7 +94,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__checkin in&out.png"
           },
           {
-            "id": "TP11",
+            "id": "TP01-11",
             "name": "手机房卡",
             "status": "新功能",
             "desc": "Digital Key数字房卡，使用手机蓝牙/NFC开门",
@@ -102,7 +102,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__mobile key.png"
           },
           {
-            "id": "TP12",
+            "id": "TP01-12",
             "name": "房间升级",
             "status": "新功能",
             "desc": "支持付费升级或使用NUA房晚升级奖励升级房型",
@@ -110,7 +110,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__room upgrade(paid&nua).png"
           },
           {
-            "id": "TP13",
+            "id": "TP01-13",
             "name": "餐饮",
             "status": "新功能",
             "desc": "行程详情页展示酒店内餐厅推荐及餐饮预订入口",
@@ -118,7 +118,7 @@ modules.push(
             "screenshot": "images/探索/UI__Discover CN App 1.2__inspiration sub-tab.png"
           },
           {
-            "id": "TP14",
+            "id": "TP01-14",
             "name": "酒店设施",
             "status": "新功能",
             "desc": "行程详情页展示酒店主要设施信息及开放时间",
@@ -126,7 +126,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Trips Detail UX Design.png"
           },
           {
-            "id": "TP15",
+            "id": "TP01-15",
             "name": "券轮播与入口",
             "status": "新功能",
             "desc": "行程详情页展示可用优惠券及活动券的轮播卡片",
@@ -134,7 +134,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Trips Detail UX Design.png"
           },
           {
-            "id": "TP16",
+            "id": "TP01-16",
             "name": "商品推荐位",
             "status": "新功能",
             "desc": "行程详情页底部商品推荐区域，展示酒店周边商品或体验推荐",
@@ -144,10 +144,10 @@ modules.push(
         ]
       },
       {
-        "name": "其他行程",
+        "name": "TP01 其他行程",
         "features": [
           {
-            "id": "TP17",
+            "id": "TP01-17",
             "name": "缺失住宿申请",
             "status": "新功能",
             "desc": "当会员入住后积分/房晚未正确入账时，提交缺失住宿申请补录",
@@ -155,7 +155,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Find existing reservation.png"
           },
           {
-            "id": "TP18",
+            "id": "TP01-18",
             "name": "旅行足迹",
             "status": "新功能",
             "desc": "展示会员历史入住酒店的地图可视化，记录旅行足迹",
@@ -163,7 +163,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__✅ Trips Landing UX Design.png"
           },
           {
-            "id": "TP19",
+            "id": "TP01-19",
             "name": "历史与取消行程",
             "status": "新功能",
             "desc": "展示已完成的过去行程和已取消的行程记录",
@@ -171,7 +171,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Base Screens.png"
           },
           {
-            "id": "TP20",
+            "id": "TP01-20",
             "name": "筛选历史行程",
             "status": "新功能",
             "desc": "支持多维度筛选历史行程记录",
@@ -179,7 +179,7 @@ modules.push(
             "screenshot": "images/行程/UI__Trips CN App__Base Screens.png"
           },
           {
-            "id": "TP21",
+            "id": "TP01-21",
             "name": "查找现有预订",
             "status": "已上线",
             "desc": "未登录状态下通过确认号和姓名查找已有预订",

@@ -6,10 +6,10 @@ modules.push(
     "desc": "会员状态、积分、权益、个人资料——忠诚度运营核心",
     "sections": [
       {
-        "name": "账户状态",
+        "name": "AC01 账户状态",
         "features": [
           {
-            "id": "AC01",
+            "id": "AC01-1",
             "name": "会员等级展示",
             "status": "已上线",
             "desc": "账户页面顶部展示当前会员等级：会员/银卡/金卡/白金/钛金/大使",
@@ -17,7 +17,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__1-首页.jpg"
           },
           {
-            "id": "AC02",
+            "id": "AC01-2",
             "name": "保级进度条",
             "status": "已上线",
             "desc": "展示年度保级房晚进度，提示距离下一等级所需房晚数",
@@ -25,7 +25,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__1-首页.jpg"
           },
           {
-            "id": "AC03",
+            "id": "AC01-3",
             "name": "积分余额",
             "status": "已上线",
             "desc": "账户页面展示当前可用积分余额，支持点击进入积分详情",
@@ -33,7 +33,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__1-首页.jpg"
           },
           {
-            "id": "AC04",
+            "id": "AC01-4",
             "name": "联名卡",
             "status": "新功能",
             "desc": "展示万豪旅享家联名信用卡信息，支持查看卡片详情和申请新卡",
@@ -41,7 +41,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_account_landing_1.png"
           },
           {
-            "id": "AC05",
+            "id": "AC01-5",
             "name": "账户活动",
             "status": "已上线",
             "desc": "展示积分和房晚的完整交易记录，支持筛选和查询",
@@ -51,10 +51,10 @@ modules.push(
         ]
       },
       {
-        "name": "会员快捷入口",
+        "name": "AC01 会员快捷入口",
         "features": [
           {
-            "id": "AC06",
+            "id": "AC01-6",
             "name": "酒店订单",
             "status": "新功能",
             "desc": "账户页面快捷入口，点击进入行程Tab查看所有酒店预订订单",
@@ -62,7 +62,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_account_landing_1.png"
           },
           {
-            "id": "AC07",
+            "id": "AC01-7",
             "name": "商城订单",
             "status": "新功能",
             "desc": "账户页面快捷入口，点击进入商城订单查看券/商品购买记录",
@@ -70,7 +70,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_account_landing_1.png"
           },
           {
-            "id": "AC08",
+            "id": "AC01-8",
             "name": "愿望清单",
             "status": "已上线",
             "desc": "收藏酒店列表，支持查看、管理和预订已收藏的酒店",
@@ -78,7 +78,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__wishlists landing.png"
           },
           {
-            "id": "AC09",
+            "id": "AC01-9",
             "name": "浏览历史",
             "status": "新功能",
             "desc": "展示用户近期浏览过的酒店和内容记录，支持快速回访",
@@ -88,10 +88,10 @@ modules.push(
         ]
       },
       {
-        "name": "积分专区",
+        "name": "AC01 积分专区",
         "features": [
           {
-            "id": "AC10",
+            "id": "AC01-10",
             "name": "积分余额详情",
             "status": "新功能",
             "desc": "积分专区入口，展示积分余额、即将过期积分、积分价值说明",
@@ -99,7 +99,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__3-奖励积分.jpg"
           },
           {
-            "id": "AC11",
+            "id": "AC01-11",
             "name": "赚取积分",
             "status": "新功能",
             "desc": "积分专区入口，展示所有赚取积分的渠道和方式",
@@ -107,7 +107,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_account_landing_1.png"
           },
           {
-            "id": "AC12",
+            "id": "AC01-12",
             "name": "兑换积分",
             "status": "新功能",
             "desc": "积分专区入口，展示积分兑换选项：免费房晚、商品、体验",
@@ -115,7 +115,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__rewards.png"
           },
           {
-            "id": "AC13",
+            "id": "AC01-13",
             "name": "购买积分",
             "status": "新功能",
             "desc": "积分专区入口，支持直接购买积分或赠送积分给他人",
@@ -123,7 +123,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__rewards.png"
           },
           {
-            "id": "AC14",
+            "id": "AC01-14",
             "name": "积分商城",
             "status": "新功能",
             "desc": "积分专区入口，展示可用积分兑换的商品、体验和房晚",
@@ -133,10 +133,10 @@ modules.push(
         ]
       },
       {
-        "name": "奖励",
+        "name": "AC01 奖励",
         "features": [
           {
-            "id": "AC15",
+            "id": "AC01-15",
             "name": "免费房晚(FNA)",
             "status": "待确认",
             "desc": "奖励专区入口，展示会员获得的免费房晚奖励及使用状态",
@@ -144,7 +144,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__rewards.png"
           },
           {
-            "id": "AC16",
+            "id": "AC01-16",
             "name": "房晚升级(NUA)",
             "status": "已上线",
             "desc": "奖励专区入口，展示会员获得的房晚升级奖励及使用记录",
@@ -152,7 +152,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__优先延迟退房.jpg"
           },
           {
-            "id": "AC17",
+            "id": "AC01-17",
             "name": "Gated Offers",
             "status": "已上线",
             "desc": "专属优惠专区，展示会员专属的定向优惠活动和促销",
@@ -162,10 +162,10 @@ modules.push(
         ]
       },
       {
-        "name": "大使服务",
+        "name": "AC01 大使服务",
         "features": [
           {
-            "id": "AC18",
+            "id": "AC01-18",
             "name": "大使专线",
             "status": "新功能",
             "desc": "大使会员专属客户服务通道，提供一对一专属服务支持",
@@ -175,10 +175,10 @@ modules.push(
         ]
       },
       {
-        "name": "促销与优惠",
+        "name": "AC01 促销与优惠",
         "features": [
           {
-            "id": "AC19",
+            "id": "AC01-19",
             "name": "促销活动列表",
             "status": "待确认",
             "desc": "展示当前进行中的所有促销活动，支持注册参与",
@@ -186,7 +186,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__promotions&offers.png"
           },
           {
-            "id": "AC20",
+            "id": "AC01-20",
             "name": "优惠详情",
             "status": "待确认",
             "desc": "单个促销活动的详情页，展示活动规则、参与方式和适用酒店",
@@ -196,10 +196,10 @@ modules.push(
         ]
       },
       {
-        "name": "会员权益",
+        "name": "AC01 会员权益",
         "features": [
           {
-            "id": "AC21",
+            "id": "AC01-21",
             "name": "按等级权益展示",
             "status": "新功能",
             "desc": "展示当前会员等级可享受的全部8项专项礼遇权益",
@@ -207,7 +207,7 @@ modules.push(
             "screenshot": "images/账户/现有功能截图__APP__账户__已登录__2-您可享受8项专项礼遇.jpg"
           },
           {
-            "id": "AC22",
+            "id": "AC01-22",
             "name": "权益详情",
             "status": "新功能",
             "desc": "单项会员权益的详细说明页面，展示权益规则、适用条件和常见问题",
@@ -217,10 +217,10 @@ modules.push(
         ]
       },
       {
-        "name": "个人资料",
+        "name": "AC01 个人资料",
         "features": [
           {
-            "id": "AC23",
+            "id": "AC01-23",
             "name": "个人信息",
             "status": "待确认",
             "desc": "会员个人资料管理页面，支持查看和编辑基本信息、联系方式、安全设置",
@@ -228,7 +228,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__my profile（1.2）.png"
           },
           {
-            "id": "AC24",
+            "id": "AC01-24",
             "name": "会员卡",
             "status": "新功能",
             "desc": "数字会员卡展示，支持添加到Apple Wallet/华为钱包等数字钱包",
@@ -236,7 +236,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__member card（1.2）.png"
           },
           {
-            "id": "AC25",
+            "id": "AC01-25",
             "name": "偏好设置",
             "status": "新功能",
             "desc": "会员偏好配置：客房偏好、沟通偏好、语言设置、旅行偏好、饮食偏好",
@@ -244,7 +244,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__preferences.png"
           },
           {
-            "id": "AC26",
+            "id": "AC01-26",
             "name": "发票信息管理",
             "status": "新功能",
             "desc": "管理发票抬头信息，支持添加/编辑/删除多个发票信息，预订时快速选择",
@@ -252,7 +252,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__my profile（1.2）.png"
           },
           {
-            "id": "AC27",
+            "id": "AC01-27",
             "name": "地址管理",
             "status": "新功能",
             "desc": "管理常用地址，包括家庭地址、公司地址，用于发票邮寄和商品配送",
@@ -260,8 +260,8 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__my profile（1.2）.png"
           },
           {
-            "id": "AC28",
-            "name": "设置",
+            "id": "AC01-28",
+            "name": "AC01 设置",
             "status": "新功能",
             "desc": "APP系统设置：通知管理、隐私设置、语言切换、缓存清理、关于我们",
             "detail": "1.通知设置：Push通知开关（预订提醒、入住提醒、促销活动、账户活动、积分变动等细分开关）、邮件通知偏好、短信通知偏好。2.隐私设置：位置权限、相机权限、相册权限、通讯录权限管理；数据使用授权；第三方SDK授权管理。3.语言切换：APP显示语言切换（简体中文/繁体中文/English），切换后即时生效。4.显示设置：暗黑模式开关（跟随系统/始终开启/始终关闭）、字体大小调整。5.缓存清理：支持清理图片缓存、搜索历史、浏览记录，释放存储空间。6.关于我们：APP版本信息、用户协议、隐私政策、帮助中心、联系客服、评分邀请。7.状态说明：当前功能已上线。",
@@ -270,10 +270,10 @@ modules.push(
         ]
       },
       {
-        "name": "客户服务",
+        "name": "AC01 客户服务",
         "features": [
           {
-            "id": "AC29",
+            "id": "AC01-29",
             "name": "客户支持",
             "status": "新功能",
             "desc": "客户服务入口，支持在线聊天、电话直拨、常见问题查询、工单提交",
@@ -283,10 +283,10 @@ modules.push(
         ]
       },
       {
-        "name": "QRV",
+        "name": "AC01 QRV",
         "features": [
           {
-            "id": "AC30",
+            "id": "AC01-30",
             "name": "员工身份验证",
             "status": "新功能",
             "desc": "万豪员工身份验证流程，验证通过后享受员工专属房价（Explore Rate）",
@@ -294,7 +294,7 @@ modules.push(
             "screenshot": "images/QRV/UI__QRV CN APP__Corporate Flow.png"
           },
           {
-            "id": "AC31",
+            "id": "AC01-31",
             "name": "企业客户验证",
             "status": "新功能",
             "desc": "企业协议客户身份验证，验证通过后享受企业协议房价",
@@ -302,7 +302,7 @@ modules.push(
             "screenshot": "images/QRV/UI__QRV CN APP__Corporate Flow.png"
           },
           {
-            "id": "AC32",
+            "id": "AC01-32",
             "name": "万豪商务平台",
             "status": "新功能",
             "desc": "Marriott Business平台入口，面向中小企业提供差旅管理解决方案",
@@ -310,7 +310,7 @@ modules.push(
             "screenshot": "images/QRV/UI__QRV CN APP__Marriott Business.png"
           },
           {
-            "id": "AC33",
+            "id": "AC01-33",
             "name": "亲友价验证",
             "status": "新功能",
             "desc": "万豪员工亲友身份验证，验证通过后享受员工亲友专属房价（Explore Friends & Family）",
@@ -318,7 +318,7 @@ modules.push(
             "screenshot": "images/QRV/UI__QRV CN APP__Associate Flow.png"
           },
           {
-            "id": "AC34",
+            "id": "AC01-34",
             "name": "经验证的特别房价",
             "status": "新功能",
             "desc": "已验证的特别房价展示入口，包括员工价、亲友价、企业协议价等",
@@ -328,10 +328,10 @@ modules.push(
         ]
       },
       {
-        "name": "情感化运营",
+        "name": "AC01 情感化运营",
         "features": [
           {
-            "id": "AC35",
+            "id": "AC01-35",
             "name": "欢迎入会庆祝",
             "status": "新功能",
             "desc": "新会员注册成功后的情感化庆祝页面，增强入会仪式感和品牌认同",
@@ -339,7 +339,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_celebratory_1.png"
           },
           {
-            "id": "AC36",
+            "id": "AC01-36",
             "name": "保级成功庆祝",
             "status": "新功能",
             "desc": "会员年度保级成功后的情感化庆祝页面，强化会员忠诚度",
@@ -347,7 +347,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_celebratory_1.png"
           },
           {
-            "id": "AC37",
+            "id": "AC01-37",
             "name": "生日祝福",
             "status": "新功能",
             "desc": "会员生日当天的情感化祝福页面，附带生日专属优惠",
@@ -355,7 +355,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_celebratory_1.png"
           },
           {
-            "id": "AC38",
+            "id": "AC01-38",
             "name": "入会周年庆祝",
             "status": "新功能",
             "desc": "会员入会周年日的情感化庆祝页面，展示入会以来的成就和回忆",
@@ -363,7 +363,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_celebratory_1.png"
           },
           {
-            "id": "AC39",
+            "id": "AC01-39",
             "name": "年终状态回顾",
             "status": "新功能",
             "desc": "年度会员状态回顾报告，展示全年入住数据、积分获取、等级变化等",

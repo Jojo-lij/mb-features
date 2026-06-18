@@ -6,10 +6,10 @@ modules.push(
     "desc": "积分余额、礼品卡、支付方式——资产管理中心（计划更新）",
     "sections": [
       {
-        "name": "钱包首页",
+        "name": "WL01 钱包首页",
         "features": [
           {
-            "id": "WL01",
+            "id": "WL01-1",
             "name": "积分余额",
             "status": "功能迭代",
             "desc": "钱包首页展示当前可用积分余额，支持点击进入积分详情",
@@ -17,7 +17,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL02",
+            "id": "WL01-2",
             "name": "礼品卡余额",
             "status": "功能迭代",
             "desc": "钱包首页展示当前礼品卡总余额，支持点击进入礼品卡列表",
@@ -25,7 +25,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Gift Card Overview.png"
           },
           {
-            "id": "WL03",
+            "id": "WL01-3",
             "name": "会员卡快捷入口",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，点击展示数字会员卡二维码/条形码",
@@ -33,7 +33,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__QR CODE.png"
           },
           {
-            "id": "WL04",
+            "id": "WL01-4",
             "name": "礼品卡入口",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，点击进入礼品卡管理页面",
@@ -41,7 +41,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Gift Card Overview.png"
           },
           {
-            "id": "WL05",
+            "id": "WL01-5",
             "name": "支付方式入口",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，点击进入支付方式管理页面",
@@ -49,7 +49,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL06",
+            "id": "WL01-6",
             "name": "交易记录入口",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，点击进入礼品卡交易记录和积分交易记录",
@@ -57,7 +57,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL07",
+            "id": "WL01-7",
             "name": "积分明细入口",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，点击进入积分明细页面",
@@ -65,7 +65,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL08",
+            "id": "WL01-8",
             "name": "推广与优惠",
             "status": "功能迭代",
             "desc": "钱包首页推广区域，展示当前可用的优惠券、促销活动和推荐内容",
@@ -73,7 +73,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL09",
+            "id": "WL01-9",
             "name": "我的收藏",
             "status": "功能迭代",
             "desc": "钱包首页快捷入口，展示收藏的酒店、内容和商品",
@@ -81,7 +81,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL10",
+            "id": "WL01-10",
             "name": "客户支持",
             "status": "功能迭代",
             "desc": "钱包首页客户支持入口，提供礼品卡、积分、支付相关客服支持",
@@ -89,7 +89,7 @@ modules.push(
             "screenshot": "images/账户/UI__Loyalty CN App__pdf_account_landing_1.png"
           },
           {
-            "id": "WL11",
+            "id": "WL01-11",
             "name": "8种状态变体",
             "status": "功能迭代",
             "desc": "钱包首页支持8种视觉状态变体：默认/奖励/礼品卡/暗黑等主题",
@@ -99,10 +99,10 @@ modules.push(
         ]
       },
       {
-        "name": "礼品卡",
+        "name": "WL01 礼品卡",
         "features": [
           {
-            "id": "WL12",
+            "id": "WL01-12",
             "name": "礼品卡列表",
             "status": "功能迭代",
             "desc": "展示所有已添加的礼品卡，支持查看余额、有效期和快捷操作",
@@ -110,7 +110,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Gift Card Overview.png"
           },
           {
-            "id": "WL13",
+            "id": "WL01-13",
             "name": "礼品卡详情",
             "status": "功能迭代",
             "desc": "单张礼品卡的详细信息页，展示卡号、余额、有效期、交易记录",
@@ -118,7 +118,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Gift Card Details.png"
           },
           {
-            "id": "WL14",
+            "id": "WL01-14",
             "name": "手动添加礼品卡",
             "status": "功能迭代",
             "desc": "通过输入卡号和CVV将实体/电子礼品卡添加到钱包",
@@ -126,7 +126,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Add Gift Card.png"
           },
           {
-            "id": "WL15",
+            "id": "WL01-15",
             "name": "领取赠送礼品卡",
             "status": "功能迭代",
             "desc": "接收他人赠送的礼品卡，通过兑换码或链接领取到钱包",
@@ -134,7 +134,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__New Gift Card.png"
           },
           {
-            "id": "WL16",
+            "id": "WL01-16",
             "name": "礼品卡兑换",
             "status": "功能迭代",
             "desc": "将礼品卡余额兑换为积分或其他资产，需MFA安全验证",
@@ -142,7 +142,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Redeem Gift Card.png"
           },
           {
-            "id": "WL17",
+            "id": "WL01-17",
             "name": "锁定卡片",
             "status": "功能迭代",
             "desc": "临时冻结礼品卡，防止未授权使用，可随时解锁",
@@ -150,7 +150,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
           },
           {
-            "id": "WL18",
+            "id": "WL01-18",
             "name": "挂失卡片",
             "status": "功能迭代",
             "desc": "永久冻结丢失的礼品卡并申请补发新卡",
@@ -158,7 +158,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
           },
           {
-            "id": "WL19",
+            "id": "WL01-19",
             "name": "移除卡片",
             "status": "功能迭代",
             "desc": "从钱包中删除礼品卡，删除前需确认余额处理",
@@ -166,7 +166,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Lock-reportLost-remove gift card.png"
           },
           {
-            "id": "WL20",
+            "id": "WL01-20",
             "name": "交易明细",
             "status": "功能迭代",
             "desc": "单张礼品卡或全部礼品卡的完整交易记录",
@@ -174,7 +174,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Gift Card Details.png"
           },
           {
-            "id": "WL21",
+            "id": "WL01-21",
             "name": "底部弹窗",
             "status": "功能迭代",
             "desc": "礼品卡快捷操作底部弹窗，支持使用/添加/领取/分享等操作",
@@ -184,10 +184,10 @@ modules.push(
         ]
       },
       {
-        "name": "资产导航",
+        "name": "WL01 资产导航",
         "features": [
           {
-            "id": "WL22",
+            "id": "WL01-22",
             "name": "支付方式管理",
             "status": "功能迭代",
             "desc": "管理已保存的支付方式，支持添加/删除/编辑银行卡和第三方支付",
@@ -195,7 +195,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__Wallet Overview.png"
           },
           {
-            "id": "WL23",
+            "id": "WL01-23",
             "name": "账户活动",
             "status": "功能迭代",
             "desc": "资产导航入口，展示积分和礼品卡的完整账户活动记录",
@@ -203,7 +203,7 @@ modules.push(
             "screenshot": "images/钱包/UI__Wallet CN App__account hub.png"
           },
           {
-            "id": "WL24",
+            "id": "WL01-24",
             "name": "资产总览",
             "status": "功能迭代",
             "desc": "资产导航入口，一站式查看所有资产：积分、礼品卡、支付方式、优惠券",

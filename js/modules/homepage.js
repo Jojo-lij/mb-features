@@ -6,23 +6,18 @@ modules.push(
     "desc": "搜索中心、酒店详情、预订流程、会员信息——核心转化链路",
     "sections": [
       {
-        "name": "页面概览",
+        "name": "HP01 首页概览",
         "features": [
           {
-            "id": "HP01",
+            "id": "HP01-1",
             "name": "首页全页面概览",
             "status": "已上线",
             "desc": "首页完整页面截图，展示整体布局与信息架构",
             "detail": "1.页面结构说明：从上至下，分别显示轮播banner、会员信息卡片、搜索栏、你的行程、限时促销、近期查看、积分活动 Banner、为你推荐、探索更多精彩。2.轮播banner：节日营销活动入口。3.会员信息卡片：会员等级、积分、保级进度。4.搜索栏：核心预订入口。5.你的行程：仅当前有行程显示--待确认。6.限时促销：营销活动卡片。7.近期查看：浏览历史快捷入口。8.积分活动banner：显示积分激励活动--待确认。9.为你推荐：个性化推荐内容。10.探索更多精彩：探索页面内容引导。",
             "screenshot": "images/首页/UI__图片库__首页__首页-全部.png"
-          }
-        ]
-      },
-      {
-        "name": "Home Hero",
-        "features": [
+          },
           {
-            "id": "HP02",
+            "id": "HP01-2",
             "name": "轮播 Banner",
             "status": "已上线",
             "desc": "节日营销活动入口",
@@ -32,10 +27,10 @@ modules.push(
         ]
       },
       {
-        "name": "Search Hub",
+        "name": "HP02 Search Hub",
         "features": [
           {
-            "id": "HP03",
+            "id": "HP02-1",
             "name": "搜索栏",
             "status": "已上线",
             "desc": "会员信息区域、搜索输入框、快速筛选标签",
@@ -43,7 +38,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__search hub.png"
           },
           {
-            "id": "HP04",
+            "id": "HP02-2",
             "name": "目的地",
             "status": "已上线",
             "desc": "选择目的地城市",
@@ -55,7 +50,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP05",
+            "id": "HP02-3",
             "name": "日期选择",
             "status": "已上线",
             "desc": "入住/退房日期选择",
@@ -66,7 +61,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP06",
+            "id": "HP02-4",
             "name": "房间&宾客&宠物设置",
             "status": "已上线",
             "desc": "配置房间、宾客和宠物",
@@ -77,7 +72,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP07",
+            "id": "HP02-5",
             "name": "特别房价",
             "status": "已上线",
             "desc": "会员价/协议价等特别房价",
@@ -85,7 +80,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__特别房价.png"
           },
           {
-            "id": "HP08",
+            "id": "HP02-6",
             "name": "获取定位权限",
             "status": "已上线",
             "desc": "点击搜索栏的定位按钮，获取用户手机原生的定位权限",
@@ -93,7 +88,7 @@ modules.push(
             "screenshot": "images/首页/现有功能截图__APP__首页__3-点击定位.jpg"
           },
           {
-            "id": "HP09",
+            "id": "HP02-7",
             "name": "使用积分",
             "status": "已上线",
             "desc": "勾选后切换为积分预订模式",
@@ -103,10 +98,10 @@ modules.push(
         ]
       },
       {
-        "name": "搜索结果",
+        "name": "HP03 搜索结果",
         "features": [
           {
-            "id": "HP10",
+            "id": "HP03-1",
             "name": "地图视图/列表视图/网格视图",
             "status": "已上线",
             "desc": "地图/列表/网格三种视图切换，支持地图气泡标记、Swipe展开收起列表",
@@ -119,7 +114,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP11",
+            "id": "HP03-2",
             "name": "查找酒店",
             "status": "已上线",
             "desc": "确认搜索条件并执行酒店搜索",
@@ -127,7 +122,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__搜索结果__查找酒店.jpg"
           },
           {
-            "id": "HP12",
+            "id": "HP03-3",
             "name": "筛选",
             "status": "已上线",
             "desc": "多维度筛选：税费/满房/货币/价格/距离/设施/品牌/类型",
@@ -135,7 +130,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__搜索结果__筛选.jpg"
           },
           {
-            "id": "HP13",
+            "id": "HP03-4",
             "name": "排序",
             "status": "已上线",
             "desc": "底部弹窗单选排序：距离/最低价/最高价/城市/宾客评分",
@@ -143,7 +138,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__搜索结果__排序.jpg"
           },
           {
-            "id": "HP14",
+            "id": "HP03-5",
             "name": "酒店卡片",
             "status": "已上线",
             "desc": "酒店卡片展示：头图轮播、收藏、评分、距离、双价格、标签",
@@ -154,10 +149,10 @@ modules.push(
         ]
       },
       {
-        "name": "酒店详情",
+        "name": "HP04 酒店详情",
         "features": [
           {
-            "id": "HP15",
+            "id": "HP04-1",
             "name": "酒店信息（现有）",
             "status": "已上线",
             "desc": "酒店详情页：头图轮播、地址地图、画廊、优惠、餐饮、信息导航、底部价格栏",
@@ -168,7 +163,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP16",
+            "id": "HP04-2",
             "name": "头图轮播",
             "status": "已上线",
             "desc": "顶部大图轮播，支持滑动切换，Lux/Non-Lux尺寸不同",
@@ -179,7 +174,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP17",
+            "id": "HP04-3",
             "name": "收藏",
             "status": "已上线",
             "desc": "底部弹窗选择愿望清单收藏酒店，支持创建新清单",
@@ -187,7 +182,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__酒店详情__收藏.jpg"
           },
           {
-            "id": "HP18",
+            "id": "HP04-4",
             "name": "分享",
             "status": "已上线",
             "note": "微信/链接",
@@ -196,7 +191,7 @@ modules.push(
             "desc": "安卓支持分享酒店至系统应用（需授权）"
           },
           {
-            "id": "HP19",
+            "id": "HP04-5",
             "name": "电话直拨",
             "status": "已上线",
             "desc": "点击酒店电话直接拨打",
@@ -204,7 +199,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__酒店详情__致电酒店.jpg"
           },
           {
-            "id": "HP20",
+            "id": "HP04-6",
             "name": "酒店地图",
             "status": "已上线",
             "desc": "全屏地图展示酒店位置，支持复制地址或跳转地图软件",
@@ -212,7 +207,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__酒店详情__酒店地图.jpg"
           },
           {
-            "id": "HP21",
+            "id": "HP04-7",
             "name": "画廊",
             "status": "已上线",
             "desc": "横向滑动展示酒店各区域图片，支持查看全部",
@@ -223,7 +218,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP22",
+            "id": "HP04-8",
             "name": "优惠",
             "status": "新功能",
             "desc": "酒店专属优惠活动卡片，支持查看详情和预订",
@@ -234,7 +229,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP23",
+            "id": "HP04-9",
             "name": "餐饮",
             "status": "新功能",
             "desc": "酒店内餐厅列表，支持查看详情和致电餐厅",
@@ -246,7 +241,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP24",
+            "id": "HP04-10",
             "name": "设施信息",
             "status": "已上线",
             "desc": "酒店设施分类导航列表，支持展开查看各类设施详情",
@@ -257,7 +252,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP25",
+            "id": "HP04-11",
             "name": "底部价格栏",
             "status": "已上线",
             "desc": "底部固定价格栏，展示起价+选择房型入口",
@@ -267,10 +262,10 @@ modules.push(
         ]
       },
       {
-        "name": "房价列表 (RLM)",
+        "name": "HP05 房价列表 (RLM)",
         "features": [
           {
-            "id": "HP26",
+            "id": "HP05-1",
             "name": "房价列表",
             "status": "新功能",
             "desc": "一页式房价列表：房型卡片、筛选标签、价格展示、查看价格入口",
@@ -281,7 +276,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP27",
+            "id": "HP05-2",
             "name": "筛选",
             "status": "已上线",
             "desc": "客房类型/景观/床型/酒廊多维度筛选",
@@ -289,7 +284,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__RLM__筛选.jpg"
           },
           {
-            "id": "HP28",
+            "id": "HP05-3",
             "name": "房型详情",
             "status": "已上线",
             "desc": "底部弹窗展示客房详细信息，支持分类展开查看",
@@ -297,7 +292,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__RLM__客房详情.jpg"
           },
           {
-            "id": "HP29",
+            "id": "HP05-4",
             "name": "房价详情弹窗",
             "status": "新功能",
             "desc": "底部弹窗展示房价详情：包含内容、担保/修改/取消政策、价格摘要",
@@ -307,10 +302,10 @@ modules.push(
         ]
       },
       {
-        "name": "预订流程",
+        "name": "HP06 预订流程",
         "features": [
           {
-            "id": "HP30",
+            "id": "HP06-1",
             "name": "浏览预订",
             "status": "已上线",
             "desc": "预订提交前的信息确认页，汇总住宿、费用、政策等全部信息",
@@ -321,7 +316,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP31",
+            "id": "HP06-2",
             "name": "费用摘要",
             "status": "已上线",
             "desc": "浏览预订页中的费用明细展开区域，展示房价、服务费、税费及总计",
@@ -332,7 +327,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP32",
+            "id": "HP06-3",
             "name": "会员预订流程（当前范围外）",
             "status": "待确认",
             "desc": "已登录会员的完整预订流程，从浏览预订到支付完成",
@@ -340,7 +335,7 @@ modules.push(
             "screenshot": "images/首页/UI__Shop&Book_CN APP_1.2__review res__Member Review Res.png"
           },
           {
-            "id": "HP33",
+            "id": "HP06-4",
             "name": "非会员预订流程",
             "status": "已上线",
             "desc": "未登录访客或首次预订用户的完整预订流程",
@@ -348,7 +343,7 @@ modules.push(
             "screenshot": "images/首页/UI__Shop&Book_CN APP_1.2__review res__Non-member Review Res.png"
           },
           {
-            "id": "HP34",
+            "id": "HP06-5",
             "name": "支付方式",
             "status": "已上线",
             "desc": "预订流程中的银行卡选择、编辑与添加功能",
@@ -356,7 +351,7 @@ modules.push(
             "screenshot": "images/首页/UI__Shop&Book_CN APP_1.2__review res__secondary - payment method.png"
           },
           {
-            "id": "HP35",
+            "id": "HP06-6",
             "name": "支付失败处理",
             "status": "功能迭代",
             "desc": "预付订单支付环节的异常状态处理，覆盖多种失败场景",
@@ -364,7 +359,7 @@ modules.push(
             "screenshot": "images/首页/UI__Shop&Book_CN APP_1.2__review res__Prepaid.png"
           },
           {
-            "id": "HP37",
+            "id": "HP06-7",
             "name": "预订成功页",
             "status": "功能迭代",
             "desc": "预订提交成功后的确认页面，展示订单信息、酒店详情、取消政策和交叉销售",
@@ -376,7 +371,7 @@ modules.push(
             ]
           },
           {
-            "id": "HP38",
+            "id": "HP06-8",
             "name": "预订确认交叉销售",
             "status": "功能迭代",
             "desc": "预订成功页底部展示交叉销售推荐，引导用户继续消费或探索",
@@ -386,10 +381,10 @@ modules.push(
         ]
       },
       {
-        "name": "首页其他",
+        "name": "HP07 首页其他",
         "features": [
           {
-            "id": "HP39",
+            "id": "HP07-1",
             "name": "会员信息",
             "status": "已上线",
             "desc": "首页顶部会员信息卡片，展示会员等级、积分余额和保级进度",
@@ -397,7 +392,7 @@ modules.push(
             "screenshot": "images/首页/会员信息.png"
           },
           {
-            "id": "HP46",
+            "id": "HP07-2",
             "name": "即将到来的行程",
             "status": "新功能",
             "desc": "首页展示用户即将入住的行程卡片，支持查看详情、开门、入住、退房等快捷操作",
@@ -405,7 +400,7 @@ modules.push(
             "screenshot": "images/首页/即将到来的行程.png"
           },
           {
-            "id": "HP40",
+            "id": "HP07-3",
             "name": "联名卡推广",
             "status": "已上线",
             "desc": "首页搜索栏下方展示万豪旅享家联名信用卡推广卡片",
@@ -413,7 +408,7 @@ modules.push(
             "screenshot": "images/首页/UI__图片库__首页__首页-已登录.png"
           },
           {
-            "id": "HP42",
+            "id": "HP07-4",
             "name": "近期查看",
             "status": "已上线",
             "desc": "首页展示用户近期浏览过的酒店，支持继续预订",
@@ -421,7 +416,7 @@ modules.push(
             "screenshot": "images/首页/近期查看.png"
           },
           {
-            "id": "HP43",
+            "id": "HP07-5",
             "name": "活动推广",
             "status": "待确认",
             "desc": "首页展示营销活动卡片，引导用户参与促销或注册",
@@ -429,7 +424,7 @@ modules.push(
             "screenshot": "images/首页/活动.png"
           },
           {
-            "id": "HP41",
+            "id": "HP07-6",
             "name": "为你推荐",
             "status": "已上线",
             "desc": "首页个性化推荐内容区域，包含横向滑动大图卡片和双列小卡片",
@@ -437,7 +432,7 @@ modules.push(
             "screenshot": "images/首页/为你推荐.jpg"
           },
           {
-            "id": "HP47",
+            "id": "HP07-7",
             "name": "探索更多精彩",
             "status": "待确认",
             "desc": "首页底部引导卡片，吸引用户探索热门目的地和旅行灵感",
